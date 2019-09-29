@@ -389,44 +389,42 @@ int* DivideQuickSort(int data[], int start, int end, int length, int pivot) {
 		}
 		DivideQuickSort(data, s, len - 1, len, p);
 	}
-	else {
-		int s2 = pivot + 1, l2 = s2 + 1, h2 = end, p2 = s2, len2 = length - (pivot + 1);
+
+	int s2 = pivot + 1, l2 = s2 + 1, h2 = end, p2 = s2, len2 = length - (pivot + 1);
+	QuickPrint(data, s2, l2, h2, p2, len2);
+	if (len2 >= 2) {
 		printf("%d %d %d %d %d\n", s2, l2, h2, p2, len2);
 		QuickPrint(data, s2, l2, h2, p2, len2);
-		if (len <= 2) {
-			printf("%d %d %d %d %d\n", s2, l2, h2, p2, len2);
-			QuickPrint(data, s2, l2, h2, p2, len2);
-			while (l2 < h2) {
-				if (data[l2] > data[h2]) {
-					if (data[p2] > data[l2])
-						l2++;
-					else if (data[p2] < data[h2])
-						h2--;
-					else {
-						swap(&data[l2], &data[h2]);
-						l2++;
-						h2--;
-					}
-				}
+		while (l2 < h2) {
+			if (data[l2] > data[h2]) {
+				if (data[p2] > data[l2])
+					l2++;
+				else if (data[p2] < data[h2])
+					h2--;
 				else {
-					if (data[p2] < data[l2] && data[p2] < data[h2])
-						h2--;
-					else if (data[p2] > data[l2] && data[p2] > data[h2])
-						l2++;
-					else {
-						l2++;
-						h2--;
-					}
+					swap(&data[l2], &data[h2]);
+					l2++;
+					h2--;
 				}
-				QuickPrint(data, s2, l2, h2, p2, len2);
 			}
-			if (data[p2] > data[h2]) {
-				swap(&data[h2], &data[p2]);
-				swap(&h2, &p2);
-				QuickPrint(data, s2, l2, h2, p2, len2);
+			else {
+				if (data[p2] < data[l2] && data[p2] < data[h2])
+					h2--;
+				else if (data[p2] > data[l2] && data[p2] > data[h2])
+					l2++;
+				else {
+					l2++;
+					h2--;
+				}
 			}
-			DivideQuickSort(data, s2, end, len2, p2);
+			QuickPrint(data, s2, l2, h2, p2, len2);
 		}
+		if (data[p2] > data[h2]) {
+			swap(&data[h2], &data[p2]);
+			swap(&h2, &p2);
+			QuickPrint(data, s2, l2, h2, p2, len2);
+		}
+		DivideQuickSort(data, s2, end, len2, p2);
 	}
 
 	return data;

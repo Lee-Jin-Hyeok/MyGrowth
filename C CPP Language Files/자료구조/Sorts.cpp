@@ -355,7 +355,7 @@ void QuickSort(int data[]) {
 
 int* DivideQuickSort(int data[], int start, int end, int length, int pivot) {
 	int s = start, l = start + 1, h = length - (length - pivot) - 1, p = start, len = pivot;
-	printf("%d %d %d %d %d\n", s, l, h, p, len);
+	printf("¾Ó %d %d %d %d %d\n", s, l, h, p, len);
 	if (len >= 2) {
 		QuickPrint(data, s, l, h, p, len);
 		while (l < h) {
@@ -391,9 +391,8 @@ int* DivideQuickSort(int data[], int start, int end, int length, int pivot) {
 	}
 
 	int s2 = pivot + 1, l2 = s2 + 1, h2 = end, p2 = s2, len2 = length - (pivot + 1);
-	QuickPrint(data, s2, l2, h2, p2, len2);
 	if (len2 >= 2) {
-		printf("%d %d %d %d %d\n", s2, l2, h2, p2, len2);
+		printf("±â %d %d %d %d %d\n", s2, l2, h2, p2, len2);
 		QuickPrint(data, s2, l2, h2, p2, len2);
 		while (l2 < h2) {
 			if (data[l2] > data[h2]) {

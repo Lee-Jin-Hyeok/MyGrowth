@@ -36,3 +36,6 @@ This is a report on my growth process.
 ##### 2019.09.29 10:44:XX
 - MyHistory 리포지터리에 있던 파일들을 모두 이 MyGrowth 리포지터리로 옮겼다.
 - 드디어 profile의 contribution(잔디)이 적용된다!
+##### 2019.09.29 15:00:XX
+- QuickSort의 갈피를 드디어 잡은 것 같다.
+- 또한 QuickSort의 첫 번째 pivot과 정렬을 성공하였다.

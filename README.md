@@ -39,3 +39,6 @@ This is a report on my growth process.
 ##### 2019.09.29 15:00:XX
 - QuickSort의 갈피를 드디어 잡은 것 같다.
 - 또한 QuickSort의 첫 번째 pivot과 정렬을 성공하였다.
+##### 2019.09.29 23:41:XX
+- QuickSort는 생각보다 어려운 것 같다.
+- 재귀를 쓰면서 재귀를 머리로만 구상하는 것은 힘들다는 것을 느꼈다.

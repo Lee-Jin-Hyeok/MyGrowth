@@ -33,3 +33,6 @@ This is a report on my growth process.
 - 곧 있으면 모두 완성이 될 거 같다.
 ##### 2019.09.29 10:22:XX
 - 병합 정렬을 구현하는데 성공했다.
+##### 2019.09.29 10:44:XX
+- MyHistory 리포지터리에 있던 파일들을 모두 이 MyGrowth 리포지터리로 옮겼다.
+- 드디어 profile의 contribution(잔디)이 적용된다!

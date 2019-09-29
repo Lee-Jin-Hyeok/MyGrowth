@@ -31,7 +31,7 @@ void MergePrint(int[], int);
 void InitArray(int[]);
 
 void RadixInit(List**);						// 기수정렬시 Queue가 들어갈 배열 초기화
-int PowerC(int, int);
+int PowerC(int, int);						// (자릿수, 1)의 매개변수 형식을 가지며 10^자릿수의 값을 반환한다.
 int* DivideMergeSort(int[], int);			// 병합정렬시 배열을 나눌 때 사용
 int* MergeMergeSort(int[], int[], int);		// 병합정렬시 배열을 합칠 때 사용
 
@@ -167,13 +167,18 @@ void RadixSort(int data[], int pow) {
 
 	printf("-- 변환 중\n");
 	int rPow = 1;
-	while (pow != rPow) {
-		for (int i = 0; i < ARRAY_LENGTH; i++)
-			Enqueue(list[(data[i] % (rPow * 10)) / rPow], data[i]);
+	while (pow + 1 != rPow) {
+		printf("-- %d의 자리수로 정렬\n", PowerC(rPow, 1));
 		for (int i = 0; i < ARRAY_LENGTH; i++) {
-			int cnt = 0;
-			while (Data t = Dequeue(list[i]) != -1)
+			Enqueue(list[(data[i] % (PowerC(rPow, 1) * 10)) / PowerC(rPow, 1)], data[i]);
+		}
+		int cnt = 0;
+		for (int i = 0; i < 10; i++) {
+			Data t = Dequeue(list[i]);
+			while (t != -1) {
 				data[cnt++] = t;
+				t = Dequeue(list[i]);
+			}
 		}
 		Print(data);
 		rPow++;
@@ -184,8 +189,10 @@ void RadixSort(int data[], int pow) {
 }
 
 void RadixInit(List * list[]) {
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 10; i++) {
 		list[i] = (List*)malloc(sizeof(List));
+		ListInit(list[i]);
+	}
 }
 
 int PowerC(int radix, int res) {

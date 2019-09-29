@@ -6,9 +6,6 @@
 	5. 병합 정렬
 	6. 퀵	정렬
 	7. 힙	정렬
-
-	파일명 Sorts.cpp
-	제작자 이진혁
 */
 
 #include <stdio.h>
@@ -31,7 +28,7 @@ void HeapSort(int[]);
 void swap(int*, int*);
 void Print(int[]);
 void MergePrint(int[], int);
-void QuickPrint(int[], int, int, int, int);
+void QuickPrint(int[], int, int, int, int, int);
 void InitArray(int[]);
 
 void RadixInit(List**);						// 기수정렬시 Queue가 들어갈 배열 초기화
@@ -77,15 +74,17 @@ void MergePrint(int data[], int len) {
 	}
 }
 
-void QuickPrint(int data[], int low, int high, int pivot, int len) {
-	for (int i = 0; i < len; i++) {
-		if (i == 0) printf("{ ");
+void QuickPrint(int data[], int s, int low, int high, int pivot, int len) {
+	for (int i = s; i < s + len; i++) {
+		if (i == s) printf("{ ");
 		printf("%3d ", data[i]);
 		if (i == len - 1) printf("}\n");
 	}
-	for (int i = 0; i < len; i++) {
-		if (i == 0) printf("{ ");
+	for (int i = s; i < s + len; i++) {
+		if (i == s) printf("{ ");
 		if ((i == low) && (low == high)) printf(" LH ");
+		else if ((i == low) && (low == pivot)) printf(" LP ");
+		else if ((i == high) && (high == pivot)) printf(" HP ");
 		else {
 			if (i == low) printf(" L  ");
 			else if (i == high) printf(" H  ");
@@ -318,7 +317,8 @@ void QuickSort(int data[]) {
 
 	printf("-- 변환 중\n");
 	int low = 1, high = ARRAY_LENGTH - 1, pivot = 0, len = ARRAY_LENGTH;
-	QuickPrint(data, low, high, pivot, len);
+	int start = pivot;
+	QuickPrint(data, start, low, high, pivot, len);
 	while (low < high) {
 		if (data[low] > data[high]) {
 			if (data[pivot] > data[low])
@@ -341,23 +341,23 @@ void QuickSort(int data[]) {
 				high--;
 			}
 		}
-		QuickPrint(data, low, high, pivot, len);
+		QuickPrint(data, start, low, high, pivot, len);
 	}
 	swap(&data[high], &data[pivot]);
 	swap(&high, &pivot);
-	QuickPrint(data, low, high, pivot, len);
+	QuickPrint(data, start, low, high, pivot, len);
 
-	data = DivideQuickSort(data, len, pivot);
+	data = DivideQuickSort(data, len, pivot, 0);
 
 	printf("-- 변환 후\n");
 	Print(data);
 }
 
-int* DivideQuickSort(int data[], int length, int pivot) {
-	int l, h, p, len;
+int* DivideQuickSort(int data[], int length, int pivot, int weight) {
+	int w, l, h, p, len;
 
-	l = 1; h = pivot - 1; p = 0; len = pivot;
-	QuickPrint(data, l, h, pivot, len);
+	w += weight; l = w + 1; h = w + len - 1; len = pivot; p = pivot - len + 1;
+	QuickPrint(data, w, l, h, p, len);
 	while (l < h) {
 		if (data[l] > data[h]) {
 			if (data[p] > data[l])
@@ -380,18 +380,21 @@ int* DivideQuickSort(int data[], int length, int pivot) {
 				h--;
 			}
 		}
-		QuickPrint(data, l, h, p, len);
+		QuickPrint(data, w, l, h, p, len);
 	}
 	swap(&data[h], &data[p]);
 	swap(&h, &p);
-	QuickPrint(data, l, h, p, len);
+	QuickPrint(data, w, l, h, p, len);
 
-	l = pivot + 1; h = len - 1; pivot = 0; len = length - (pivot + 1);
+	w = pivot + 1; l = pivot + 2; h = length - 1; p = pivot + 1; len = length - (pivot + 1);
+	//QuickPrint(data, l, h, p, len);
+	QuickPrint(data, pivot + 1, 6, 7, 5, 3);
 
+	return data;
 }
 
 int* MergeQuickSort(int d1[], int s1, int e1, int d2[], int s2, int e2) {
-
+	return d1;
 }
 
 void HeapSort(int data[]) {

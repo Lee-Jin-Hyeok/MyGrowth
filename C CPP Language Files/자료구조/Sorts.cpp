@@ -6,6 +6,9 @@
 	5. 병합 정렬
 	6. 퀵	정렬
 	7. 힙	정렬
+
+	파일명 Sorts.cpp
+	제작자 이진혁
 */
 
 #include <stdio.h>

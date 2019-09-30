@@ -1,15 +1,4 @@
 /*
-	파일명 Sorts.cpp
-	제작자 이진혁
-	내용 {
-		선택, 버블, 향상된버블, 삽입, 기수, 병합, 퀵, 힙 정렬을 C언어로 구현한 코드이다.
-		모든 정렬은 한 순서가 지날 때 마다 Print 해준다.
-
-		자료구조 숙제로 만들게 된 정렬이지만 생각보다 많은 시간이 걸렸다.
-		그래도 이론만 찾아보고 직접 만들어 보는 것은 보람있었다.
-		허나, 코드가 안정적이지 못해서 나중에 시간이 남는다면 다시 한 번씩 만들어볼 계획이다.
-	}
-
 	1. 선택 정렬
 	2. 버블 정렬
 	3. 삽입 정렬
@@ -30,6 +19,7 @@
 
 void SelectionSort(int[]);
 void BubbleSort(int[]);
+void ImprovedBubbleSort(int[]);
 void InsertionSort(int[]);
 void RadixSort(int[], int);
 void MergeSort(int[], int);
@@ -46,14 +36,17 @@ void RadixInit(List**);									// 기수정렬시 Queue가 들어갈 배열 초기화
 int PowerC(int, int);									// (자릿수, 1)의 매개변수 형식을 가지며 10^자릿수의 값을 반환한다.
 int* DivideMergeSort(int[], int);						// 병합정렬시 배열을 나눌 때 사용
 int* MergeMergeSort(int[], int[], int);					// 병합정렬시 배열을 합칠 때 사용
-int* LeftQuickSort(int[], int, int, int, int);			// 퀵  정렬시 피벗을 기준으로 왼쪽 자료들을 정렬할 때 사용
-int* RightQuickSort(int[], int, int, int, int);			// 힙  정렬시 피벗을 기준으로 오른쪽 자료들을 정렬할 때 사용
+int* LeftQuickSort(int[], int, int, int, int);			// 퀵  정렬시 피벗을 기준으로 왼쪽에 있는 자료들을 정렬할 때 사용
+int* RightQuickSort(int[], int, int, int, int);			// 퀵  정렬시 피벗을 기준으로 오른쪽에 있는 자료들을 정렬할 때 사용
+void InsertHeapSort(int[], int);
+int RemoveHeapSort(int[]);
 
 int main() {
 	int data[ARRAY_LENGTH];
 
 	SelectionSort(data);
 	BubbleSort(data);
+	ImprovedBubbleSort(data);
 	InsertionSort(data);
 	RadixSort(data, 2);
 	MergeSort(data, ARRAY_LENGTH);
@@ -72,7 +65,7 @@ void swap(int* n1, int* n2) {
 void Print(int data[]) {
 	for (int i = 0; i < ARRAY_LENGTH; i++) {
 		if (i == 0) printf("{ ");
-		printf("%d ", data[i]);
+		printf("%2d ", data[i]);
 		if (i == ARRAY_LENGTH - 1) printf("}\n");
 	}
 }
@@ -163,6 +156,33 @@ void BubbleSort(int data[]) {
 	Print(data);
 }
 
+void ImprovedBubbleSort(int data[]) {
+	InitArray(data);
+	printf("\n---------------------------------\n");
+	printf("| 개선된 버블 정렬 - BubbleSort |\n");
+	printf("---------------------------------\n\n");
+
+	printf("변환 전\n");
+	Print(data);
+
+	int cnt = ARRAY_LENGTH - 1, d1 = 0, d2 = 1, check = 1;
+	printf("-- 변환 중\n");
+	while (check && cnt--) {
+		check = 0, d1 = 0, d2 = 1;
+		for (int i = cnt; i >= 0; i--) {
+			if (data[d1] > data[d2]) {
+				swap(&data[d1], &data[d2]);
+				check = 1;
+			}
+			Print(data);
+			d1++; d2++;
+		}
+	}
+
+	printf("변환 후\n");
+	Print(data);
+}
+
 void InsertionSort(int data[]) {
 	InitArray(data);
 	printf("\n-----------------------------\n");
@@ -174,12 +194,10 @@ void InsertionSort(int data[]) {
 
 	for (int i = 1; i < ARRAY_LENGTH; i++) {
 		for (int j = i - 1; j >= 0; j--) {
-			if (data[j] > data[j + 1]) {
+			if (data[j] > data[j + 1])
 				swap(&data[j], &data[j + 1]);
-			}
-			else {
+			else
 				break;
-			}
 			Print(data);
 		}
 	}
@@ -371,8 +389,8 @@ int* LeftQuickSort(int data[], int start, int end, int length, int pivot) {
 		if (data[p] > data[h] && p < h) {
 			swap(&data[h], &data[p]);
 			swap(&h, &p);
-			QuickPrint(data, s, l, h, p, len);
 		}
+		QuickPrint(data, s, l, h, p, len);
 		return data;
 	}
 
@@ -381,8 +399,10 @@ int* LeftQuickSort(int data[], int start, int end, int length, int pivot) {
 		if (data[l] > data[h]) {
 			if (data[p] > data[l])
 				l++;
-			else if (data[p] < data[h])
+			else if (data[p] < data[h]) {
+				swap(&data[h], &data[l]);
 				h--;
+			}
 			else {
 				swap(&data[l], &data[h]);
 				l++;
@@ -406,8 +426,8 @@ int* LeftQuickSort(int data[], int start, int end, int length, int pivot) {
 		swap(&h, &p);
 		QuickPrint(data, s, l, h, p, len);
 	}
-	LeftQuickSort(data, s, p - 1, len, p);\
-		RightQuickSort(data, p + 1, end, len, p);
+	LeftQuickSort(data, s, p - 1, len, p);
+	RightQuickSort(data, p + 1, end, len, p);
 
 	return data;
 }
@@ -418,8 +438,8 @@ int* RightQuickSort(int data[], int start, int end, int length, int pivot) {
 		if (data[p2] > data[h2] && p2 < h2) {
 			swap(&data[h2], &data[p2]);
 			swap(&h2, &p2);
-			QuickPrint(data, s2, l2, h2, p2, len2);
 		}
+		QuickPrint(data, s2, l2, h2, p2, len2);
 		return data;
 	}
 
@@ -428,8 +448,10 @@ int* RightQuickSort(int data[], int start, int end, int length, int pivot) {
 		if (data[l2] > data[h2]) {
 			if (data[p2] > data[l2])
 				l2++;
-			else if (data[p2] < data[h2])
+			else if (data[p2] < data[h2]) {
+				swap(&data[h2], &data[l2]);
 				h2--;
+			}
 			else {
 				swap(&data[l2], &data[h2]);
 				l2++;
@@ -464,6 +486,58 @@ void HeapSort(int data[]) {
 	printf("\n----------------------\n");
 	printf("| 힙 정렬 - HeapSort |\n");
 	printf("----------------------\n\n");
+	int temp[ARRAY_LENGTH] = { 0, };
 
+	printf("-- 변환 전\n");
+	for (int i = 0; i < ARRAY_LENGTH; i++) {
+		InsertHeapSort(temp, data[i]);
+		Print(temp);
+	}
+	int t[ARRAY_LENGTH] = { 0, };
+	for (int i = 0; i < ARRAY_LENGTH; i++)
+		t[i] = RemoveHeapSort(temp);
 
+	printf("-- 변환 후\n");
+	Print(t);
+	printf("오류...\n");
+}
+
+void InsertHeapSort(int arr[], int data) {	// (k-1)/2
+	int index = 0;
+
+	for (index = 0; arr[index]; index++);
+	arr[index] = data;
+	while (TRUE) {
+		if (arr[index] < arr[(index - 1) / 2]) {
+			swap(&arr[index], &arr[(index - 1) / 2]);
+			index = (index - 1) / 2;
+		}
+		else break;
+	}
+}
+int RemoveHeapSort(int arr[]) { // (k+1)*2-1 , (k+1)*2
+	int index = 0, data = arr[0];
+
+	for (index = 0; index != (ARRAY_LENGTH - 1) && arr[index]; index++);
+	arr[0] = arr[index]; arr[index] = 0; index = 0;
+
+	while (TRUE) {
+		if ((arr[index] > arr[(index + 1) * 2 - 1] || arr[index] > arr[(index + 1) * 2]) && index < ARRAY_LENGTH - 1) {
+			if ((index + 1) * 2 < ARRAY_LENGTH) {
+				if (arr[(index + 1) * 2 - 1] < arr[(index + 1) * 2]) {
+					swap(&arr[index], &arr[(index + 1) * 2 - 1]);
+					index = (index + 1) * 2 - 1;
+				}
+				else {
+					swap(&arr[index], &arr[(index + 1) * 2]);
+					index = (index + 1) * 2;
+				}
+			}
+			else break;
+		}
+		else break;
+	}
+	Print(arr);
+
+	return data;
 }

@@ -1,7 +1,7 @@
 // 2019_09_30   첫 교시 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 console.log("[ new Object 인스턴스 생성을 통한 객체 생성 ]");
-var foo = new Object();
+var foo = new Object();     // 이처럼 new 연산자를 통해 객체를 생성할 수 있다.
 
 foo.name = "LeeJinHyeok";
 foo.age = 17;
@@ -84,9 +84,50 @@ var a = 100;
 var b = 100;
 
 var objA = {value : 100};
-var obbjB = {value : 100};
+var objB = {value : 100};
 var objC = objB;
 
-console.log(a==b);
-console.log(objA==objB);
-console.log(objB==objC);
+console.log(a==b);          // true         // 기본 자료끼리의 비교는 값만을 비교한다.
+console.log(objA==objB);    // false        // 참조 자료는 그 자체가 값이 아니기 때문에
+console.log(objB==objC);    // true         // 참조하고 있는 자료의 주소를 갖고 있기에 false가 뜬다.
+
+
+
+// var objA = {
+//     val = 40
+// };
+// var objB = objA;
+
+// console.log(objA.val);
+// console.log(objB.val);
+
+// objB.cal = 50;
+// console.log(objA.val);
+// console.log(objB.val);
+
+
+
+var a = 100;
+var objA = {value : 100};
+
+function changeArg(num, obj) {
+    num = 200;
+    obj.value = 200;
+
+    console.log(num);
+    console.log(obj.value);
+}
+
+changeArg(a, objA);
+console.log(a);             // call by value
+console.log(objA.value);    // call by reference
+
+
+
+var foo = {
+    name : 'YooSiOn',
+    age : 30
+}
+
+console.log(foo.toString());
+console.dir(foo);

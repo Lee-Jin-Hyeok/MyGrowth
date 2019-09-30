@@ -1,4 +1,15 @@
 /*
+	파일명 Sorts.cpp
+	제작자 이진혁
+	내용 {
+		선택, 버블, 향상된버블, 삽입, 기수, 병합, 퀵, 힙 정렬을 C언어로 구현한 코드이다.
+		모든 정렬은 한 순서가 지날 때 마다 Print 해준다.
+
+		자료구조 숙제로 만들게 된 정렬이지만 생각보다 많은 시간이 걸렸다.
+		그래도 이론만 찾아보고 직접 만들어 보는 것은 보람있었다.
+		허나, 코드가 안정적이지 못해서 나중에 시간이 남는다면 다시 한 번씩 만들어볼 계획이다.
+	}
+
 	1. 선택 정렬
 	2. 버블 정렬
 	3. 삽입 정렬
@@ -35,8 +46,8 @@ void RadixInit(List**);									// 기수정렬시 Queue가 들어갈 배열 초기화
 int PowerC(int, int);									// (자릿수, 1)의 매개변수 형식을 가지며 10^자릿수의 값을 반환한다.
 int* DivideMergeSort(int[], int);						// 병합정렬시 배열을 나눌 때 사용
 int* MergeMergeSort(int[], int[], int);					// 병합정렬시 배열을 합칠 때 사용
-int* LeftQuickSort(int[], int, int, int, int);
-int* RightQuickSort(int[], int, int, int, int);
+int* LeftQuickSort(int[], int, int, int, int);			// 퀵  정렬시 피벗을 기준으로 왼쪽 자료들을 정렬할 때 사용
+int* RightQuickSort(int[], int, int, int, int);			// 힙  정렬시 피벗을 기준으로 오른쪽 자료들을 정렬할 때 사용
 
 int main() {
 	int data[ARRAY_LENGTH];
@@ -348,9 +359,7 @@ void QuickSort(int data[]) {
 	QuickPrint(data, start, low, high, pivot, len);
 
 	LeftQuickSort(data, start, pivot - 1, pivot, pivot);
-	printf("left 끝\n");
 	RightQuickSort(data, pivot + 1, len - 1, len - (pivot + 1), pivot);
-	printf("right 끝\n");
 
 	printf("-- 변환 후\n");
 	Print(data);
@@ -358,10 +367,12 @@ void QuickSort(int data[]) {
 
 int* LeftQuickSort(int data[], int start, int end, int length, int pivot) {
 	int s = start, l = start + 1, h = length - (length - pivot) - 1, p = start, len = pivot;
-	printf("앙 %d %d %d %d %d\n", s, l, h, p, len);
-
 	if (len < 2) {
-		printf("leftquicksort\n");
+		if (data[p] > data[h] && p < h) {
+			swap(&data[h], &data[p]);
+			swap(&h, &p);
+			QuickPrint(data, s, l, h, p, len);
+		}
 		return data;
 	}
 
@@ -395,21 +406,23 @@ int* LeftQuickSort(int data[], int start, int end, int length, int pivot) {
 		swap(&h, &p);
 		QuickPrint(data, s, l, h, p, len);
 	}
-	data = LeftQuickSort(data, s, p - 1, len, p);
-	data = RightQuickSort(data, p + 1, end, len, p);
+	LeftQuickSort(data, s, p - 1, len, p);\
+		RightQuickSort(data, p + 1, end, len, p);
 
 	return data;
 }
 
 int* RightQuickSort(int data[], int start, int end, int length, int pivot) {
-	int s2 = pivot + 1, l2 = s2 + 1, h2 = end, p2 = s2, len2 = length - (pivot + 1);
-
+	int s2 = start, l2 = s2 + 1, h2 = end, p2 = s2, len2 = length - (pivot + 1);
 	if (len2 < 2) {
-		printf("rightquicksort\n");
+		if (data[p2] > data[h2] && p2 < h2) {
+			swap(&data[h2], &data[p2]);
+			swap(&h2, &p2);
+			QuickPrint(data, s2, l2, h2, p2, len2);
+		}
 		return data;
 	}
 
-	printf("기 %d %d %d %d %d\n", s2, l2, h2, p2, len2);
 	QuickPrint(data, s2, l2, h2, p2, len2);
 	while (l2 < h2) {
 		if (data[l2] > data[h2]) {
@@ -451,4 +464,6 @@ void HeapSort(int data[]) {
 	printf("\n----------------------\n");
 	printf("| 힙 정렬 - HeapSort |\n");
 	printf("----------------------\n\n");
+
+
 }

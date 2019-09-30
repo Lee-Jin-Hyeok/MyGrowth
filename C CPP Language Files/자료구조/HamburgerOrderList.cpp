@@ -4,11 +4,7 @@
 
 #define TRUE 1
 #define FALSE 0
-#define WaitingRoom1 50
-#define WaitingRoom2 100
-#define WaitingRoom3 240
-#define WaitingRoom4 1000
-#define WaitingRoom5 2500
+#define WaitingRoom 50
 
 #define FIRST_HAMBURGER 0
 #define SECOND_HAMBURGER 1
@@ -16,7 +12,7 @@
 
 #define FH_TIME 12
 #define SH_TIME 15
-#define TH_TIME 24
+#define TH_TIME 30
 
 typedef int Time;
 
@@ -37,38 +33,39 @@ typedef HamburgerOrderQueueList List;
 void ListInit(List*);
 void Enqueue(List*, Time);
 Time Dequeue(List*);
-void FindAll(List*);
+void ListFree(List*);
 int isEmpty(List*);
 int Count(List*);
 
-int FailCount
-
 int main() {
-	List* list = (List*)malloc(sizeof(List));
-
-	ListInit(list);
 	srand(time(NULL));
 
-	int FailCounts[5] = { 0, };
+	int FailCount = 0;
 	for (int i = 0; i < 100; i++) {
-		Time MakingHamburger = 0;
+		Time makingBurger = 0;
+		List* list = (List*)malloc(sizeof(List));
+		ListInit(list);
 		for (Time sec = 0; sec < 3600; sec++) {
 			if (sec % 15 == 0) {
 				switch (rand() % 3) {
-				case FIRST_HAMBURGER: Enqueue(list, FH_TIME); break;
-				case SECOND_HAMBURGER: Enqueue(list, SH_TIME); break;
-				case THREE_HAMBURGER: Enqueue(list, TH_TIME); break;
+				case FIRST_HAMBURGER:
+					Enqueue(list, FH_TIME); break;
+				case SECOND_HAMBURGER:
+					Enqueue(list, SH_TIME); break;
+				case THREE_HAMBURGER:
+					Enqueue(list, TH_TIME); break;
 				}
 			}
-			if (Count(list) > WaitingRoom1) {
-				FailCounts[i]++;
+			if (Count(list) > WaitingRoom) {
+				FailCount++;
 				break;
 			}
-			if (isEmpty(list) && MakingHamburger <= 0) {
-				MakingHamburger = Dequeue(list);
+			if (makingBurger <= 0 && !(isEmpty(list))) {
+				makingBurger = Dequeue(list);
 			}
-			MakingHamburger--;
+			makingBurger--;
 		}
+		ListFree(list);
 	}
 
 	printf("1시간동안 대기실이 터질 확률은 %d%%입니다.\n", FailCount);
@@ -113,6 +110,16 @@ Time Dequeue(List* list) {
 	free(t);
 	(list->numOfData)--;
 	return time;
+}
+
+void ListFree(List* list) {
+	list->temp = list->front;
+	while (list->temp != NULL) {
+		Node* t = list->temp;
+		list->temp = list->temp->next;
+		free(t);
+	}
+	free(list);
 }
 
 int isEmpty(List* list) {

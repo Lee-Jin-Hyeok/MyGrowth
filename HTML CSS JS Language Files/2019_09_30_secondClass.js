@@ -131,3 +131,69 @@ var foo = {
 
 console.log(foo.toString());
 console.dir(foo);
+
+console.log(NaN - NaN);
+
+
+// 2019_09_30   세 번째 교시 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+var colorArr = ['orange', 'yellow', 'blue', 'green', 'red'];        // javascript에서도 배열의 index는 0부터 시작한다.
+console.log(colorArr[0]);
+console.log(colorArr[1]);
+console.log(colorArr[4]);
+
+
+var emptyArr = [];              // 또한 배열은 동적으로 할당이 가능하다.
+console.log(emptyArr[0]);
+
+emptyArr[0] = 100;
+emptyArr[3] = 'eight';
+emptyArr[7] = true;
+console.log(emptyArr);
+console.log(emptyArr.length);
+
+emptyArr[10] = "1";
+console.log(emptyArr.length);
+
+emptyArr.length = 100;
+console.log(emptyArr.length);
+console.log(emptyArr);
+
+emptyArr.length = 1;
+console.log(emptyArr.length);
+console.log(emptyArr);
+
+
+
+var arr = ['zero', 'one', 'two'];
+
+arr.push("three");
+console.log(arr);
+
+arr.length = 5;
+arr.push("four");
+
+console.log(arr.length);
+console.log(arr);
+
+
+
+var arr1 = ['orange', 'yellow', 'green'];
+console.log(arr1[0]);
+console.log(arr1[1]);
+console.log(arr1[2]);
+
+var arr2 = {
+    '0' : 'orange',
+    '1' : 'yellow',
+    '2' : 'green'
+};
+console.log(arr2[0]);
+console.log(arr2[1]);
+console.log(arr2[2]);
+
+console.log(typeof arr1);
+console.log(typeof arr2);
+
+console.log(arr1.length);
+console.log(arr2.length);

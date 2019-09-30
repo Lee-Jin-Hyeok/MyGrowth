@@ -2,6 +2,7 @@ package Test;
 
 public class OnlyTestPages {
 	public static void main(String[] args) {
-		System.out.println("OnlyTestPages");
+		int[] arr = new int[10];
+		System.out.println(arr.length);
 	}
 }

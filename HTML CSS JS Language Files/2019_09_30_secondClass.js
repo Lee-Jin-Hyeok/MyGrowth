@@ -1,3 +1,5 @@
+// 2019_09_30   첫 교시 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 console.log("[ new Object 인스턴스 생성을 통한 객체 생성 ]");
 var foo = new Object();
 
@@ -73,3 +75,18 @@ console.log(foo.nickname);
 
 delete foo;
 console.log(foo.name);          // 객체 자체를 삭제를 할 순 없다.
+
+
+// 2019_09_30   두 번째 교시 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+var a = 100;
+var b = 100;
+
+var objA = {value : 100};
+var obbjB = {value : 100};
+var objC = objB;
+
+console.log(a==b);
+console.log(objA==objB);
+console.log(objB==objC);

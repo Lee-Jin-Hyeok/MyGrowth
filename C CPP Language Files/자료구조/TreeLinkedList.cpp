@@ -64,9 +64,9 @@ void InorderTraverse(Node * nd) {
 }
 
 void PreorderTraverse(Node * nd) {
-	printf("%d \n", nd->data);
 	if (nd == NULL)
 		return;
+	printf("%d \n", nd->data);
 	PreorderTraverse(nd->left);
 	PreorderTraverse(nd->right);
 }

@@ -5,9 +5,7 @@ LWJGL ( Light-weight Java Game Library )
 
 1. First steps
 
-Contents
-
-
+First step is to understand LWJGL and environment.
 
 words {
 
@@ -16,12 +14,12 @@ period 시기
 consider 사려하다
 alternatives 대체
 dependency 의존, 종속
+besides 게다가
+In order to ~ : ~ 하기 위해서
+be located in ~ 안에 있다.
 
 }
 
-____________________________________________
-If your idea is to start creating 3D games in a short period of time
-너의 아이디어가 새로운 3d게임을 시작한다. 짧은 시간 아마도 너의 
-maybe you should consider other alternatives like [JmonkeyEngine].
+The samples source code is very well documented and straightforward so we won’t repeat the comments here.
 
-____________________________________________
+If you have your environment correctly set up you should be able to execute it and see a window with a red background.

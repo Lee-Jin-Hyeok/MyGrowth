@@ -1,11 +1,11 @@
 /*
-	FruitSaleSim1.cpp
+	파일명 FruitSaleSim1.cpp
 */
 #include <iostream>
 using namespace std;
 
 class FruitSeller {
-private:
+private:				// 접근제어지시자를 정해놓지 않으면 자동으로 private이다.
 	int APPLE_PRICE;
 	int numOfApples;
 	int myMoney;
@@ -41,7 +41,7 @@ public:
 		numOfApples += seller.SaleApples(money);
 		myMoney -= money;
 	}
-	void ShowBuyResult() {
+	void ShowBuyResult() const {
 		cout << "현재 잔액: " << myMoney << endl;
 		cout << "사과 개수: " << numOfApples << endl << endl;
 	}

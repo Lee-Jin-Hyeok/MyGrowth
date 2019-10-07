@@ -9,6 +9,7 @@ typedef struct _node {
 	struct _node* right;
 } Node;
 
+void TreeFree(Node*);
 Node* MakeTreeNode(void);
 Data GetNode(Node*);
 Node* GetLeftSubTree(Node*);
@@ -16,8 +17,31 @@ Node* GetRightSubTree(Node*);
 void MakeLeftSubTree(Node*, Node*);
 void MakeRightSubTree(Node*, Node*);
 void InorderTraverse(Node*);
+void PreorderTraverse(Node*);
+void PostorderTraverse(Node*);
 
-int main() {
+int main() {	// 테스트 용
+	Node* tree = MakeTreeNode();
+	Node* treeLeft = MakeTreeNode();
+	Node* treeRight = MakeTreeNode();
+
+	tree->left = treeLeft;
+	tree->right = treeRight;
+	tree->data = 10;
+	treeLeft->data = 20;
+	treeRight->data = 30;
+
+	printf("InorderTraverse\n");
+	InorderTraverse(tree);
+	printf("PreorderTraverse\n");
+	PreorderTraverse(tree);
+	printf("PostorderTraverse\n");
+	PostorderTraverse(tree);
+
+	printf("--------\n");
+	printf("| FREE |\n");
+	printf("--------\n");
+	TreeFree(tree);
 
 	return 0;
 }
@@ -43,16 +67,25 @@ Node* GetRightSubTree(Node* nd) {
 
 void MakeLeftSubTree(Node* nd, Node* sub) {
 	if (nd->left != NULL)
-		free(nd->left);
+		TreeFree(nd->left);
 
 	nd->left = sub;
 }
 
 void MakeRightSubTree(Node * nd, Node * sub) {
 	if (nd->right != NULL)
-		free(nd->right);
+		TreeFree(nd->right);
 
 	nd->right = sub;
+}
+
+void TreeFree(Node * nd) {
+	if (nd == NULL)
+		return;
+	TreeFree(nd->left);
+	TreeFree(nd->right);
+	free(nd);
+	printf("Free 완료\n");
 }
 
 void InorderTraverse(Node * nd) {

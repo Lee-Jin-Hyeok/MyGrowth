@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef int Data;
+#define TRUE 1
+#define FALSE 0
+
+typedef char Data;
 
 typedef struct _node {
 	Data data;
@@ -12,6 +15,7 @@ typedef struct _node {
 void TreeFree(Node*);
 Node* MakeTreeNode(void);
 Data GetNode(Node*);
+void SetNode(Node*, Data);
 Node* GetLeftSubTree(Node*);
 Node* GetRightSubTree(Node*);
 void MakeLeftSubTree(Node*, Node*);
@@ -20,28 +24,51 @@ void InorderTraverse(Node*);
 void PreorderTraverse(Node*);
 void PostorderTraverse(Node*);
 
-int main() {	// 테스트 용
-	Node* tree = MakeTreeNode();
-	Node* treeLeft = MakeTreeNode();
-	Node* treeRight = MakeTreeNode();
+int main() {
+	Node* node1 = MakeTreeNode();
+	Node* node2 = MakeTreeNode();
+	Node* node3 = MakeTreeNode();
+	Node* node4 = MakeTreeNode();
+	Node* node5 = MakeTreeNode();
+	Node* node6 = MakeTreeNode();
+	Node* node7 = MakeTreeNode();
+	Node* node8 = MakeTreeNode();
+	Node* node9 = MakeTreeNode();
+	Node* node10 = MakeTreeNode();
+	Node* node11 = MakeTreeNode();
 
-	tree->left = treeLeft;
-	tree->right = treeRight;
-	tree->data = 10;
-	treeLeft->data = 20;
-	treeRight->data = 30;
+	SetNode(node1, '+');
+	SetNode(node2, '/');
+	SetNode(node3, '*');
+	SetNode(node4, '*');
+	SetNode(node5, '2');
+	SetNode(node6, '4');
+	SetNode(node7, '8');
+	SetNode(node8, '7');
+	SetNode(node9, '+');
+	SetNode(node10, '3');
+	SetNode(node11, '5');
 
-	printf("InorderTraverse\n");
-	InorderTraverse(tree);
-	printf("PreorderTraverse\n");
-	PreorderTraverse(tree);
-	printf("PostorderTraverse\n");
-	PostorderTraverse(tree);
+	MakeLeftSubTree(node1, node2);
+	MakeRightSubTree(node1, node3);
+	MakeLeftSubTree(node2, node4);
+	MakeRightSubTree(node2, node5);
+	MakeLeftSubTree(node3, node6);
+	MakeRightSubTree(node3, node7);
+	MakeLeftSubTree(node4, node8);
+	MakeRightSubTree(node4, node9);
+	MakeLeftSubTree(node9, node10);
+	MakeRightSubTree(node9, node11);
 
-	printf("--------\n");
-	printf("| FREE |\n");
-	printf("--------\n");
-	TreeFree(tree);
+	printf("중위 순회\n");
+	InorderTraverse(node1);
+	printf("\n");
+	printf("전위 순회\n");
+	PreorderTraverse(node1);
+	printf("\n");
+	printf("후위 순회\n");
+	PostorderTraverse(node1);
+	printf("\n");
 
 	return 0;
 }
@@ -55,6 +82,10 @@ Node* MakeTreeNode() {
 
 Data GetNode(Node* nd) {
 	return nd->data;
+}
+
+void SetNode(Node* nd, Data data) {
+	nd->data = data;
 }
 
 Node* GetLeftSubTree(Node* nd) {
@@ -92,14 +123,14 @@ void InorderTraverse(Node * nd) {
 	if (nd == NULL)
 		return;
 	InorderTraverse(nd->left);
-	printf("%d \n", nd->data);
+	printf("%c ", nd->data);
 	InorderTraverse(nd->right);
 }
 
 void PreorderTraverse(Node * nd) {
 	if (nd == NULL)
 		return;
-	printf("%d \n", nd->data);
+	printf("%c ", nd->data);
 	PreorderTraverse(nd->left);
 	PreorderTraverse(nd->right);
 }
@@ -109,5 +140,5 @@ void PostorderTraverse(Node * nd) {
 		return;
 	PostorderTraverse(nd->left);
 	PostorderTraverse(nd->right);
-	printf("%d \n", nd->data);
+	printf("%c ", nd->data);
 }

@@ -1,11 +1,19 @@
 # 3D Game Development with LWJGL 3
-###### https://lwjglgamedev.gitbooks.io/3d-game-development-with-lwjgl/content/chapter01/chapter1.html
+###### [ https://lwjglgamedev.gitbooks.io/3d-game-development-with-lwjgl ]
 LWJGL ( Light-weight Java Game Library )
 @author Lee Jin Hyeok
 
-1. First steps
+### 1. First steps
 
 First step is to understand LWJGL and environment.
+Also, floated a sample window.
+
+### 2. The Game Loop
+
+
+
+
+
 
 words {
 

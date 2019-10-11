@@ -55,3 +55,8 @@ This is a report on my growth process.
 - C++ 수업시간에 배운 멤버 이니셜라이저를 이용해서
   Ring 클래스를 다시 정의하는 숙제를 모두 끝마쳤다.
 - 이번에는 수업시간 중 조금 남은 시간을 이용해서 숙제를 모두 끝냈다.
+##### 2019.10.11 19:06:XX
+- Youtube를 통해서 Spring framework를 배우고 있다.
+- 이번에는 BMI(비만도) 측정기를 만들면서 XML의 기본기를 알아가고 있다.
+- property 태그와 각각의 자료형에 따른 태그들을 배웠다.
+- [ value ] [ list ] [ ref ]

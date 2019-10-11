@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="myState" class="XmlTagsTest.MyState">
+		<property name="name">
+			<value>홍길동</value>
+		</property>
+		<property name="height">
+			<value>174</value>
+		</property>
+		<property name="weight">
+			<value>67</value>
+		</property>
+		<property name="hobbys">
+			<list>
+				<value>수영</value>
+				<value>요리</value>
+				<value>독서</value>
+			</list>
+		</property>
+		<property name="myCalculator">
+			<ref bean="myCalculator"/>
+		</property>
+	</bean>
+</beans>

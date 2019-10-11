@@ -2,15 +2,12 @@ package XmlTagsTest;
 
 import java.util.ArrayList;
 
-import com.javalec.ex.MyCalculator;
-
-public class MyState {
+public class MyInfo {
 	private String name;
 	private double height;
 	private double weight;
-	private String gender;
 	private ArrayList<String> hobbys;
-	private MyCalculator myCalculator;
+	private BMICalculator bmiCalculator;
 	
 	public void setName(String name) {
 		this.name = name;
@@ -21,13 +18,18 @@ public class MyState {
 	public void setWeight(double weight) {
 		this.weight = weight;
 	}
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
 	public void setHobbys(ArrayList<String> hobbys) {
 		this.hobbys = hobbys;
 	}
-	public void setMyCalculator(MyCalculator myCalculator) {
-		this.myCalculator = myCalculator;
+	public void setBmiCalculator(BMICalculator bmiCalculator) {
+		this.bmiCalculator = bmiCalculator;
+	}
+	
+	public void getInfo() {
+		System.out.println("이름 : " + name);
+		System.out.println("키 : " + height);
+		System.out.println("몸무게 : " + weight);
+		System.out.println("취미 : " + hobbys);
+		bmiCalculator.bmicalculation(weight, height);
 	}
 }

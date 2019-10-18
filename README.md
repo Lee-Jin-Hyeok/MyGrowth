@@ -60,3 +60,5 @@ This is a report on my growth process.
 - 이번에는 BMI(비만도) 측정기를 만들면서 XML의 기본기를 알아가고 있다.
 - property 태그와 각각의 자료형에 따른 태그들을 배웠다.
 - [ value ] [ list ] [ ref ]
+##### 2019.10.18 20:51:00
+- 시험이 끝났다~~

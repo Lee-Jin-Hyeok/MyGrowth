@@ -14,6 +14,9 @@ func2();
 // 예상대로 잘 된다는 것을 알게 되었다.
 
 
+
+
+
 // 2019 10 21 첫 교시~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 function myFunction() {
@@ -50,20 +53,60 @@ console.log('theTree.constructor is ' + theTree.constructor);
 
 
 
+
+
 // 2019 10 21 두 번째 교시
 
-
-
-function parrent() {
+function parent() {
     var a = 100;
     var b = 200;
 
     function child() {      // 내부 함수 - 함수 안에 함수가 존재할 수 있다.
         var b = 300;
         console.log(a);     // 부모함수의 변수에 접근이 가능하다.
-        //console.log(b);     // 부모함수의 변수에 접근해야할지 자기 자신의 변수에 접근해야할지 모호함이 생긴다.
+        console.log(b);     // 내부함수에서 외부함수로의 접근은 자동으로 가까운 상대를 찾는다.
     }
     child();
 }
 parent();
-child();
+//child();                  // 외부에서 내부로의 접근은 불가능하다. 64행을 지워도 불가능한 것으로보아, 그냥 안 되는 것 같다.
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+function parent2() {
+    var a = 100;
+    var child = function() {
+        console.log(a);
+    }
+    return child;
+}
+
+var inner = parent2();          // inner 라는 함수가 child 라는 함수를 가리키게 한다.
+inner();                        // 위의 코드에서 외부에서 내부로의 접근이 불가능하기 때문에 이러한 형식으로 내부를 참조할 수 있는 함수를 클로저라고 한다.
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+var self = function() {
+    console.log('a');
+    return function() {
+        console.log('b');
+    }
+}
+
+self = self();                  // 자기 자신을 재정의할 수 있다. - 함수가 값으로 쓰인다.
+self();                         // self 함수의 return 값으로 전달 된 console.log('b'); 를 하는 함수를 받아서 self가 받고 self 가 다시 호출하면 b를 출력하게 된다.
+/*
+    출력값
+    a
+    b
+*/
+
+
+
+
+
+// 2019 10 21 세 번째 교시

@@ -47,3 +47,23 @@ function Tree(name) {
 
 var theTree = new Tree('Redwood');
 console.log('theTree.constructor is ' + theTree.constructor);
+
+
+
+// 2019 10 21 두 번째 교시
+
+
+
+function parrent() {
+    var a = 100;
+    var b = 200;
+
+    function child() {      // 내부 함수 - 함수 안에 함수가 존재할 수 있다.
+        var b = 300;
+        console.log(a);     // 부모함수의 변수에 접근이 가능하다.
+        //console.log(b);     // 부모함수의 변수에 접근해야할지 자기 자신의 변수에 접근해야할지 모호함이 생긴다.
+    }
+    child();
+}
+parent();
+child();

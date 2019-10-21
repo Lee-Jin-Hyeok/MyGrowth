@@ -1,0 +1,38 @@
+* {
+    margin : 0px;
+    padding : 0px;
+}
+
+body {
+    height : 97.8vh;
+    border : solid 10px black;
+}
+
+.indexLeft {
+    width : 50%;
+    float : left;
+}
+
+.indexLeftTop {
+    height : 20%;
+}
+
+.indexLeftTopTop {
+    height : 50%;
+    background-color : red;
+}
+
+.indexLeftTopBot {
+    height : 50%;
+    background-color : blue;
+}
+
+.indexLeftBot {
+    height : 80%;
+    background-color : yellow;
+}
+
+.indexRight {
+    width : 50%;
+    float : right;
+}

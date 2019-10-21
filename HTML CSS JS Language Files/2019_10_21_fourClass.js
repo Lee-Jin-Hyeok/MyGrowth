@@ -105,8 +105,78 @@ self();                         // self 함수의 return 값으로 전달 된 co
     b
 */
 
+function ex(n1,n2) {
+    this.n1=n1;
+    this.n2=n2;
+}
+ex.prototype.sum = function() {
+    return this.n1+this.n2;
+}
+var a = new ex(1,1);
+// a.sum = function() {
+//     return this.n1-this.n2;
+// }
+var b = new ex(2,2);
+var c = new ex(3,3);
+
 
 
 
 
 // 2019 10 21 세 번째 교시
+
+function func(arg1, arg2) {
+    console.log(arg1, arg2);
+}
+
+// 없는 인자는 undefined로 대체한다.
+func();             // undefined undefined
+func(1);            // 1 undefined
+func(1, 2);         // 1 2
+func(1, 2, 3);      // 1 2          // 최대 갯수를 넘어간 매개변수는 무시한다.
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+function add(a, b) {
+    console.dir(arguments);
+    return a + b;
+}
+
+console.log(add(1));
+console.log(add(1, 2));
+console.log(add(1, 2, 3));
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+function sum() {
+    var result = 0;
+    for(var i = 0 ; i < arguments.length ; i++) {
+        result += arguments[i];
+    }
+    return result;
+}
+
+console.log(sum(1,2,3));
+console.log(sum(1,2,3,4,5,6,7,8,9,10));
+
+
+
+var myobject = {
+    name : 'foo',
+    sayName : function() {
+        console.log(this.name);
+    }
+};
+
+var otherObject = {
+    name : 'bar'
+};
+
+otherObject.sayName = myObject.sayName;
+
+myObject.sayName();
+otherObject.sayName();

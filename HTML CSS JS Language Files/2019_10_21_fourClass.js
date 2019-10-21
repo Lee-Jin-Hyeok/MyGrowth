@@ -16,3 +16,34 @@ func2();
 
 // 2019 10 21 첫 교시~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+function myFunction() {
+    return true;
+}
+
+console.dir(myFunction.prototype);
+console.dir(myFunction.prototype.constructor);
+// prototype property는 함수가 생성될 때 만들어지며
+// 단지 constructor 프로퍼티 하나만 있는 객체를 가리킨다.
+// constructor 프로퍼티는 자신과 연결된 함수를 가리킨다.
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+window.onload = function() {
+    this.alert("This is the callback function");
+};
+// 이벤트 핸들러 - 어떤 현상이 일어났을 때 출력되는 함수
+// window - 전역 객체
+// onload - 창이 업로드 되었을 때, 외부에서 다운로드된 모든 이미지 등등...
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+function Tree(name) {
+    this.name = name;
+}
+
+var theTree = new Tree('Redwood');
+console.log('theTree.constructor is ' + theTree.constructor);

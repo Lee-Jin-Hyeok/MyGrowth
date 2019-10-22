@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="pencil" class="UseDI.Pencil6BWithEraser"/>
+	<!-- 
+		bean의 class의 값을 바꿈으로 인해서 main에서 원하는 바를 바꿀 수 있다.
+	 -->
+
+</beans>

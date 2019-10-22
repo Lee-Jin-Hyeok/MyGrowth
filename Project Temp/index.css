@@ -18,21 +18,53 @@ body {
 }
 
 .indexLeftTopTop {
-    height : 50%;
-    background-color : red;
+    height : 20%;
+    padding : 15px 0px 0px 30px;
 }
 
 .indexLeftTopBot {
-    height : 50%;
-    background-color : blue;
+    height : 80%;
+    padding : 0px 0px 0px 30px;
 }
 
 .indexLeftBot {
     height : 80%;
-    background-color : yellow;
 }
+
+
 
 .indexRight {
     width : 50%;
     float : right;
+}
+
+.Write {
+    font-family : Arial Rounded MT Bold, Helvetica Rounded, Arial, sans-serif;
+    font-size : 2em;
+    color : #000000;
+    font-weight : bold;
+}
+
+h1.Write {
+    font-size : 7em;
+}
+
+.namelist {
+    padding : 10px 0px 10px 30px;
+}
+
+#username1 {
+    font-size : 5em;
+    color : #f2cf66;
+    text-shadow : -1px 0 #29000000, 0 1px #29000000, 1px 0 #29000000, 0 -1px #29000000;
+}
+
+#username2 {
+    font-size : 4em;
+    color : #a6a6a6;
+}
+
+#username3 {
+    font-size : 3em;
+    color : #bf834e;
 }

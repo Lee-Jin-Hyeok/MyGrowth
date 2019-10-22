@@ -7,8 +7,8 @@ void TreeFree(Node* nd) {
 		return;
 	TreeFree(nd->left);
 	TreeFree(nd->right);
+	printf("%c free 완료\n", nd->data);
 	free(nd);
-	printf("Free 완료\n");
 }
 
 Node* MakeTreeNode() {

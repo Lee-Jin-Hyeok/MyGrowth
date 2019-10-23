@@ -1,0 +1,198 @@
+* {
+    margin : 0px;
+    padding : 0px;
+}
+
+body {
+    padding : 50px;
+    text-align : center;
+}
+
+.MainBorder {
+    width: 1280px;
+    height: 800px;
+    background-color: #000000;
+    display : inline-block;
+}
+
+.Main {
+    width: 1261px;
+    height: 778px;
+    border-radius: 5px;
+    margin-top : 10px;
+    border: solid 1px #707070;
+    background-color: #ffffff;
+    display : inline-block;
+}
+
+.MainLeft {
+    width : 50%;
+    float : left;
+}
+
+.MainRight {
+    width : 50%;
+    float : right;
+    position : relative;
+}
+
+.MainColumn {
+    width : 201px;
+    height : 778px;
+    background-image: linear-gradient(to bottom, #4e9ba2, #58f6a2);
+    float : right;
+    margin-right : 73px;
+}
+
+.SmartPhone {
+    width: 261px;
+    height: 544px;
+    border-radius: 7px;
+    background-color: #000000;
+    position : absolute;
+    top : 117px;
+    left : 225px;
+}
+
+.SmartPhoneBackGround {
+    width: 251px;   
+    height: 528px;
+    border-radius: 5px;
+    border: solid 1px #707070;
+    background-color: #ffffff;
+    display : inline-block;
+    margin : 4px;
+}
+
+.PhoneTop {
+    height : 42px;
+    background-color : #ffffff;
+}
+
+.OutterCircle {
+    width: 17px;
+    height: 17px;
+    border: solid 1px #000000;
+    background-color: #000000;
+    border-radius : 360px;
+    display : inline-block;
+    margin-top : 3px;
+}
+
+.InnerCircle {
+    width: 11px;
+    height: 11px;
+    border: solid 1px #3b3e3f;
+    background-color: #3b3e3f;
+    border-radius : 360px;
+    display : inline-block;
+    margin-bottom : 2px;
+}
+
+.PhoneBot {
+    height : 486px;
+    background-color : #ffffff;
+}
+
+.HangManImage {
+    display : inline-block;
+}
+
+.Write {
+    font-family: Arial;
+}
+
+#MainTitle {
+    width: 191px;
+    height: 44px;
+    margin : 25px 0 10px 34px;
+    font-size: 40px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.13;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+}
+
+#MainSubTitle {
+    width: 500px;
+    height: 120px;
+    font-size: 90px;
+    margin : 43px 0px 10px 34px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+}
+
+#username1 {
+    margin : 3px 0px 18px 34px;
+    text-shadow: 0 10px 15px rgba(0, 0, 0, 0.16);
+    font-size: 70px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: left;
+    color: #f2cf66;
+}
+
+#username2 {
+    text-shadow: 0 10px 15px rgba(0, 0, 0, 0.16);
+    margin : 3px 0px 18px 34px;
+    font-size: 60px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.15;
+    letter-spacing: normal;
+    text-align: left;
+    color: #a6a6a6;
+}
+
+#username3 {
+    text-shadow: 0 10px 15px rgba(0, 0, 0, 0.16);
+    margin : 3px 0px 18px 34px;
+    font-size: 55px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.15;
+    letter-spacing: normal;
+    text-align: left;
+    color: #bf834e;
+}
+
+#username4 {
+    text-shadow: 0 10px 15px rgba(0, 0, 0, 0.16);
+    margin : 3px 0px 18px 34px;
+    font-size: 50px;
+    font-weight: bold;  
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.16;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+    -webkit-text-stroke: 1px #000000;
+}
+
+#username5 {
+    text-shadow: 0 10px 15px rgba(0, 0, 0, 0.16);
+    margin : 3px 0px 18px 34px;
+    font-size: 45px;
+    font-weight: bold;  
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.16;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+    -webkit-text-stroke: 1px #000000;
+}

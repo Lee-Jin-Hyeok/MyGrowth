@@ -6,6 +6,7 @@
 body {
     height : 97.8vh;
     border : solid 10px black;
+    border-radius : 5px;
 }
 
 .indexLeft {
@@ -31,10 +32,36 @@ body {
     height : 80%;
 }
 
-
-
 .indexRight {
     width : 50%;
+    float : right;
+}
+
+.indexRightLeft {
+    width : 20%;
+    float : left;
+}
+
+.indexRightRight {
+    width : 80%;
+    float : right;
+}
+
+.indexRightRightLeft {
+    width : 70%;
+    float : left;
+    height : 97.8vh;
+}
+
+.indexRightRightLeftR {
+    width : 70%;
+    height : 100%;
+    float : right;
+    background-image : linear-gradient(to bottom, #4e9ba2, #58f6a2);
+}
+
+.indexRightRightRight {
+    width : 30%;
     float : right;
 }
 
@@ -49,14 +76,16 @@ h1.Write {
     font-size : 7em;
 }
 
+
+/* indexLeftBot 안의 순위권 이름 */
 .namelist {
     padding : 10px 0px 10px 30px;
+    text-shadow : 0px 10px 15px #d3d3d3;
 }
 
 #username1 {
     font-size : 5em;
     color : #f2cf66;
-    text-shadow : -1px 0 #29000000, 0 1px #29000000, 1px 0 #29000000, 0 -1px #29000000;
 }
 
 #username2 {
@@ -67,4 +96,13 @@ h1.Write {
 #username3 {
     font-size : 3em;
     color : #bf834e;
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+
+.HangManImage {
+    position : absolute;
+    top : 150px;
+    width : 250px;
+    height : 450px;
 }

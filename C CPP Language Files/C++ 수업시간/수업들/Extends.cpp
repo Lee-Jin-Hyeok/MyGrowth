@@ -28,6 +28,8 @@ int main() {
 
 	ReinforcedCalculator cc2(1, 2);
 	cc2.add();
+	cc2.add();
+	cc1.div();
 
 	return 0;
 }

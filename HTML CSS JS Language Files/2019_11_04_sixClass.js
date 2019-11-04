@@ -162,4 +162,59 @@
 // // array.slice(a, b) 처럼 함수를 사용하면 array를 index a에서부터 b-1까지를 모두 복사하여 리턴한다.
 
 
+// -- 복습
+// var noReturnFunc = function() {
+//     console.log("This function has no return statement");
+// };
 
+// var result = noReturnFunc();    // 일반 함수에서 return문이 없을 경우에는 undefined가 리턴된다.
+// console.log(result);            // 따라서 result에는 undefined가 존재한다.
+
+
+
+// function Person(name, age, gender) {    // 생성자 함수 선언
+//     this.name = name;
+//     this.age = age;
+//     this.gender = gender;
+// }
+
+// var foo = new Person("foo", 30, "man"); // 생성자 함수는 return 문을 따로 명시해주지 않아도
+// console.dir(foo);                       // 빈 객체를 만들어서 속성값을 넣어서 객체를 리턴한다.
+
+
+
+// function Person(name, age, gender) {
+//     this.name = name;
+//     this.age = age;
+//     this.gender = gender;
+
+//     return {
+//         name : "bar",
+//         age : 20,
+//         gender : "woman"
+//     };
+// }
+
+// var foo = new Person("foo", 30, "man");
+// console.dir(foo);
+// // Person 이라는 생성자 함수에 return 값을 명시해놓으면
+// // 그 리턴 값을 이용하여 foo에 넣으면 Person 이라는 객체를 리턴하는 것이 아니라
+// // 정말 새로운 Object를 생성하여 넣는 것이다.
+// // 또한 주어진 매개변수를 무시하고 return 값에 넣어놓은 프로퍼티가 우선시 된다.
+
+
+
+// function Person(name, age, gender) {
+//     this.name = name;
+//     this.age = age;
+//     this.gender = gender;
+
+//     return 100;
+// }
+
+// var foo = new Person("foo", 20, "man");
+// console.dir(foo);
+// // 위와 같이 return 문에 넣어주었지만
+// // 위의 코드는 return 문에 객체를 넣어주었고
+// // 본 코드는 return 문에 100과 같은 기본 자료형의 값을 넣어주었기에
+// // foo, 20, man 이 들어가게 된다.

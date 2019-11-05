@@ -18,21 +18,21 @@ void PrintHeap(Heap* heap, char* szTitle) {
 }
 
 /* 힙을 트리모양으로 출력하는 함수*/
-void PrintHeapTree(Heap* heap, char* szTitle) {
+void PrintHeapTree(Heap * heap, char* szTitle) {
 	printf("================================\n%s\n================================\n ", szTitle);
 	int i = 1, sizeHeap = (heap->numOfData);
-	
+
 	while (i <= sizeHeap) {
 		if (i * 2 > sizeHeap)
 			break;
 		i = i * 2;
 	}
-	printf("%d\n", i);
 
 	int front = i - 1;
-	int between = i * 2;
+	int between = i * 2 + 1;
 	int count = 1;
 	int index = 1;
+	printf("%d\n", i);
 
 	while (count <= sizeHeap) {
 		int ftemp = front;
@@ -55,7 +55,7 @@ void PrintHeapTree(Heap* heap, char* szTitle) {
 		count *= 2;
 		front /= 2;
 		between /= 2;
-		printf("\n");
+		printf("\n\n\n");
 	}
 	printf("\n");
 }

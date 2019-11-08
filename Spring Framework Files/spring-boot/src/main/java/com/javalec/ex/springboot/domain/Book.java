@@ -12,7 +12,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 public class Book extends AbstractPersistable<Long> {
-
 	private String name;
 	private String isbn13;
 	private String isbn10;

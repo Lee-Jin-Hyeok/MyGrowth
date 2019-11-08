@@ -5,7 +5,26 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2019-11-07T09:24:33Z</updated>
+  <updated>2019-11-07T20:54:18Z</updated>
+  <entry>
+    <title>A Bootiful Podcast: Michael Simons on Spring Boot, reactive Spring Data Neo4j, and more</title>
+    <link rel="alternate" href="https://spring.io/blog/2019/11/07/a-bootiful-podcast-michael-simons-on-spring-boot-reactive-spring-data-neo4j-and-more" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2019-11-07:3867</id>
+    <updated>2019-11-07T20:54:18Z</updated>
+    <content type="html">&lt;p&gt;Hi, Spring fans! In this installment &lt;a href="http://twitter.com/starbuxman"&gt;Josh Long (@starbuxman)&lt;/a&gt; talks to &lt;a href="https://twitter.com/springbootbuch"&gt;&lt;em&gt;Spring Boot Buch&lt;/em&gt;&lt;/a&gt; author, Spring community legend and an engineer working on the new, reactive Spring Data Neo4j project &lt;a href="http://twitter.com/rotnroll666"&gt;Michael Simons (@rotnroll666)&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href="https://github.com/neo4j/sdn-rx"&gt;Reactive Spring Data Neo4j &lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://neo4j.com/online-summit/"&gt;Neo4j NODES 2019&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/@rotnroll666"&gt;Michael&amp;rsquo;s Twitter&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://info.michael-simons.eu"&gt;Michael&amp;rsquo;s blog&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/709390942&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true"&gt;&lt;/iframe&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
   <entry>
     <title>Spring Vault 2.2 goes GA</title>
     <link rel="alternate" href="https://spring.io/blog/2019/11/07/spring-vault-2-2-goes-ga" />
@@ -1159,29 +1178,6 @@ In fact, by using this foundation, &lt;a href="https://github.com/spring-cloud/s
 &lt;p&gt;Detailed changes can be found here: &lt;a href="https://github.com/spring-projects/sts4/wiki/Changelog#2019-10-24-441-release"&gt;https://github.com/spring-projects/sts4/wiki/Changelog#2019-10-24-441-release&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Spring Tools 4.4.2 is scheduled to be released in late November 2019.&lt;/p&gt;
 &lt;p&gt;Enjoy!&lt;/p&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Vault 2.2.0.RC1 and 2.1.4.RELEASE available</title>
-    <link rel="alternate" href="https://spring.io/blog/2019/10/24/spring-vault-2-2-0-rc1-and-2-1-4-release-available" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Mark Paluch</name>
-    </author>
-    <id>tag:spring.io,2019-10-24:3846</id>
-    <updated>2019-10-24T12:16:16Z</updated>
-    <content type="html">&lt;div class="paragraph"&gt;
-&lt;p&gt;On behalf of the community, I&amp;#8217;d like to announce the availability of Spring Vault releases &lt;code&gt;2.2.0.RC1&lt;/code&gt; and &lt;code&gt;2.1.4.RELEASE&lt;/code&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Both releases ship with mostly bugfixes and dependency upgrades.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;For a complete list of changes see the &lt;a href="http://docs.spring.io/spring-vault/docs/2.2.0.RC1/changelog.txt"&gt;2.2.0.RC1 changelog&lt;/a&gt; respective &lt;a href="http://docs.spring.io/spring-vault/docs/2.1.4.RELEASE/changelog.txt"&gt;2.1.4.RELEASE changelog&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;a href="http://projects.spring.io/spring-vault/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-vault"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-vault/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-vault/docs/2.2.0.RC1/reference/html/"&gt;Documentation for 2.2.0.RC1&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-vault/docs/2.1.4.RELEASE/reference/html/"&gt;Documentation for 2.1.4.RELEASE&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-vault"&gt;Stack Overflow&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
 </feed>

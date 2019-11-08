@@ -1,26 +1,53 @@
-plugins {
-	id 'org.springframework.boot' version '2.2.1.RELEASE'
-	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
-	id 'java'
-}
-
-group = 'spring.tests.ex'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
-
-repositories {
-	mavenCentral()
-}
-
-dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	runtimeOnly 'com.h2database:h2'
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+buildscript {
+	repositories {
+		jcenter()
+	}
+	dependencies {
+		classpath 'org.akhikhl.gretty:gretty:+'
 	}
 }
 
-test {
-	useJUnitPlatform()
+apply plugin : 'java'
+apply plugin : 'eclipse'
+apply plugin : 'idea'
+apply plugin : 'war'
+apply plugin : 'org.akhikhl.gretty'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	jcenter()
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+dependencies {
+	compile 'org.slf4j:slf4j-api:1.7.7'
+	testCompile 'junit:junit:4.12'
+	providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+}
+
+gretty {
+	httpPort = 8082
+	contextPath = '/'
+	servletContainer = 'jetty9'
+}
+
+def webappDir = "$rootDir/src/main/webapp"
+
+eclipse {
+	classpath {
+		downloadSources = true
+		defaultOutputDir = file("${buildDir}/classes/main")
+	}
+}
+
+idea {
+	module {
+		downloadSources = true
+		downloadJavadoc = false
+		inheritOutputDirs = false
+		outputDir = file("${buildDir}/classes/main")
+	}
 }

@@ -4,7 +4,8 @@
 #include "BinaryTree.h"
 
 BTreeNode* BSTSearch(BTreeNode* bt, BTData data);
-void BSTInsert(BTreeNode* bt, BTreeNode* sub);
+BTreeNode* BSTInsert(BTreeNode* bt, BTData data);
+BTreeNode* BSTRemove(BTreeNode* bt, BTData data);
 void ShowIntData(int data);
 
 #endif

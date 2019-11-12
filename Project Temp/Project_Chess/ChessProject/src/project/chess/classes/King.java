@@ -1,8 +1,8 @@
 package project.chess.classes;
 
-import project.chess.inter.ChessPiece;
+import project.chess.abstractclass.ChessPiece;
 
-public class Bishop implements ChessPiece {
+public class King implements ChessPiece {
 	private int team;
 	private int position;
 	

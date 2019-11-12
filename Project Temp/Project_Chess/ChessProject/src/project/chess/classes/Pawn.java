@@ -1,6 +1,6 @@
 package project.chess.classes;
 
-import project.chess.inter.ChessPiece;
+import project.chess.abstractclass.ChessPiece;
 
 public class Pawn implements ChessPiece {
 	private int team;

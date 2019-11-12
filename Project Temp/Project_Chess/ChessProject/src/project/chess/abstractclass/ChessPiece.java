@@ -1,4 +1,4 @@
-package project.chess.inter;
+package project.chess.abstractclass;
 
 public interface ChessPiece {
 	public void view();

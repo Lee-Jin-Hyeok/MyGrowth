@@ -4,7 +4,14 @@ import project.chess.abstractclass.ChessPiece;
 
 public class Bishop implements ChessPiece {
 	private int team;
-	private int position;
+	private int xpos;
+	private int ypos;
+	
+	public Bishop(int team, int xpos, int ypos) {
+		this.team = team;
+		this.xpos = xpos;
+		this.ypos = ypos;
+	}
 	
 	@Override
 	public void view() {

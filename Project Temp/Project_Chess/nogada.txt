@@ -1,3 +1,7 @@
+//	position 이 01부터 64까지 있을 때 위치를 구하는 방법
+//	((n-1) / 8) 이 행
+//	(n-1)/ 8의 나머지가 열
+
 static class setGUI extends JFrame {
 		setGUI() {
 			setTitle("Chess");

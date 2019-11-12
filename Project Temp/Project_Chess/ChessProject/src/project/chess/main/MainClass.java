@@ -1,10 +1,9 @@
 package project.chess.main;
 
-import project.chess.classes.Table;
+import project.chess.classes.Chess;
 
 public class MainClass {
 	public static void main(String[] args) {
-		Table table = new Table();
-		table.ShowTable();
+		new Chess();
 	}
 }

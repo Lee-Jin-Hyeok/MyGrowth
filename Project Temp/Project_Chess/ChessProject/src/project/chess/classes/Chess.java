@@ -3,6 +3,7 @@ package project.chess.classes;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,11 +11,12 @@ import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import project.chess.abstractclass.ChessPiece;
 
-public class Chess {
+public class Chess extends Frame implements ActionListener {
 	private JFrame frame;
 	private JPanel mainPanel;
 	private JPanel firstPanel;
@@ -22,11 +24,22 @@ public class Chess {
 	private char[][] chessPieceChar;
 	private ChessPiece[][] chess;
 	
-	
 	public Chess() {
 		FirstSetting();
 		
+		ActionListener listener = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				e.setSource("1");
+				System.out.println(e.getSource());
+			}
+		};
 		
+		for(int i = 0 ; i < 8 ; i++) {
+			for(int j = 0 ; j < 8 ; j++) {
+				chessPiece[i][j].addActionListener(listener);
+			}
+		}
 		
 		LastSetting();
 	}
@@ -110,6 +123,12 @@ public class Chess {
 		chess[7][5] = new Bishop(1, 7, 5);
 		chess[7][6] = new Knight(1, 7, 6);
 		chess[7][7] = new Rook(1, 7, 7);
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 	

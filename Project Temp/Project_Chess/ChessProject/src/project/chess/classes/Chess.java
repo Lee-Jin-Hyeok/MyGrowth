@@ -1,6 +1,7 @@
 package project.chess.classes;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Frame;
@@ -16,28 +17,48 @@ import javax.swing.JPanel;
 
 import project.chess.abstractclass.ChessPiece;
 
-public class Chess extends Frame implements ActionListener {
+class OnlyListener implements ActionListener {
+	private int x;
+	private int y;
+	public static String xy;
+	
+	public OnlyListener(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		xy = x + "_" + y;
+		System.out.println(xy);
+	}
+	
+	public int getX() {
+		return x;
+	}
+	
+	public int getY() {
+		return y;
+	}
+}
+
+public class Chess extends Frame {
 	private JFrame frame;
 	private JPanel mainPanel;
 	private JPanel firstPanel;
 	private JButton[][] chessPiece;
 	private char[][] chessPieceChar;
 	private ChessPiece[][] chess;
-	
+	private ActionListener[][] listener;
+
 	public Chess() {
 		FirstSetting();
 		
-		ActionListener listener = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				e.setSource("1");
-				System.out.println(e.getSource());
-			}
-		};
-		
+		listener = new ActionListener[8][8];
 		for(int i = 0 ; i < 8 ; i++) {
 			for(int j = 0 ; j < 8 ; j++) {
-				chessPiece[i][j].addActionListener(listener);
+				listener[i][j] = new OnlyListener(i, j);
+				chessPiece[i][j].addActionListener(listener[i][j]);
 			}
 		}
 		
@@ -125,11 +146,4 @@ public class Chess extends Frame implements ActionListener {
 		chess[7][7] = new Rook(1, 7, 7);
 		
 	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 }

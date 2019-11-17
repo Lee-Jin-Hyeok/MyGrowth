@@ -49,7 +49,9 @@ class Move implements ActionListener {
 			System.out.println(Chess.cx + "" + Chess.cy);
 		} else if(Chess.chess[Chess.cx][Chess.cy] instanceof Pawn) {
 			if(((Pawn) Chess.chess[Chess.cx][Chess.cy]).getTeam() == 0) {
-				if(colorCheck()) colorInit();
+				if(colorCheck())
+					colorInit();
+				if(Chess.chessPiece[Chess.cx+1][Chess.cy])
 				Chess.chessPiece[Chess.cx+1][Chess.cy].setBackground(Color.YELLOW);
 				Chess.chessPiece[Chess.cx+2][Chess.cy].setBackground(Color.YELLOW);
 			} else {
@@ -96,6 +98,7 @@ public class Chess extends Frame {
 	
 	public static JButton[][] chessPiece;
 	public static char[][] chessPieceChar;
+	public static boolean[][] truefalsechess;
 	//private ChessPiece[][] chess;
 	public static ActionListener[][] chess;
 	
@@ -134,6 +137,13 @@ public class Chess extends Frame {
 			}
 		}
 		LastSetting();
+		
+		for(int i = 0 ; i < 8 ; i++) {
+			for(int j = 0 ; j < 8 ; j++) {
+				System.out.printf("%b\t", truefalsechess[i][j]);
+			}
+			System.out.printf("\n");
+		}
 	}
 	
 	private void FirstSetting() {
@@ -160,6 +170,27 @@ public class Chess extends Frame {
 	}
 	
 	private void ChessPieceSet() {
+		truefalsechess = new boolean[8][8];
+		
+		for(int i = 0 ; i < 2 ; i++) {
+			for(int j = 0 ; j < 8 ; j++) {
+				truefalsechess[i][j] = true;
+			}
+		}
+		
+		for(int i = 2 ; i < 6 ; i++) {
+			for(int j = 0 ; j < 8 ; j++) {
+				truefalsechess[i][j] = false;
+			}
+		}
+		
+		for(int i = 6 ; i < 8 ; i++) {
+			for(int j = 0 ; j < 8 ; j++) {
+				truefalsechess[i][j] = true;
+			}
+		}
+		
+		
 		chessPieceChar = new char[8][8];
 		chessPieceChar[0] = "♜♞♝♛♚♝♞♜".toCharArray();
 		chessPieceChar[1] = "♟♟♟♟♟♟♟♟".toCharArray();

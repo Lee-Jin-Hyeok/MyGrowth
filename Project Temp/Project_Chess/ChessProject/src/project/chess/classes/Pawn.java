@@ -9,11 +9,13 @@ public class Pawn implements ChessPiece, ActionListener {
 	private int team;
 	private int xpos;
 	private int ypos;
+	private boolean check;
 	
 	public Pawn(int team, int xpos, int ypos) {
 		this.team = team;
 		this.xpos = xpos;
 		this.ypos = ypos;
+		this.check = false;
 	}
 	
 	@Override
@@ -44,5 +46,13 @@ public class Pawn implements ChessPiece, ActionListener {
 	@Override
 	public int getYpos() {
 		return ypos;
+	}
+	
+	public void TrueCheck() {
+		this.check = true;
+	}
+	
+	public boolean getCheck() {
+		return check;
 	}
 }

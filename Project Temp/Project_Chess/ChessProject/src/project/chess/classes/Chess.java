@@ -41,23 +41,46 @@ class OnlyListener implements ActionListener {
 class Move implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(Chess.chess[Chess.cx][Chess.cy] instanceof Bishop) {
-			System.out.println(Chess.cx + "" + Chess.cy);
+		if(Chess.cx == -1 && Chess.cy == -1) {
+			System.out.println("dd");
+			colorInit();
+		} else if(Chess.chess[Chess.cx][Chess.cy] instanceof Bishop) {
+			if(((Bishop) Chess.chess[Chess.cx][Chess.cy]).getTeam() == 0) {
+				
+			}
 		} else if(Chess.chess[Chess.cx][Chess.cy] instanceof King) {
 			System.out.println(Chess.cx + "" + Chess.cy);
 		} else if(Chess.chess[Chess.cx][Chess.cy] instanceof Knight) {
 			System.out.println(Chess.cx + "" + Chess.cy);
 		} else if(Chess.chess[Chess.cx][Chess.cy] instanceof Pawn) {
 			if(((Pawn) Chess.chess[Chess.cx][Chess.cy]).getTeam() == 0) {
-				if(colorCheck())
+				if(!(Chess.chessPiece[Chess.cx][Chess.cy].getBackground() == Color.GREEN)) {
+					if(colorCheck())
+						colorInit();
+					Chess.chessPiece[Chess.cx][Chess.cy].setBackground(Color.GREEN);
+					if(!(Chess.truefalsechess[Chess.cx+1][Chess.cy])) {
+						Chess.chessPiece[Chess.cx+1][Chess.cy].setBackground(Color.YELLOW);
+						if(!(Chess.truefalsechess[Chess.cx+2][Chess.cy])) {
+							Chess.chessPiece[Chess.cx+2][Chess.cy].setBackground(Color.YELLOW);
+						}
+					}
+				}
+				else
 					colorInit();
-				if(Chess.chessPiece[Chess.cx+1][Chess.cy])
-				Chess.chessPiece[Chess.cx+1][Chess.cy].setBackground(Color.YELLOW);
-				Chess.chessPiece[Chess.cx+2][Chess.cy].setBackground(Color.YELLOW);
 			} else {
-				if(colorCheck()) colorInit();
-				Chess.chessPiece[Chess.cx-1][Chess.cy].setBackground(Color.YELLOW);
-				Chess.chessPiece[Chess.cx-2][Chess.cy].setBackground(Color.YELLOW);
+				if(!(Chess.chessPiece[Chess.cx][Chess.cy].getBackground() == Color.GREEN)) {
+					if(colorCheck())
+						colorInit();
+					Chess.chessPiece[Chess.cx][Chess.cy].setBackground(Color.GREEN);
+					if(!(Chess.truefalsechess[Chess.cx-1][Chess.cy])) {
+						Chess.chessPiece[Chess.cx-1][Chess.cy].setBackground(Color.YELLOW);
+						if(!(Chess.truefalsechess[Chess.cx-2][Chess.cy])) {
+							Chess.chessPiece[Chess.cx-2][Chess.cy].setBackground(Color.YELLOW);
+						}
+					}
+				}
+				else
+					colorInit();
 			}
 		} else if(Chess.chess[Chess.cx][Chess.cy] instanceof Queen) {
 			System.out.println(Chess.cx + "" + Chess.cy);
@@ -69,7 +92,7 @@ class Move implements ActionListener {
 	public boolean colorCheck() {
 		for(int i = 0 ; i < 8 ; i++) {
 			for(int j = 0 ; j < 8 ; j++) {
-				if(Chess.chessPiece[i][j].getBackground() == Color.YELLOW) {
+				if(Chess.chessPiece[i][j].getBackground() == Color.GREEN) {
 					return true;
 				}
 			}
@@ -121,19 +144,20 @@ public class Chess extends Frame {
 			for(int j = 0 ; j < 8 ; j++) {
 				listener[i][j] = new OnlyListener(i, j);
 				//chessPiece[i][j].addActionListener(listener[i][j]);
-				if(chess[i][j] instanceof Bishop) {
-					chessPiece[i][j].addActionListener(chess[i][j]);
-				} else if(chess[i][j] instanceof King) {
-					chessPiece[i][j].addActionListener(chess[i][j]);
-				} else if(chess[i][j] instanceof Knight) {
-					chessPiece[i][j].addActionListener(chess[i][j]);
-				} else if(chess[i][j] instanceof Pawn) {
-					chessPiece[i][j].addActionListener(chess[i][j]);
-				} else if(chess[i][j] instanceof Queen) {
-					chessPiece[i][j].addActionListener(chess[i][j]);
-				} else if(chess[i][j] instanceof Rook) {
-					chessPiece[i][j].addActionListener(chess[i][j]);
-				}
+//				if(chess[i][j] instanceof Bishop) {
+//					chessPiece[i][j].addActionListener(chess[i][j]);
+//				} else if(chess[i][j] instanceof King) {
+//					chessPiece[i][j].addActionListener(chess[i][j]);
+//				} else if(chess[i][j] instanceof Knight) {
+//					chessPiece[i][j].addActionListener(chess[i][j]);
+//				} else if(chess[i][j] instanceof Pawn) {
+//					chessPiece[i][j].addActionListener(chess[i][j]);
+//				} else if(chess[i][j] instanceof Queen) {
+//					chessPiece[i][j].addActionListener(chess[i][j]);
+//				} else if(chess[i][j] instanceof Rook) {
+//					chessPiece[i][j].addActionListener(chess[i][j]);
+//				} 
+				chessPiece[i][j].addActionListener(chess[i][j]);
 			}
 		}
 		LastSetting();
@@ -177,13 +201,11 @@ public class Chess extends Frame {
 				truefalsechess[i][j] = true;
 			}
 		}
-		
 		for(int i = 2 ; i < 6 ; i++) {
 			for(int j = 0 ; j < 8 ; j++) {
 				truefalsechess[i][j] = false;
 			}
 		}
-		
 		for(int i = 6 ; i < 8 ; i++) {
 			for(int j = 0 ; j < 8 ; j++) {
 				truefalsechess[i][j] = true;
@@ -235,7 +257,7 @@ public class Chess extends Frame {
 		
 		for(int i = 2 ; i < 6 ; i++) {
 			for(int j = 0 ; j < 8 ; j++) {
-				chess[i][j] = null;
+				chess[i][j] = new Null();
 			}
 		}
 		

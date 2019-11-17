@@ -49,9 +49,11 @@ class Move implements ActionListener {
 			System.out.println(Chess.cx + "" + Chess.cy);
 		} else if(Chess.chess[Chess.cx][Chess.cy] instanceof Pawn) {
 			if(((Pawn) Chess.chess[Chess.cx][Chess.cy]).getTeam() == 0) {
+				if(colorCheck()) colorInit();
 				Chess.chessPiece[Chess.cx+1][Chess.cy].setBackground(Color.YELLOW);
 				Chess.chessPiece[Chess.cx+2][Chess.cy].setBackground(Color.YELLOW);
 			} else {
+				if(colorCheck()) colorInit();
 				Chess.chessPiece[Chess.cx-1][Chess.cy].setBackground(Color.YELLOW);
 				Chess.chessPiece[Chess.cx-2][Chess.cy].setBackground(Color.YELLOW);
 			}
@@ -61,6 +63,30 @@ class Move implements ActionListener {
 			System.out.println(Chess.cx + "" + Chess.cy);
 		}
 	}
+	
+	public boolean colorCheck() {
+		for(int i = 0 ; i < 8 ; i++) {
+			for(int j = 0 ; j < 8 ; j++) {
+				if(Chess.chessPiece[i][j].getBackground() == Color.YELLOW) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	public void colorInit() {
+		for(int i = 0 ; i < 8 ; i++) {
+			for(int j = 0 ; j < 8 ; j++) {
+				if((i+j+1) % 2 == 0) {
+					Chess.chessPiece[i][j].setBackground(Color.GRAY);
+				} else {
+					Chess.chessPiece[i][j].setBackground(Color.WHITE);
+				}
+			}
+		}
+	}
+	
 }
 
 public class Chess extends Frame {

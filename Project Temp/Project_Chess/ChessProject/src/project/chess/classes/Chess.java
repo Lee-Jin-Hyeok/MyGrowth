@@ -1,7 +1,6 @@
 package project.chess.classes;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Frame;
@@ -12,10 +11,7 @@ import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
-import project.chess.abstractclass.ChessPiece;
 
 class OnlyListener implements ActionListener {
 	private int x;
@@ -42,26 +38,75 @@ class OnlyListener implements ActionListener {
 	}
 }
 
+class Move implements ActionListener {
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(Chess.chess[Chess.cx][Chess.cy] instanceof Bishop) {
+			System.out.println(Chess.cx + "" + Chess.cy);
+		} else if(Chess.chess[Chess.cx][Chess.cy] instanceof King) {
+			System.out.println(Chess.cx + "" + Chess.cy);
+		} else if(Chess.chess[Chess.cx][Chess.cy] instanceof Knight) {
+			System.out.println(Chess.cx + "" + Chess.cy);
+		} else if(Chess.chess[Chess.cx][Chess.cy] instanceof Pawn) {
+			if(((Pawn) Chess.chess[Chess.cx][Chess.cy]).getTeam() == 0) {
+				Chess.chessPiece[Chess.cx+1][Chess.cy].setBackground(Color.YELLOW);
+				Chess.chessPiece[Chess.cx+2][Chess.cy].setBackground(Color.YELLOW);
+			} else {
+				Chess.chessPiece[Chess.cx-1][Chess.cy].setBackground(Color.YELLOW);
+				Chess.chessPiece[Chess.cx-2][Chess.cy].setBackground(Color.YELLOW);
+			}
+		} else if(Chess.chess[Chess.cx][Chess.cy] instanceof Queen) {
+			System.out.println(Chess.cx + "" + Chess.cy);
+		} else if(Chess.chess[Chess.cx][Chess.cy] instanceof Rook) {
+			System.out.println(Chess.cx + "" + Chess.cy);
+		}
+	}
+}
+
 public class Chess extends Frame {
 	private JFrame frame;
 	private JPanel mainPanel;
 	private JPanel firstPanel;
-	private JButton[][] chessPiece;
-	private char[][] chessPieceChar;
-	private ChessPiece[][] chess;
+	
+	public static JButton[][] chessPiece;
+	public static char[][] chessPieceChar;
+	//private ChessPiece[][] chess;
+	public static ActionListener[][] chess;
+	
 	private ActionListener[][] listener;
+	
+	public static int cx;
+	public static int cy;
 
 	public Chess() {
 		FirstSetting();
 		
-		listener = new ActionListener[8][8];
 		for(int i = 0 ; i < 8 ; i++) {
 			for(int j = 0 ; j < 8 ; j++) {
-				listener[i][j] = new OnlyListener(i, j);
-				chessPiece[i][j].addActionListener(listener[i][j]);
+				chessPiece[i][j].addActionListener(new Move());
 			}
 		}
 		
+		listener = new OnlyListener[8][8];
+		for(int i = 0 ; i < 8 ; i++) {
+			for(int j = 0 ; j < 8 ; j++) {
+				listener[i][j] = new OnlyListener(i, j);
+				//chessPiece[i][j].addActionListener(listener[i][j]);
+				if(chess[i][j] instanceof Bishop) {
+					chessPiece[i][j].addActionListener(chess[i][j]);
+				} else if(chess[i][j] instanceof King) {
+					chessPiece[i][j].addActionListener(chess[i][j]);
+				} else if(chess[i][j] instanceof Knight) {
+					chessPiece[i][j].addActionListener(chess[i][j]);
+				} else if(chess[i][j] instanceof Pawn) {
+					chessPiece[i][j].addActionListener(chess[i][j]);
+				} else if(chess[i][j] instanceof Queen) {
+					chessPiece[i][j].addActionListener(chess[i][j]);
+				} else if(chess[i][j] instanceof Rook) {
+					chessPiece[i][j].addActionListener(chess[i][j]);
+				}
+			}
+		}
 		LastSetting();
 	}
 	
@@ -114,7 +159,8 @@ public class Chess extends Frame {
 			}
 		}
 		
-		chess = new ChessPiece[8][8];
+		//chess = new ChessPiece[8][8];
+		chess = new ActionListener[8][8];
 		
 		chess[0][0] = new Rook(0, 0, 0);
 		chess[0][1] = new Knight(0, 0, 1);
@@ -122,7 +168,7 @@ public class Chess extends Frame {
 		chess[0][3] = new King(0, 0, 3);
 		chess[0][4] = new Queen(0, 0, 4);
 		chess[0][5] = new Bishop(0, 0, 5);
-		chess[0][6] = new Knight(0, 0, 6);
+		chess[0][6] = new Knight(0, 0, 6); 
 		chess[0][7] = new Rook(0, 0, 7);
 		
 		for(int i = 0 ; i < 8 ; i++) {

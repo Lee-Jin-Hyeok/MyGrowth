@@ -1,8 +1,11 @@
 package project.chess.classes;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import project.chess.abstractclass.ChessPiece;
 
-public class Queen implements ChessPiece {
+public class Queen implements ChessPiece, ActionListener {
 	private int team;
 	private int xpos;
 	private int ypos;
@@ -20,5 +23,26 @@ public class Queen implements ChessPiece {
 	@Override
 	public void move() {
 		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Chess.cx = this.xpos;
+		Chess.cy = this.ypos;
+	}
+	
+	@Override
+	public int getTeam() {
+		return team;
+	}
+
+	@Override
+	public int getXpos() {
+		return xpos;
+	}
+
+	@Override
+	public int getYpos() {
+		return ypos;
 	}
 }

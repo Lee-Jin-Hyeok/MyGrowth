@@ -46,7 +46,18 @@ class Move implements ActionListener {
 			colorInit();
 		} else if(Chess.chess[Chess.cx][Chess.cy] instanceof Bishop) {
 			if(((Bishop) Chess.chess[Chess.cx][Chess.cy]).getTeam() == 0) {
-				
+				if(!(Chess.chessPiece[Chess.cx][Chess.cy].getBackground() == Color.GREEN)) {
+					if(colorCheck())
+						colorInit();
+					Chess.chessPiece[Chess.cx][Chess.cy].setBackground(Color.GREEN);
+					if(!(Chess.truefalsechess[Chess.cx+1][Chess.cy])) {
+						Chess.chessPiece[Chess.cx+1][Chess.cy].setBackground(Color.YELLOW);
+						if(!(Chess.truefalsechess[Chess.cx+2][Chess.cy])) {
+							Chess.chessPiece[Chess.cx+2][Chess.cy].setBackground(Color.YELLOW);
+						}
+					}
+				} else
+					colorInit();
 			}
 		} else if(Chess.chess[Chess.cx][Chess.cy] instanceof King) {
 			System.out.println(Chess.cx + "" + Chess.cy);
@@ -64,8 +75,7 @@ class Move implements ActionListener {
 							Chess.chessPiece[Chess.cx+2][Chess.cy].setBackground(Color.YELLOW);
 						}
 					}
-				}
-				else
+				} else
 					colorInit();
 			} else {
 				if(!(Chess.chessPiece[Chess.cx][Chess.cy].getBackground() == Color.GREEN)) {
@@ -121,7 +131,7 @@ public class Chess extends Frame {
 	
 	public static JButton[][] chessPiece;
 	public static char[][] chessPieceChar;
-	public static boolean[][] truefalsechess;
+	public static int[][] truefalsechess;
 	//private ChessPiece[][] chess;
 	public static ActionListener[][] chess;
 	
@@ -194,23 +204,19 @@ public class Chess extends Frame {
 	}
 	
 	private void ChessPieceSet() {
-		truefalsechess = new boolean[8][8];
+		truefalsechess = new int[8][8];
 		
-		for(int i = 0 ; i < 2 ; i++) {
-			for(int j = 0 ; j < 8 ; j++) {
-				truefalsechess[i][j] = true;
-			}
+		for(int i = 0 ; i < 3 ; i++) {
+			truefalsechess[0][i] = 0;
 		}
-		for(int i = 2 ; i < 6 ; i++) {
-			for(int j = 0 ; j < 8 ; j++) {
-				truefalsechess[i][j] = false;
-			}
+		truefalsechess[0][3] = 2;
+		for(int i = 4 ; i < 8 ; i++) {
+			truefalsechess[0][i] = 0;
 		}
-		for(int i = 6 ; i < 8 ; i++) {
-			for(int j = 0 ; j < 8 ; j++) {
-				truefalsechess[i][j] = true;
-			}
+		for(int i = 1 ; i < 8 ; i++) {
+			truefalsechess[1][i] = 0;
 		}
+		
 		
 		
 		chessPieceChar = new char[8][8];

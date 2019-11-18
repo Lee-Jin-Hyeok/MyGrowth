@@ -50,9 +50,9 @@ class Move implements ActionListener {
 					if(colorCheck())
 						colorInit();
 					Chess.chessPiece[Chess.cx][Chess.cy].setBackground(Color.GREEN);
-					if(!(Chess.truefalsechess[Chess.cx+1][Chess.cy])) {
+					if((Chess.chess[Chess.cx+1][Chess.cy]) instanceof Null) {
 						Chess.chessPiece[Chess.cx+1][Chess.cy].setBackground(Color.YELLOW);
-						if(!(Chess.truefalsechess[Chess.cx+2][Chess.cy])) {
+						if((Chess.chess[Chess.cx+2][Chess.cy]) instanceof Null) {
 							Chess.chessPiece[Chess.cx+2][Chess.cy].setBackground(Color.YELLOW);
 						}
 					}
@@ -69,9 +69,9 @@ class Move implements ActionListener {
 					if(colorCheck())
 						colorInit();
 					Chess.chessPiece[Chess.cx][Chess.cy].setBackground(Color.GREEN);
-					if(!(Chess.truefalsechess[Chess.cx+1][Chess.cy])) {
+					if((Chess.chess[Chess.cx+1][Chess.cy]) instanceof Null) {
 						Chess.chessPiece[Chess.cx+1][Chess.cy].setBackground(Color.YELLOW);
-						if(!(Chess.truefalsechess[Chess.cx+2][Chess.cy])) {
+						if((Chess.chess[Chess.cx+2][Chess.cy]) instanceof Null) {
 							Chess.chessPiece[Chess.cx+2][Chess.cy].setBackground(Color.YELLOW);
 						}
 					}
@@ -82,9 +82,9 @@ class Move implements ActionListener {
 					if(colorCheck())
 						colorInit();
 					Chess.chessPiece[Chess.cx][Chess.cy].setBackground(Color.GREEN);
-					if(!(Chess.truefalsechess[Chess.cx-1][Chess.cy])) {
+					if((Chess.chess[Chess.cx-1][Chess.cy]) instanceof Null) {
 						Chess.chessPiece[Chess.cx-1][Chess.cy].setBackground(Color.YELLOW);
-						if(!(Chess.truefalsechess[Chess.cx-2][Chess.cy])) {
+						if((Chess.chess[Chess.cx-2][Chess.cy]) instanceof Null) {
 							Chess.chessPiece[Chess.cx-2][Chess.cy].setBackground(Color.YELLOW);
 						}
 					}
@@ -131,7 +131,6 @@ public class Chess extends Frame {
 	
 	public static JButton[][] chessPiece;
 	public static char[][] chessPieceChar;
-	public static int[][] truefalsechess;
 	//private ChessPiece[][] chess;
 	public static ActionListener[][] chess;
 	
@@ -171,13 +170,6 @@ public class Chess extends Frame {
 			}
 		}
 		LastSetting();
-		
-		for(int i = 0 ; i < 8 ; i++) {
-			for(int j = 0 ; j < 8 ; j++) {
-				System.out.printf("%b\t", truefalsechess[i][j]);
-			}
-			System.out.printf("\n");
-		}
 	}
 	
 	private void FirstSetting() {
@@ -204,21 +196,6 @@ public class Chess extends Frame {
 	}
 	
 	private void ChessPieceSet() {
-		truefalsechess = new int[8][8];
-		
-		for(int i = 0 ; i < 3 ; i++) {
-			truefalsechess[0][i] = 0;
-		}
-		truefalsechess[0][3] = 2;
-		for(int i = 4 ; i < 8 ; i++) {
-			truefalsechess[0][i] = 0;
-		}
-		for(int i = 1 ; i < 8 ; i++) {
-			truefalsechess[1][i] = 0;
-		}
-		
-		
-		
 		chessPieceChar = new char[8][8];
 		chessPieceChar[0] = "♜♞♝♛♚♝♞♜".toCharArray();
 		chessPieceChar[1] = "♟♟♟♟♟♟♟♟".toCharArray();

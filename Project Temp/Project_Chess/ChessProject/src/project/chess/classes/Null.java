@@ -6,6 +6,11 @@ import java.awt.event.ActionListener;
 import project.chess.abstractclass.ChessPiece;
 
 public class Null implements ChessPiece, ActionListener {
+	private int team;
+	
+	public Null(int team) {
+		this.team = team;
+	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -28,7 +33,7 @@ public class Null implements ChessPiece, ActionListener {
 	@Override
 	public int getTeam() {
 		// TODO Auto-generated method stub
-		return 0;
+		return team;
 	}
 
 	@Override

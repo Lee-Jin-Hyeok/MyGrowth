@@ -13,6 +13,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import project.chess.abstractclass.ChessPiece;
+
 class OnlyListener implements ActionListener {
 	private int x;
 	private int y;
@@ -44,6 +46,8 @@ class Move implements ActionListener {
 		if(Chess.cx == -1 && Chess.cy == -1) {
 			System.out.println("dd");
 			colorInit();
+			
+			
 		} else if(Chess.chess[Chess.cx][Chess.cy] instanceof Bishop) {
 			if(((Bishop) Chess.chess[Chess.cx][Chess.cy]).getTeam() == 0) {
 				if(!(Chess.chessPiece[Chess.cx][Chess.cy].getBackground() == Color.GREEN)) {
@@ -54,6 +58,14 @@ class Move implements ActionListener {
 					for(int i = 1 ; i < 8 ; i++) {
 						if((Chess.cx+i) > 7 || (Chess.cy+i) > 7)
 							break;
+						if((Chess.chess[Chess.cx+i][Chess.cy+i] instanceof Bishop) ||
+							(Chess.chess[Chess.cx+i][Chess.cy+i] instanceof King) ||
+							(Chess.chess[Chess.cx+i][Chess.cy+i] instanceof Knight) ||
+							(Chess.chess[Chess.cx+i][Chess.cy+i] instanceof Pawn) ||
+							(Chess.chess[Chess.cx+i][Chess.cy+i] instanceof Queen) ||
+							(Chess.chess[Chess.cx+i][Chess.cy+i] instanceof Rook)) {
+							
+						}
 						if(!(Chess.chess[Chess.cx+i][Chess.cy+i] instanceof Null))
 							break;
 						Chess.chessPiece[Chess.cx+i][Chess.cy+i].setBackground(Color.YELLOW);
@@ -61,21 +73,15 @@ class Move implements ActionListener {
 					for(int i = 1 ; i < 8 ; i++) {
 						if((Chess.cx+i) > 7 || (Chess.cy-i) < 0)
 							break;
-						if(!(Chess.chess[Chess.cx+i][Chess.cy-i] instanceof Null))
-							break;
 						Chess.chessPiece[Chess.cx+i][Chess.cy-i].setBackground(Color.YELLOW);
 					}
 					for(int i = 1 ; i < 8 ; i++) {
 						if((Chess.cx-i) < 0 || (Chess.cy+i) > 7)
 							break;
-						if(!(Chess.chess[Chess.cx-i][Chess.cy+i] instanceof Null))
-							break;
 						Chess.chessPiece[Chess.cx-i][Chess.cy+i].setBackground(Color.YELLOW);
 					}
 					for(int i = 1 ; i < 8 ; i++) {
 						if((Chess.cx-i) < 0 || (Chess.cy-i) < 0)
-							break;
-						if(!(Chess.chess[Chess.cx-i][Chess.cy-i] instanceof Null))
 							break;
 						Chess.chessPiece[Chess.cx-i][Chess.cy-i].setBackground(Color.YELLOW);
 					}
@@ -91,28 +97,20 @@ class Move implements ActionListener {
 					for(int i = 1 ; i < 8 ; i++) {
 						if((Chess.cx+i) > 7 || (Chess.cy+i) > 7)
 							break;
-						if(!(Chess.chess[Chess.cx+i][Chess.cy+i] instanceof Null))
-							break;
 						Chess.chessPiece[Chess.cx+i][Chess.cy+i].setBackground(Color.YELLOW);
 					}
 					for(int i = 1 ; i < 8 ; i++) {
 						if((Chess.cx+i) > 7 || (Chess.cy-i) < 0)
-							break;
-						if(!(Chess.chess[Chess.cx+i][Chess.cy-i] instanceof Null))
 							break;
 						Chess.chessPiece[Chess.cx+i][Chess.cy-i].setBackground(Color.YELLOW);
 					}
 					for(int i = 1 ; i < 8 ; i++) {
 						if((Chess.cx-i) < 0 || (Chess.cy+i) > 7)
 							break;
-						if(!(Chess.chess[Chess.cx-i][Chess.cy+i] instanceof Null))
-							break;
 						Chess.chessPiece[Chess.cx-i][Chess.cy+i].setBackground(Color.YELLOW);
 					}
 					for(int i = 1 ; i < 8 ; i++) {
 						if((Chess.cx-i) < 0 || (Chess.cy-i) < 0)
-							break;
-						if(!(Chess.chess[Chess.cx-i][Chess.cy-i] instanceof Null))
 							break;
 						Chess.chessPiece[Chess.cx-i][Chess.cy-i].setBackground(Color.YELLOW);
 					}
@@ -120,6 +118,8 @@ class Move implements ActionListener {
 				} else
 					colorInit();
 			}
+			
+			
 		} else if(Chess.chess[Chess.cx][Chess.cy] instanceof King) {
 			if(((King) Chess.chess[Chess.cx][Chess.cy]).getTeam() == 0) {
 				if(!(Chess.chessPiece[Chess.cx][Chess.cy].getBackground() == Color.GREEN)) {
@@ -127,14 +127,30 @@ class Move implements ActionListener {
 						colorInit();
 					Chess.chessPiece[Chess.cx][Chess.cy].setBackground(Color.GREEN);
 					
-					Chess.chessPiece[Chess.cx-1][Chess.cy-1].setBackground(Color.YELLOW);
-					Chess.chessPiece[Chess.cx-1][Chess.cy].setBackground(Color.YELLOW);
-					Chess.chessPiece[Chess.cx-1][Chess.cy+1].setBackground(Color.YELLOW);
-					Chess.chessPiece[Chess.cx][Chess.cy-1].setBackground(Color.YELLOW);
-					Chess.chessPiece[Chess.cx][Chess.cy+1].setBackground(Color.YELLOW);
-					Chess.chessPiece[Chess.cx+1][Chess.cy-1].setBackground(Color.YELLOW);
-					Chess.chessPiece[Chess.cx+1][Chess.cy].setBackground(Color.YELLOW);
-					Chess.chessPiece[Chess.cx+1][Chess.cy+1].setBackground(Color.YELLOW);
+					if((Chess.cx-1 > -1) && (Chess.cy-1 > -1)) {
+						Chess.chessPiece[Chess.cx-1][Chess.cy-1].setBackground(Color.YELLOW);
+					}
+					if(Chess.cx-1 > -1) {
+						Chess.chessPiece[Chess.cx-1][Chess.cy].setBackground(Color.YELLOW);
+					}
+					if((Chess.cx-1 > -1) && (Chess.cy+1 < 8)) {
+						Chess.chessPiece[Chess.cx-1][Chess.cy+1].setBackground(Color.YELLOW);
+					}
+					if(Chess.cy-1 > -1) {
+						Chess.chessPiece[Chess.cx][Chess.cy-1].setBackground(Color.YELLOW);
+					}
+					if(Chess.cy+1 < 8) {
+						Chess.chessPiece[Chess.cx][Chess.cy+1].setBackground(Color.YELLOW);
+					}
+					if((Chess.cx+1 < 8) && (Chess.cy-1 > -1)) {
+						Chess.chessPiece[Chess.cx+1][Chess.cy-1].setBackground(Color.YELLOW);
+					}
+					if(Chess.cx+1 < 8) {
+						Chess.chessPiece[Chess.cx+1][Chess.cy].setBackground(Color.YELLOW);
+					}
+					if((Chess.cx+1 < 8) && (Chess.cy+1 < 8)) {
+						Chess.chessPiece[Chess.cx+1][Chess.cy+1].setBackground(Color.YELLOW);
+					}
 					
 				} else
 					colorInit();
@@ -144,14 +160,107 @@ class Move implements ActionListener {
 						colorInit();
 					Chess.chessPiece[Chess.cx][Chess.cy].setBackground(Color.GREEN);
 					
-					
+					if((Chess.cx-1 > -1) && (Chess.cy-1 > -1)) {
+						Chess.chessPiece[Chess.cx-1][Chess.cy-1].setBackground(Color.YELLOW);
+					}
+					if(Chess.cx-1 > -1) {
+						Chess.chessPiece[Chess.cx-1][Chess.cy].setBackground(Color.YELLOW);
+					}
+					if((Chess.cx-1 > -1) && (Chess.cy+1 < 8)) {
+						Chess.chessPiece[Chess.cx-1][Chess.cy+1].setBackground(Color.YELLOW);
+					}
+					if(Chess.cy-1 > -1) {
+						Chess.chessPiece[Chess.cx][Chess.cy-1].setBackground(Color.YELLOW);
+					}
+					if(Chess.cy+1 < 8) {
+						Chess.chessPiece[Chess.cx][Chess.cy+1].setBackground(Color.YELLOW);
+					}
+					if((Chess.cx+1 < 8) && (Chess.cy-1 > -1)) {
+						Chess.chessPiece[Chess.cx+1][Chess.cy-1].setBackground(Color.YELLOW);
+					}
+					if(Chess.cx+1 < 8) {
+						Chess.chessPiece[Chess.cx+1][Chess.cy].setBackground(Color.YELLOW);
+					}
+					if((Chess.cx+1 < 8) && (Chess.cy+1 < 8)) {
+						Chess.chessPiece[Chess.cx+1][Chess.cy+1].setBackground(Color.YELLOW);
+					}
 					
 				}
 				else
 					colorInit();
 			}
+			
+			
 		} else if(Chess.chess[Chess.cx][Chess.cy] instanceof Knight) {
-			System.out.println(Chess.cx + "" + Chess.cy);
+			if(((Knight) Chess.chess[Chess.cx][Chess.cy]).getTeam() == 0) {
+				if(!(Chess.chessPiece[Chess.cx][Chess.cy].getBackground() == Color.GREEN)) {
+					if(colorCheck())
+						colorInit();
+					Chess.chessPiece[Chess.cx][Chess.cy].setBackground(Color.GREEN);
+					
+					if((Chess.cx-2 > -1) && (Chess.cy-1 > -1)) {
+						Chess.chessPiece[Chess.cx-2][Chess.cy-1].setBackground(Color.YELLOW);
+					}
+					if((Chess.cx-2 > -1) && (Chess.cy+1 < 8)) {
+						Chess.chessPiece[Chess.cx-2][Chess.cy+1].setBackground(Color.YELLOW);
+					}
+					if((Chess.cx-1 > -1) && (Chess.cy+2 < 8)) {
+						Chess.chessPiece[Chess.cx-1][Chess.cy+2].setBackground(Color.YELLOW);
+					}
+					if((Chess.cx+1 < 8) && (Chess.cy+2 < 8)) {
+						Chess.chessPiece[Chess.cx+1][Chess.cy+2].setBackground(Color.YELLOW);
+					}
+					if((Chess.cx+2 < 8) && (Chess.cy+1 < 8)) {
+						Chess.chessPiece[Chess.cx+2][Chess.cy+1].setBackground(Color.YELLOW);
+					}
+					if((Chess.cx+2 < 8) && (Chess.cy-1 > -1)) {
+						Chess.chessPiece[Chess.cx+2][Chess.cy-1].setBackground(Color.YELLOW);
+					}
+					if((Chess.cx+1 < 8) && (Chess.cy-2 > -1)) {
+						Chess.chessPiece[Chess.cx+1][Chess.cy-2].setBackground(Color.YELLOW);
+					}
+					if((Chess.cx-1 > -1) && (Chess.cy-2 > -1)) {
+						Chess.chessPiece[Chess.cx-1][Chess.cy-2].setBackground(Color.YELLOW);
+					}
+						
+				} else
+					colorInit();
+			} else {
+				if(!(Chess.chessPiece[Chess.cx][Chess.cy].getBackground() == Color.GREEN)) {
+					if(colorCheck())
+						colorInit();
+					Chess.chessPiece[Chess.cx][Chess.cy].setBackground(Color.GREEN);
+					
+					if((Chess.cx-2 > -1) && (Chess.cy-1 > -1)) {
+						Chess.chessPiece[Chess.cx-2][Chess.cy-1].setBackground(Color.YELLOW);
+					}
+					if((Chess.cx-2 > -1) && (Chess.cy+1 < 8)) {
+						Chess.chessPiece[Chess.cx-2][Chess.cy+1].setBackground(Color.YELLOW);
+					}
+					if((Chess.cx-1 > -1) && (Chess.cy+2 < 8)) {
+						Chess.chessPiece[Chess.cx-1][Chess.cy+2].setBackground(Color.YELLOW);
+					}
+					if((Chess.cx+1 < 8) && (Chess.cy+2 < 8)) {
+						Chess.chessPiece[Chess.cx+1][Chess.cy+2].setBackground(Color.YELLOW);
+					}
+					if((Chess.cx+2 < 8) && (Chess.cy+1 < 8)) {
+						Chess.chessPiece[Chess.cx+2][Chess.cy+1].setBackground(Color.YELLOW);
+					}
+					if((Chess.cx+2 < 8) && (Chess.cy-1 > -1)) {
+						Chess.chessPiece[Chess.cx+2][Chess.cy-1].setBackground(Color.YELLOW);
+					}
+					if((Chess.cx+1 < 8) && (Chess.cy-2 > -1)) {
+						Chess.chessPiece[Chess.cx+1][Chess.cy-2].setBackground(Color.YELLOW);
+					}
+					if((Chess.cx-1 > -1) && (Chess.cy-2 > -1)) {
+						Chess.chessPiece[Chess.cx-1][Chess.cy-2].setBackground(Color.YELLOW);
+					}
+						
+				} else
+					colorInit();
+			}
+			
+			
 		} else if(Chess.chess[Chess.cx][Chess.cy] instanceof Pawn) {
 			if(((Pawn) Chess.chess[Chess.cx][Chess.cy]).getTeam() == 0) {
 				if(!(Chess.chessPiece[Chess.cx][Chess.cy].getBackground() == Color.GREEN)) {
@@ -181,10 +290,172 @@ class Move implements ActionListener {
 				else
 					colorInit();
 			}
+			
+			
 		} else if(Chess.chess[Chess.cx][Chess.cy] instanceof Queen) {
-			System.out.println(Chess.cx + "" + Chess.cy);
+			if(((Queen) Chess.chess[Chess.cx][Chess.cy]).getTeam() == 0) {
+				if(!(Chess.chessPiece[Chess.cx][Chess.cy].getBackground() == Color.GREEN)) {
+					if(colorCheck())
+						colorInit();
+					Chess.chessPiece[Chess.cx][Chess.cy].setBackground(Color.GREEN);
+					
+					for(int i = 1 ; i < 8 ; i++) {
+						if((Chess.cx+i) > 7 || (Chess.cy+i) > 7)
+							break;
+						Chess.chessPiece[Chess.cx+i][Chess.cy+i].setBackground(Color.YELLOW);
+					}
+					for(int i = 1 ; i < 8 ; i++) {
+						if((Chess.cx+i) > 7 || (Chess.cy-i) < 0)
+							break;
+						Chess.chessPiece[Chess.cx+i][Chess.cy-i].setBackground(Color.YELLOW);
+					}
+					for(int i = 1 ; i < 8 ; i++) {
+						if((Chess.cx-i) < 0 || (Chess.cy+i) > 7)
+							break;
+						Chess.chessPiece[Chess.cx-i][Chess.cy+i].setBackground(Color.YELLOW);
+					}
+					for(int i = 1 ; i < 8 ; i++) {
+						if((Chess.cx-i) < 0 || (Chess.cy-i) < 0)
+							break;
+						Chess.chessPiece[Chess.cx-i][Chess.cy-i].setBackground(Color.YELLOW);
+					}
+					for(int i = 1 ; i < 8 ; i++) {
+						if(Chess.cx-i < 0)
+							break;
+						Chess.chessPiece[Chess.cx-i][Chess.cy].setBackground(Color.YELLOW);
+					}
+					for(int i = 1 ; i < 8 ; i++) {
+						if(Chess.cx+i > 7)
+							break;
+						Chess.chessPiece[Chess.cx+i][Chess.cy].setBackground(Color.YELLOW);
+					}
+					for(int i = 1 ; i < 8 ; i++) {
+						if(Chess.cy-i < 0)
+							break;
+						Chess.chessPiece[Chess.cx][Chess.cy-i].setBackground(Color.YELLOW);
+					}
+					for(int i = 1 ; i < 8 ; i++) {
+						if(Chess.cy+i > 7)
+							break;
+						Chess.chessPiece[Chess.cx][Chess.cy+i].setBackground(Color.YELLOW);
+					}
+					
+				} else
+					colorInit();
+			} else {
+				if(!(Chess.chessPiece[Chess.cx][Chess.cy].getBackground() == Color.GREEN)) {
+					if(colorCheck())
+						colorInit();
+					Chess.chessPiece[Chess.cx][Chess.cy].setBackground(Color.GREEN);
+					
+					for(int i = 1 ; i < 8 ; i++) {
+						if((Chess.cx+i) > 7 || (Chess.cy+i) > 7)
+							break;
+						Chess.chessPiece[Chess.cx+i][Chess.cy+i].setBackground(Color.YELLOW);
+					}
+					for(int i = 1 ; i < 8 ; i++) {
+						if((Chess.cx+i) > 7 || (Chess.cy-i) < 0)
+							break;
+						Chess.chessPiece[Chess.cx+i][Chess.cy-i].setBackground(Color.YELLOW);
+					}
+					for(int i = 1 ; i < 8 ; i++) {
+						if((Chess.cx-i) < 0 || (Chess.cy+i) > 7)
+							break;
+						Chess.chessPiece[Chess.cx-i][Chess.cy+i].setBackground(Color.YELLOW);
+					}
+					for(int i = 1 ; i < 8 ; i++) {
+						if((Chess.cx-i) < 0 || (Chess.cy-i) < 0)
+							break;
+						Chess.chessPiece[Chess.cx-i][Chess.cy-i].setBackground(Color.YELLOW);
+					}
+					for(int i = 1 ; i < 8 ; i++) {
+						if(Chess.cx-i < 0)
+							break;
+						Chess.chessPiece[Chess.cx-i][Chess.cy].setBackground(Color.YELLOW);
+					}
+					for(int i = 1 ; i < 8 ; i++) {
+						if(Chess.cx+i > 7)
+							break;
+						Chess.chessPiece[Chess.cx+i][Chess.cy].setBackground(Color.YELLOW);
+					}
+					for(int i = 1 ; i < 8 ; i++) {
+						if(Chess.cy-i < 0)
+							break;
+						Chess.chessPiece[Chess.cx][Chess.cy-i].setBackground(Color.YELLOW);
+					}
+					for(int i = 1 ; i < 8 ; i++) {
+						if(Chess.cy+i > 7)
+							break;
+						Chess.chessPiece[Chess.cx][Chess.cy+i].setBackground(Color.YELLOW);
+					}
+					
+				} else
+					colorInit();
+			}
+			
+			
 		} else if(Chess.chess[Chess.cx][Chess.cy] instanceof Rook) {
-			System.out.println(Chess.cx + "" + Chess.cy);
+			if(((Rook) Chess.chess[Chess.cx][Chess.cy]).getTeam() == 0) {
+				if(!(Chess.chessPiece[Chess.cx][Chess.cy].getBackground() == Color.GREEN)) {
+					if(colorCheck())
+						colorInit();
+					Chess.chessPiece[Chess.cx][Chess.cy].setBackground(Color.GREEN);
+					
+					for(int i = 1 ; i < 8 ; i++) {
+						if(Chess.cx-i < 0)
+							break;
+						Chess.chessPiece[Chess.cx-i][Chess.cy].setBackground(Color.YELLOW);
+					}
+					for(int i = 1 ; i < 8 ; i++) {
+						if(Chess.cx+i > 7)
+							break;
+						Chess.chessPiece[Chess.cx+i][Chess.cy].setBackground(Color.YELLOW);
+					}
+					for(int i = 1 ; i < 8 ; i++) {
+						if(Chess.cy-i < 0)
+							break;
+						Chess.chessPiece[Chess.cx][Chess.cy-i].setBackground(Color.YELLOW);
+					}
+					for(int i = 1 ; i < 8 ; i++) {
+						if(Chess.cy+i > 7)
+							break;
+						Chess.chessPiece[Chess.cx][Chess.cy+i].setBackground(Color.YELLOW);
+					}
+				} else
+					colorInit();
+			} else {
+				if(!(Chess.chessPiece[Chess.cx][Chess.cy].getBackground() == Color.GREEN)) {
+					if(colorCheck())
+						colorInit();
+					Chess.chessPiece[Chess.cx][Chess.cy].setBackground(Color.GREEN);
+					
+					for(int i = 1 ; i < 8 ; i++) {
+						if(Chess.cx-i < 0)
+							break;
+						Chess.chessPiece[Chess.cx-i][Chess.cy].setBackground(Color.YELLOW);
+					}
+					for(int i = 1 ; i < 8 ; i++) {
+						if(Chess.cx+i > 7)
+							break;
+						Chess.chessPiece[Chess.cx+i][Chess.cy].setBackground(Color.YELLOW);
+					}
+					for(int i = 1 ; i < 8 ; i++) {
+						if(Chess.cy-i < 0)
+							break;
+						Chess.chessPiece[Chess.cx][Chess.cy-i].setBackground(Color.YELLOW);
+					}
+					for(int i = 1 ; i < 8 ; i++) {
+						if(Chess.cy+i > 7)
+							break;
+						Chess.chessPiece[Chess.cx][Chess.cy+i].setBackground(Color.YELLOW);
+					}
+				} else
+					colorInit();
+			}
+			
+			
+		} else {
+			
 		}
 	}
 	
@@ -220,8 +491,9 @@ public class Chess extends Frame {
 	
 	public static JButton[][] chessPiece;
 	public static char[][] chessPieceChar;
-	//private ChessPiece[][] chess;
+	//public ChessPiece[][] chess;
 	public static ActionListener[][] chess;
+	public static ChessPiece[][] piece;
 	
 	private ActionListener[][] listener;
 	
@@ -241,20 +513,6 @@ public class Chess extends Frame {
 		for(int i = 0 ; i < 8 ; i++) {
 			for(int j = 0 ; j < 8 ; j++) {
 				listener[i][j] = new OnlyListener(i, j);
-				//chessPiece[i][j].addActionListener(listener[i][j]);
-//				if(chess[i][j] instanceof Bishop) {
-//					chessPiece[i][j].addActionListener(chess[i][j]);
-//				} else if(chess[i][j] instanceof King) {
-//					chessPiece[i][j].addActionListener(chess[i][j]);
-//				} else if(chess[i][j] instanceof Knight) {
-//					chessPiece[i][j].addActionListener(chess[i][j]);
-//				} else if(chess[i][j] instanceof Pawn) {
-//					chessPiece[i][j].addActionListener(chess[i][j]);
-//				} else if(chess[i][j] instanceof Queen) {
-//					chessPiece[i][j].addActionListener(chess[i][j]);
-//				} else if(chess[i][j] instanceof Rook) {
-//					chessPiece[i][j].addActionListener(chess[i][j]);
-//				} 
 				chessPiece[i][j].addActionListener(chess[i][j]);
 			}
 		}
@@ -341,6 +599,39 @@ public class Chess extends Frame {
 		chess[7][5] = new Bishop(1, 7, 5);
 		chess[7][6] = new Knight(1, 7, 6);
 		chess[7][7] = new Rook(1, 7, 7);
+		
+		
+		
+		piece = new ChessPiece[8][8];
+		
+		piece[0][0] = new Rook(0, 0, 0);
+		piece[0][1] = new Knight(0, 0, 1);
+		piece[0][2] = new Bishop(0, 0, 2);
+		piece[0][3] = new King(0, 0, 3);
+		piece[0][4] = new Queen(0, 0, 4);
+		piece[0][5] = new Bishop(0, 0, 5);
+		piece[0][6] = new Knight(0, 0, 6); 
+		piece[0][7] = new Rook(0, 0, 7);
+		
+		for(int i = 0 ; i < 8 ; i++) {
+			piece[1][i] = new Pawn(0, 1, i);
+			piece[6][i] = new Pawn(1, 6, i);
+		}
+		
+		for(int i = 2 ; i < 6 ; i++) {
+			for(int j = 0 ; j < 8 ; j++) {
+				piece[i][j] = new Null();
+			}
+		}
+		
+		piece[7][0] = new Rook(1, 7, 0);
+		piece[7][1] = new Knight(1, 7, 1);
+		piece[7][2] = new Bishop(1, 7, 2);
+		piece[7][3] = new King(1, 7, 3);
+		piece[7][4] = new Queen(1, 7, 4);
+		piece[7][5] = new Bishop(1, 7, 5);
+		piece[7][6] = new Knight(1, 7, 6);
+		piece[7][7] = new Rook(1, 7, 7);
 		
 	}
 }

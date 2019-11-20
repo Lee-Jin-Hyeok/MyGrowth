@@ -7,7 +7,6 @@ import project.chess.abstractclass.ChessPiece;
 
 public class Null implements ChessPiece, ActionListener {
 	
-	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Chess.cx = -1;

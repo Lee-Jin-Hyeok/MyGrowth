@@ -58,13 +58,9 @@ class Move implements ActionListener {
 					for(int i = 1 ; i < 8 ; i++) {
 						if((Chess.cx+i) > 7 || (Chess.cy+i) > 7)
 							break;
-						if((Chess.chess[Chess.cx+i][Chess.cy+i] instanceof Bishop) ||
-							(Chess.chess[Chess.cx+i][Chess.cy+i] instanceof King) ||
-							(Chess.chess[Chess.cx+i][Chess.cy+i] instanceof Knight) ||
-							(Chess.chess[Chess.cx+i][Chess.cy+i] instanceof Pawn) ||
-							(Chess.chess[Chess.cx+i][Chess.cy+i] instanceof Queen) ||
-							(Chess.chess[Chess.cx+i][Chess.cy+i] instanceof Rook)) {
-							
+						if(Chess.piece[Chess.cx+i][Chess.cy+i].getTeam() == 1) {
+							Chess.chessPiece[Chess.cx+i][Chess.cy+i].setBackground(Color.YELLOW);
+							break;
 						}
 						if(!(Chess.chess[Chess.cx+i][Chess.cy+i] instanceof Null))
 							break;
@@ -73,15 +69,33 @@ class Move implements ActionListener {
 					for(int i = 1 ; i < 8 ; i++) {
 						if((Chess.cx+i) > 7 || (Chess.cy-i) < 0)
 							break;
+						if(Chess.piece[Chess.cx+i][Chess.cy-i].getTeam() == 1) {
+							Chess.chessPiece[Chess.cx+i][Chess.cy-i].setBackground(Color.YELLOW);
+							break;
+						}
+						if(!(Chess.chess[Chess.cx+i][Chess.cy-i] instanceof Null))
+							break;
 						Chess.chessPiece[Chess.cx+i][Chess.cy-i].setBackground(Color.YELLOW);
 					}
 					for(int i = 1 ; i < 8 ; i++) {
 						if((Chess.cx-i) < 0 || (Chess.cy+i) > 7)
 							break;
+						if(Chess.piece[Chess.cx-i][Chess.cy+i].getTeam() == 1) {
+							Chess.chessPiece[Chess.cx-i][Chess.cy+i].setBackground(Color.YELLOW);
+							break;
+						}
+						if(!(Chess.chess[Chess.cx-i][Chess.cy+i] instanceof Null))
+							break;
 						Chess.chessPiece[Chess.cx-i][Chess.cy+i].setBackground(Color.YELLOW);
 					}
 					for(int i = 1 ; i < 8 ; i++) {
 						if((Chess.cx-i) < 0 || (Chess.cy-i) < 0)
+							break;
+						if(Chess.piece[Chess.cx-i][Chess.cy-i].getTeam() == 1) {
+							Chess.chessPiece[Chess.cx-i][Chess.cy-i].setBackground(Color.YELLOW);
+							break;
+						}
+						if(!(Chess.chess[Chess.cx-i][Chess.cy-i] instanceof Null))
 							break;
 						Chess.chessPiece[Chess.cx-i][Chess.cy-i].setBackground(Color.YELLOW);
 					}
@@ -97,20 +111,44 @@ class Move implements ActionListener {
 					for(int i = 1 ; i < 8 ; i++) {
 						if((Chess.cx+i) > 7 || (Chess.cy+i) > 7)
 							break;
+						if(Chess.piece[Chess.cx+i][Chess.cy+i].getTeam() == 1) {
+							Chess.chessPiece[Chess.cx+i][Chess.cy+i].setBackground(Color.YELLOW);
+							break;
+						}
+						if(!(Chess.chess[Chess.cx+i][Chess.cy+i] instanceof Null))
+							break;
 						Chess.chessPiece[Chess.cx+i][Chess.cy+i].setBackground(Color.YELLOW);
 					}
 					for(int i = 1 ; i < 8 ; i++) {
 						if((Chess.cx+i) > 7 || (Chess.cy-i) < 0)
+							break;
+						if(Chess.piece[Chess.cx+i][Chess.cy-i].getTeam() == 1) {
+							Chess.chessPiece[Chess.cx+i][Chess.cy-i].setBackground(Color.YELLOW);
+							break;
+						}
+						if(!(Chess.chess[Chess.cx+i][Chess.cy-i] instanceof Null))
 							break;
 						Chess.chessPiece[Chess.cx+i][Chess.cy-i].setBackground(Color.YELLOW);
 					}
 					for(int i = 1 ; i < 8 ; i++) {
 						if((Chess.cx-i) < 0 || (Chess.cy+i) > 7)
 							break;
+						if(Chess.piece[Chess.cx-i][Chess.cy+i].getTeam() == 1) {
+							Chess.chessPiece[Chess.cx-i][Chess.cy+i].setBackground(Color.YELLOW);
+							break;
+						}
+						if(!(Chess.chess[Chess.cx-i][Chess.cy+i] instanceof Null))
+							break;
 						Chess.chessPiece[Chess.cx-i][Chess.cy+i].setBackground(Color.YELLOW);
 					}
 					for(int i = 1 ; i < 8 ; i++) {
 						if((Chess.cx-i) < 0 || (Chess.cy-i) < 0)
+							break;
+						if(Chess.piece[Chess.cx-i][Chess.cy-i].getTeam() == 1) {
+							Chess.chessPiece[Chess.cx-i][Chess.cy-i].setBackground(Color.YELLOW);
+							break;
+						}
+						if(!(Chess.chess[Chess.cx-i][Chess.cy-i] instanceof Null))
 							break;
 						Chess.chessPiece[Chess.cx-i][Chess.cy-i].setBackground(Color.YELLOW);
 					}
@@ -632,6 +670,13 @@ public class Chess extends Frame {
 		piece[7][5] = new Bishop(1, 7, 5);
 		piece[7][6] = new Knight(1, 7, 6);
 		piece[7][7] = new Rook(1, 7, 7);
+		
+		for(int i = 0 ; i < 8 ; i++) {
+			for(int j = 0 ; j < 8 ; j++) {
+				System.out.print(piece[i][j].getTeam() + " ");
+			}
+			System.out.println();
+		}
 		
 	}
 }

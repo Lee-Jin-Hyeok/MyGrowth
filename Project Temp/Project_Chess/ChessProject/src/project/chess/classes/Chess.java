@@ -285,7 +285,10 @@ class Move implements ActionListener {
 					Chess.chessPiece[Chess.cx][Chess.cy].setBackground(Color.GREEN);
 					
 					if((Chess.cx-2 > -1) && (Chess.cy-1 > -1)) {
-						Chess.chessPiece[Chess.cx-2][Chess.cy-1].setBackground(Color.YELLOW);
+						if(Chess.piece[Chess.cx-2][Chess.cy-1].getTeam() == 0)
+							Chess.chessPiece[Chess.cx-2][Chess.cy-1].setBackground(Color.RED);
+						else if(Chess.chess[Chess.cx-2][Chess.cy-1] instanceof Null)
+							Chess.chessPiece[Chess.cx-2][Chess.cy-1].setBackground(Color.YELLOW);
 					}
 					if((Chess.cx-2 > -1) && (Chess.cy+1 < 8)) {
 						Chess.chessPiece[Chess.cx-2][Chess.cy+1].setBackground(Color.YELLOW);

@@ -49,7 +49,13 @@ class Move implements ActionListener {
 				Chess.piece[Chess.cx][Chess.cy] = Chess.piece[Chess.tx][Chess.ty];
 				Chess.piece[Chess.tx][Chess.ty] = new Null(-1, Chess.tx, Chess.ty);
 				
-				//Chess.chessPieceChar[Chess.cx][]
+				String temp1 = Chess.chessPiece[Chess.tx][Chess.ty].getText();
+				Chess.chessPiece[Chess.tx][Chess.ty].setText(Chess.chessPiece[Chess.cx][Chess.cy].getText());
+				Chess.chessPiece[Chess.cx][Chess.cy].setText(temp1);
+			
+				ChessPiece temp2 = Chess.piece[Chess.cx][Chess.cy];
+				Chess.piece[Chess.cx][Chess.cy]= Chess.piece[Chess.tx][Chess.ty];
+				Chess.piece[Chess.tx][Chess.ty] = temp2;
 			}
 		} else if(Chess.chess[Chess.cx][Chess.cy] instanceof Bishop) {
 			if(((Bishop) Chess.chess[Chess.cx][Chess.cy]).getTeam() == 0) {
@@ -795,11 +801,12 @@ class Move implements ActionListener {
 	}
 	
 	public void greenCheck() {
-		for(int i = 0 ; i < 8 ; i++) {
+		root:for(int i = 0 ; i < 8 ; i++) {
 			for(int j = 0 ; j < 8 ; j++) {
 				if(Chess.chessPiece[i][j].getBackground() == Color.GREEN) {
 					Chess.tx = i;
 					Chess.ty = j;
+					break root;
 				}
 			}
 		}

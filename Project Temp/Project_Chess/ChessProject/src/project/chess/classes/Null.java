@@ -7,15 +7,19 @@ import project.chess.abstractclass.ChessPiece;
 
 public class Null implements ChessPiece, ActionListener {
 	private int team;
+	private int xpos;
+	private int ypos;
 	
-	public Null(int team) {
+	public Null(int team, int xpos, int ypos) {
 		this.team = team;
+		this.xpos = xpos;
+		this.ypos = ypos;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Chess.cx = -1;
-		Chess.cy = -1;
+		Chess.cx = this.xpos;
+		Chess.cy = this.ypos;
 	}
 
 	@Override
@@ -39,13 +43,13 @@ public class Null implements ChessPiece, ActionListener {
 	@Override
 	public int getXpos() {
 		// TODO Auto-generated method stub
-		return 0;
+		return xpos;
 	}
 
 	@Override
 	public int getYpos() {
 		// TODO Auto-generated method stub
-		return 0;
+		return ypos;
 	}
 
 }

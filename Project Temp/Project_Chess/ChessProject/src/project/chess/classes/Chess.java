@@ -44,9 +44,13 @@ class Move implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(Chess.piece[Chess.cx][Chess.cy] instanceof Null) {
-			
-			
-			
+			if(Chess.chessPiece[Chess.cx][Chess.cy].getBackground() == Color.YELLOW) {
+				greenCheck();
+				Chess.piece[Chess.cx][Chess.cy] = Chess.piece[Chess.tx][Chess.ty];
+				Chess.piece[Chess.tx][Chess.ty] = new Null(-1, Chess.tx, Chess.ty);
+				
+				//Chess.chessPieceChar[Chess.cx][]
+			}
 		} else if(Chess.chess[Chess.cx][Chess.cy] instanceof Bishop) {
 			if(((Bishop) Chess.chess[Chess.cx][Chess.cy]).getTeam() == 0) {
 				if(!(Chess.chessPiece[Chess.cx][Chess.cy].getBackground() == Color.GREEN)) {
@@ -790,6 +794,17 @@ class Move implements ActionListener {
 		}
 	}
 	
+	public void greenCheck() {
+		for(int i = 0 ; i < 8 ; i++) {
+			for(int j = 0 ; j < 8 ; j++) {
+				if(Chess.chessPiece[i][j].getBackground() == Color.GREEN) {
+					Chess.tx = i;
+					Chess.ty = j;
+				}
+			}
+		}
+	}
+	
 }
 
 public class Chess extends Frame {
@@ -807,6 +822,9 @@ public class Chess extends Frame {
 	
 	public static int cx;
 	public static int cy;
+	
+	public static int tx;
+	public static int ty;
 
 	public Chess() {
 		FirstSetting();

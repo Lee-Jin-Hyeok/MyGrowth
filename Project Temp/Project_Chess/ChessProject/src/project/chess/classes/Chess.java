@@ -56,17 +56,17 @@ class Move implements ActionListener {
 				} catch (CloneNotSupportedException e1) {
 					e1.printStackTrace();
 				}
-				
-				colorInit();
 			} else if(Chess.chessPiece[Chess.cx][Chess.cy].getBackground() == Color.RED) {
 				greenCheck();
 
 				Chess.chessPiece[Chess.cx][Chess.cy].setText(Chess.chessPiece[Chess.tx][Chess.ty].getText());
 				Chess.chessPiece[Chess.tx][Chess.ty].setText(null);
-				
-				
-				
-				colorInit();
+
+				try {
+					deepKillCopy();
+				} catch (CloneNotSupportedException e1) {
+					e1.printStackTrace();
+				}
 			} else {
 				colorInit();
 			}
@@ -885,6 +885,7 @@ class Move implements ActionListener {
 			Chess.piece[Chess.tx][Chess.ty] = temp;
 			Chess.piece[Chess.cx][Chess.cy] = temp2;
 		}
+		colorInit();
 	}
 	
 	public void deepKillCopy() throws CloneNotSupportedException {
@@ -894,35 +895,21 @@ class Move implements ActionListener {
 		int typos = Chess.ty;
 		if(Chess.piece[Chess.tx][Chess.ty] instanceof Pawn) {
 			Chess.piece[Chess.cx][Chess.cy] = (Pawn)Chess.piece[Chess.tx][Chess.ty];
-			Chess.piece[Chess.tx][Chess.ty] = null;
-			Chess.piece[Chess.cx][Chess.cy].setXpos(cxpos);
-			Chess.piece[Chess.cx][Chess.cy].setYpos(cypos);
 		} else if(Chess.piece[Chess.tx][Chess.ty] instanceof Bishop) {
 			Chess.piece[Chess.cx][Chess.cy] = (Bishop)Chess.piece[Chess.tx][Chess.ty];
-			Chess.piece[Chess.tx][Chess.ty] =  new Null(-1, txpos, typos);
-			Chess.piece[Chess.cx][Chess.cy].setXpos(cxpos);
-			Chess.piece[Chess.cx][Chess.cy].setYpos(cypos);
 		} else if(Chess.piece[Chess.tx][Chess.ty] instanceof King) {
 			Chess.piece[Chess.cx][Chess.cy] = (King)Chess.piece[Chess.tx][Chess.ty];
-			Chess.piece[Chess.tx][Chess.ty] =  new Null(-1, txpos, typos);
-			Chess.piece[Chess.cx][Chess.cy].setXpos(cxpos);
-			Chess.piece[Chess.cx][Chess.cy].setYpos(cypos);
 		} else if(Chess.piece[Chess.tx][Chess.ty] instanceof Knight) {
 			Chess.piece[Chess.cx][Chess.cy] = (Knight)Chess.piece[Chess.tx][Chess.ty];
-			Chess.piece[Chess.tx][Chess.ty] =  new Null(-1, txpos, typos);
-			Chess.piece[Chess.cx][Chess.cy].setXpos(cxpos);
-			Chess.piece[Chess.cx][Chess.cy].setYpos(cypos);
 		} else if(Chess.piece[Chess.tx][Chess.ty] instanceof Queen) {
 			Chess.piece[Chess.cx][Chess.cy] = (Queen)Chess.piece[Chess.tx][Chess.ty];
-			Chess.piece[Chess.tx][Chess.ty] =  new Null(-1, txpos, typos);
-			Chess.piece[Chess.cx][Chess.cy].setXpos(cxpos);
-			Chess.piece[Chess.cx][Chess.cy].setYpos(cypos);
 		} else if(Chess.piece[Chess.tx][Chess.ty] instanceof Rook) {
 			Chess.piece[Chess.cx][Chess.cy] = (Rook)Chess.piece[Chess.tx][Chess.ty];
-			Chess.piece[Chess.tx][Chess.ty] =  new Null(-1, txpos, typos);
-			Chess.piece[Chess.cx][Chess.cy].setXpos(cxpos);
-			Chess.piece[Chess.cx][Chess.cy].setYpos(cypos);
 		}
+		Chess.piece[Chess.tx][Chess.ty] = new Null(-1, txpos, typos);
+		Chess.piece[Chess.cx][Chess.cy].setXpos(cxpos);
+		Chess.piece[Chess.cx][Chess.cy].setYpos(cypos);
+		colorInit();
 	}
 }
 

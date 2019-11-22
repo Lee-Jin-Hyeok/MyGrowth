@@ -928,6 +928,7 @@ class Move implements ActionListener {
 		Chess.piece[Chess.cx][Chess.cy].setYpos(cypos);
 		colorInit();
 		
+		
 		return status;
 	}
 	

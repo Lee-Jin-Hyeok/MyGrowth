@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import project.chess.abstractclass.ChessPiece;
 
-public class Bishop implements ChessPiece, ActionListener {
+public class Bishop implements ChessPiece, ActionListener, Cloneable {
 	private int team;
 	private int xpos;
 	private int ypos;
@@ -16,6 +16,11 @@ public class Bishop implements ChessPiece, ActionListener {
 		this.ypos = ypos;
 	}
 	
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		return super.clone();
+	}
+
 	@Override
 	public void view() {
 		
@@ -45,4 +50,20 @@ public class Bishop implements ChessPiece, ActionListener {
 	public int getYpos() {
 		return ypos;
 	}
+
+	@Override
+	public void setTeam(int team) {
+		this.team = team;
+	}
+
+	@Override
+	public void setXpos(int xpos) {
+		this.xpos = xpos;
+	}
+
+	@Override
+	public void setYpos(int ypos) {
+		this.ypos = ypos;
+	}
+
 }

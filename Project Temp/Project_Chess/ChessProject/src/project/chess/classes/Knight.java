@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import project.chess.abstractclass.ChessPiece;
 
-public class Knight implements ChessPiece, ActionListener {
+public class Knight implements ChessPiece, ActionListener, Cloneable {
 	private int team;
 	private int xpos;
 	private int ypos;
@@ -23,6 +23,11 @@ public class Knight implements ChessPiece, ActionListener {
 	@Override
 	public void move() {
 		
+	}
+	
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		return super.clone();
 	}
 
 	@Override
@@ -44,5 +49,20 @@ public class Knight implements ChessPiece, ActionListener {
 	@Override
 	public int getYpos() {
 		return ypos;
+	}
+	
+	@Override
+	public void setTeam(int team) {
+		this.team = team;
+	}
+
+	@Override
+	public void setXpos(int xpos) {
+		this.xpos = xpos;
+	}
+
+	@Override
+	public void setYpos(int ypos) {
+		this.ypos = ypos;
 	}
 }

@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import project.chess.abstractclass.ChessPiece;
 
-public class Null implements ChessPiece, ActionListener {
+public class Null implements ChessPiece, ActionListener, Cloneable {
 	private int team;
 	private int xpos;
 	private int ypos;
@@ -24,14 +24,17 @@ public class Null implements ChessPiece, ActionListener {
 
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void move() {
-		// TODO Auto-generated method stub
 		
+	}
+	
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		return super.clone();
 	}
 
 	@Override
@@ -50,6 +53,21 @@ public class Null implements ChessPiece, ActionListener {
 	public int getYpos() {
 		// TODO Auto-generated method stub
 		return ypos;
+	}
+	
+	@Override
+	public void setTeam(int team) {
+		this.team = team;
+	}
+
+	@Override
+	public void setXpos(int xpos) {
+		this.xpos = xpos;
+	}
+
+	@Override
+	public void setYpos(int ypos) {
+		this.ypos = ypos;
 	}
 
 }

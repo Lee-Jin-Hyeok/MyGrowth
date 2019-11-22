@@ -6,4 +6,7 @@ public interface ChessPiece {
 	public int getTeam();
 	public int getXpos();
 	public int getYpos();
+	public void setTeam(int team);
+	public void setXpos(int xpos);
+	public void setYpos(int ypos);
 }

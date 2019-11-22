@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import project.chess.abstractclass.ChessPiece;
@@ -46,7 +47,6 @@ class Move implements ActionListener {
 		if((Chess.piece[Chess.cx][Chess.cy] instanceof Null) || (Chess.chessPiece[Chess.cx][Chess.cy].getBackground() == Color.RED)) {
 			if(Chess.chessPiece[Chess.cx][Chess.cy].getBackground() == Color.YELLOW) {
 				greenCheck();
-				
 				String temp = Chess.chessPiece[Chess.tx][Chess.ty].getText();
 				Chess.chessPiece[Chess.tx][Chess.ty].setText(Chess.chessPiece[Chess.cx][Chess.cy].getText());
 				Chess.chessPiece[Chess.cx][Chess.cy].setText(temp);
@@ -57,15 +57,24 @@ class Move implements ActionListener {
 					e1.printStackTrace();
 				}
 			} else if(Chess.chessPiece[Chess.cx][Chess.cy].getBackground() == Color.RED) {
+				int status = 0;
+				
 				greenCheck();
-
 				Chess.chessPiece[Chess.cx][Chess.cy].setText(Chess.chessPiece[Chess.tx][Chess.ty].getText());
 				Chess.chessPiece[Chess.tx][Chess.ty].setText(null);
 
 				try {
-					deepKillCopy();
+					status = deepKillCopy();
 				} catch (CloneNotSupportedException e1) {
 					e1.printStackTrace();
+				}
+				
+				if(status == 1) {
+					JOptionPane.showMessageDialog(null, "흰 팀이 승리 하였습니다.", "게임이 종료되었습니다.", status);
+					System.exit(0);
+				} else if(status == 2) {
+					JOptionPane.showMessageDialog(null, "검은 팀이 승리 하였습니다.", "게임이 종료되었습니다.", status);
+					System.exit(0);
 				}
 			} else {
 				colorInit();
@@ -830,6 +839,7 @@ class Move implements ActionListener {
 		int cypos = Chess.cy;
 		int txpos = Chess.tx;
 		int typos = Chess.ty;
+		
 		if(Chess.piece[Chess.tx][Chess.ty] instanceof Pawn) {
 			Null temp = (Null)Chess.piece[Chess.cx][Chess.cy];
 			Pawn temp2 = (Pawn)Chess.piece[Chess.tx][Chess.ty];
@@ -888,11 +898,18 @@ class Move implements ActionListener {
 		colorInit();
 	}
 	
-	public void deepKillCopy() throws CloneNotSupportedException {
+	public int deepKillCopy() throws CloneNotSupportedException {
 		int cxpos = Chess.cx;
 		int cypos = Chess.cy;
 		int txpos = Chess.tx;
 		int typos = Chess.ty;
+		int status = 0;
+		
+		if(Chess.piece[Chess.cx][Chess.cy] instanceof King) {
+			if(Chess.piece[Chess.cx][Chess.cy].getTeam() == 0) status = 1; // 흰팀 승리
+			else status = 2; // 검은팀 승리
+		}
+		
 		if(Chess.piece[Chess.tx][Chess.ty] instanceof Pawn) {
 			Chess.piece[Chess.cx][Chess.cy] = (Pawn)Chess.piece[Chess.tx][Chess.ty];
 		} else if(Chess.piece[Chess.tx][Chess.ty] instanceof Bishop) {
@@ -910,6 +927,54 @@ class Move implements ActionListener {
 		Chess.piece[Chess.cx][Chess.cy].setXpos(cxpos);
 		Chess.piece[Chess.cx][Chess.cy].setYpos(cypos);
 		colorInit();
+		
+		return status;
+	}
+	
+	public boolean isCheckMate() {
+		for(int i = 0 ; i < 8 ; i++) {
+			for(int j = 0 ; j < 8 ; j++) {
+				if(Chess.piece[i][j] instanceof Bishop) {
+					if(Chess.piece[i][j].getTeam() == 0) {
+						
+					} else {
+						
+					}
+				} else if(Chess.piece[i][j] instanceof King) {
+					if(Chess.piece[i][j].getTeam() == 0) {
+						
+					} else {
+						
+					}
+				} else if(Chess.piece[i][j] instanceof Knight) {
+					if(Chess.piece[i][j].getTeam() == 0) {
+						
+					} else {
+						
+					}
+				} else if(Chess.piece[i][j] instanceof Pawn) {
+					if(Chess.piece[i][j].getTeam() == 0) {
+						
+					} else {
+						
+					}
+				} else if(Chess.piece[i][j] instanceof Queen) {
+					if(Chess.piece[i][j].getTeam() == 0) {
+						
+					} else {
+						
+					}
+				} else if(Chess.piece[i][j] instanceof Rook) {
+					if(Chess.piece[i][j].getTeam() == 0) {
+						
+					} else {
+						
+					}
+				}
+			}
+		}
+		
+		return false;
 	}
 }
 
@@ -925,6 +990,8 @@ public class Chess extends Frame {
 	public static ChessPiece[][] piece;
 	
 	private ActionListener[][] listener;
+	
+	public static int[][] checkmate;
 	
 	public static int cx;
 	public static int cy;
@@ -1074,5 +1141,12 @@ public class Chess extends Frame {
 			System.out.println();
 		}
 		
+		checkmate = new int[8][8];
+		
+		for(int i = 0 ; i < 8 ; i++) {
+			for(int j = 0 ; j < 8 ; j++) {
+				checkmate[i][j] = 0;
+			}
+		}
 	}
 }

@@ -133,22 +133,6 @@ body, html {
     margin-top : 5%;
 }
 
-#non-check_id {
-    display : block;
-}
-
-#check_id {
-    display : none;
-}
-
-#non-check_email {
-    display : block;
-}
-
-#check_email {
-    display : none;
-}
-
 .join_text {
     width : 80%;
     height : 70px;

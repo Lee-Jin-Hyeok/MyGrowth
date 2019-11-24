@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%><%!
     String ctxPath = null;
     String id = null;
@@ -6,7 +6,7 @@
 %><%
 	ctxPath = request.getContextPath();
 	request.setCharacterEncoding("UTF-8");
-
+	
 	id = request.getParameter("id");
 	pw = request.getParameter("pw");
 	
@@ -23,4 +23,4 @@
 		System.out.println("비밀번호 불일치");
 	
 	response.sendRedirect( ctxPath + "/index.jsp" );
-%><!DOCTYPE html>
+	%><!DOCTYPE html>

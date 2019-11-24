@@ -10,7 +10,7 @@
     padding : 0px;
     margin : 0px;
     font-family: "BRBA_B";
-    font-size : 35px;
+    font-size : 50px;
 }
 
 body, html {
@@ -45,36 +45,88 @@ body, html {
     color : white;
 }
 
-#login-bar {    
+.login_join {
     width : 75%;
-    height : 30%;
+    height : 150px;
     background-color : white;
-    position : relative;
-    left : 11%;
-    top : 15%;
-    border-radius : 70px 70px 70px 70px;
     border : 10px solid #ffc0cb;
-}
-
-#login {
-    text-align : center;
+    border-radius : 70px 70px 70px 70px;
+    font-size : 50px;
     color : #ffc0cb;
-}
-
-#join-bar {
-    width : 75%;
-    height : 30%;
-    background-color : white;
     position : relative;
-    left : 11%;
-    top : 30%;
-    border-radius : 70px 70px 70px 70px;
-    border : 10px solid #ffc0cb;
+    left : 12%;
+    margin-top : 8%;
 }
 
 #help {
     float : right;
     margin-right : 15%;
     margin-top : 2%;
+    color : white;
+}
+
+.modal {
+    display : none;
+    position : fixed;
+    z-index : 1;
+    width : 100%;
+    height : 100%;
+    left : 0%;
+    top : 0%;
+    background-color : #000000af;
+}
+
+#modal_login-content {
+    background-color : #fefefe;
+    margin : 50% auto;
+    width : 70%;
+    height : 40%;
+    border : 10px solid #ffc0cb;
+}
+
+#modal_join-content {
+    background-color : #fefefe;
+    margin : 20% auto;
+    width : 80%;
+    height : 80%;
+    border : 10px solid #ffc0cb;
+}
+
+.modal_name {
+    color : #ffc0cb;
+    position : relative;
+    left : 10%;
+    margin-top : 10%;
+}
+
+.modal_text {
+    width : 80%;
+    height : 70px;
+    border : 5px solid #ffc0cb;
+    position : relative;
+    left : 10%;
+    margin-top : 1%;
+
+    font-size : 40px;
+}
+
+.modal_submit {
+    width : 60%;
+    height : 80px;
+    background-color : #ffc0cb;
+    border : 5px solid #ffc0cb;
+    border-radius : 70px 70px 70px 70px;
+    position : relative;
+    left : 20%;
+    margin-top : 15%;
+    
+    color : white;
+}
+
+.close {
+    font-size : 60px;
+    float : right;
+    position : relative;
+    right : 2%;
     color : #ffc0cb;
 }

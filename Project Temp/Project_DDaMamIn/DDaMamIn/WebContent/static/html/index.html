@@ -20,7 +20,7 @@
 
     <div class="modal">
         <div id="modal_login-content">
-            <p class="close">X</p>
+            <p class="close"> X </p>
             <form method="GET" action="login2.jsp">
                 <p class="login_name">아이디</p>
                 <input type="text" name="id" class="login_text" placeholder=" 아아디를 입력해주세요."/>
@@ -33,7 +33,7 @@
 
     <div class="modal">
         <div id="modal_join-content">
-            <p class="close">X</p>
+            <p class="close"> X </p>
             <p class="join_name">아이디</p>
             <div id="non-check_id">
                 <form method="GET" action="checkId2.jsp">
@@ -53,15 +53,16 @@
                 <input type="text" name="name" class="join_text" placeholder=" 한글 5자, 영어 10자 (특수기호 제외)"/>
                 <p class="join_name">이메일</p>
                 <div id="check_email">
-                    <input type="email" name="email" class="join_text" placeholder=" ex) example@exam.com" readonly/>
+                        <input type="email" name="email" class="join_text" placeholder=" ex) example@exam.com" readonly/>
+                    </div>
+                <div id="non-check_email">
+                    <form method="GET" action="checkEmail.jsp">
+                        <input type="email" name="email" id="join_text_email" placeholder=" ex) example@exam.com"/>
+                        <button id="join_text_email_check">Check</button>
+                    </form>
                 </div>
+                <button class="join_submit">J O I N</button>
             </form>
-            <div id="non-check_email">
-                <form method="GET" action="checkEmail.jsp">
-                    <input type="email" name="email" id="join_text_email" placeholder=" ex) example@exam.com"/>
-                    <button id="join_text_email_check">Check</button>
-                </form>
-            </div>
         </div>
     </div>
 

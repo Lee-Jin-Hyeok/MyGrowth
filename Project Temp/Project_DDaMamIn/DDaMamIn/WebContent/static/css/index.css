@@ -1,0 +1,80 @@
+@font-face {
+    font-family: "BRBA_B";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/BRBA_B.woff")
+    format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    padding : 0px;
+    margin : 0px;
+    font-family: "BRBA_B";
+    font-size : 35px;
+}
+
+body, html {
+    width : 100%;
+    height : 100%;
+    background-color : #7F00FFFF;
+}
+
+#header {
+    width : 100%;
+    height : 35%;
+}
+
+#main {
+    width : 100%;
+    height : 30%;
+}
+
+#footer {
+    width : 100%;
+    height : 35%;
+}
+
+
+
+
+#title {
+    font-size : 120px;
+    text-align: center;
+    position : relative;
+    top : 450px;
+    color : white;
+}
+
+#login-bar {    
+    width : 75%;
+    height : 30%;
+    background-color : white;
+    position : relative;
+    left : 11%;
+    top : 15%;
+    border-radius : 70px 70px 70px 70px;
+    border : 10px solid #ffc0cb;
+}
+
+#login {
+    text-align : center;
+    color : #ffc0cb;
+}
+
+#join-bar {
+    width : 75%;
+    height : 30%;
+    background-color : white;
+    position : relative;
+    left : 11%;
+    top : 30%;
+    border-radius : 70px 70px 70px 70px;
+    border : 10px solid #ffc0cb;
+}
+
+#help {
+    float : right;
+    margin-right : 15%;
+    margin-top : 2%;
+    color : #ffc0cb;
+}

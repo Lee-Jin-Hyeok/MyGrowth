@@ -84,22 +84,14 @@ body, html {
     border : 10px solid #ffc0cb;
 }
 
-#modal_join-content {
-    background-color : #fefefe;
-    margin : 20% auto;
-    width : 80%;
-    height : 80%;
-    border : 10px solid #ffc0cb;
-}
-
-.modal_name {
+.login_name {
     color : #ffc0cb;
     position : relative;
     left : 10%;
     margin-top : 10%;
 }
 
-.modal_text {
+.login_text {
     width : 80%;
     height : 70px;
     border : 5px solid #ffc0cb;
@@ -110,7 +102,7 @@ body, html {
     font-size : 40px;
 }
 
-.modal_submit {
+.login_submit {
     width : 60%;
     height : 80px;
     background-color : #ffc0cb;
@@ -122,6 +114,112 @@ body, html {
     
     color : white;
 }
+
+
+
+
+#modal_join-content {
+    background-color : #fefefe;
+    margin : 20% auto;
+    width : 80%;
+    height : 80%;
+    border : 10px solid #ffc0cb;
+}
+
+.join_name {
+    color : #ffc0cb;
+    position : relative;
+    left : 10%;
+    margin-top : 5%;
+}
+
+#non-check_id {
+    display : block;
+}
+
+#check_id {
+    display : none;
+}
+
+#non-check_email {
+    display : block;
+}
+
+#check_email {
+    display : none;
+}
+
+.join_text {
+    width : 80%;
+    height : 70px;
+    border : 5px solid #ffc0cb;
+    position : relative;
+    left : 10%;
+    margin-top : 1%;
+
+    font-size : 40px;
+}
+
+#join_text_id {
+    width : 65%;
+    height : 70px;
+    border : 5px solid #ffc0cb;
+    position : relative;
+    left : 10%;
+    margin-top : 1%;
+
+    font-size : 40px;
+}
+
+#join_text_id_check {
+    width : 14%;
+    height : 75px;
+    background-color : #ffc0cb;
+    border : 5px solid #ffc0cb;
+    position : relative;
+    left : 9%;
+    font-size : 35px;
+    color : white
+}
+
+#join_text_email {
+    width : 65%;
+    height : 70px;
+    border : 5px solid #ffc0cb;
+    position : relative;
+    left : 10%;
+    margin-top : 1%;
+
+    font-size : 40px;
+}
+
+#join_text_email_check {
+    width : 14%;
+    height : 75px;
+    background-color : #ffc0cb;
+    border : 5px solid #ffc0cb;
+    position : relative;
+    left : 9%;
+    font-size : 35px;
+    color : white
+}
+
+
+.join_submit {
+    width : 60%;
+    height : 80px;
+    background-color : #ffc0cb;
+    border : 5px solid #ffc0cb;
+    border-radius : 70px 70px 70px 70px;
+    position : relative;
+    left : 20%;
+    margin-top : 15%;
+    
+    color : white;
+}
+
+
+
 
 .close {
     font-size : 60px;

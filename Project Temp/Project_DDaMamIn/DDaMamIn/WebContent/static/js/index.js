@@ -22,3 +22,23 @@ function close_modal() {
 
 close_login_btn.onclick = close_modal;
 close_join_btn.onclick = close_modal;
+
+
+
+var non_check_id = document.getElementById("non-check_id");
+var check_id = document.getElementById("check_id");
+var join_text_id_check = document.getElementById("join_text_id_check");
+
+join_text_id_check.onclick = function() {
+    non_check_id.style.display = "none";
+    check_id.style.display = "block";
+}
+
+var non_check_email = document.getElementById("non_check_email");
+var check_email = document.getElementById("check_email");
+var join_text_email_check = document.getElementById("join_text_email_check");
+
+join_text_email_check.onclick = function() {
+    non_check_email.style.display = "none";
+    check_email.style.display = "block";
+}

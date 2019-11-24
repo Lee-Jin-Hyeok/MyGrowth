@@ -20,7 +20,7 @@
 			status = 0;					// 아아디 확인 및 이메일 인증 안 함
 		}
 	}
-	status = 3;
+	status = 0;
 	
 %><!DOCTYPE html>
 <html>
@@ -57,50 +57,80 @@
 
 	<% if(status == 0) { %>
     <div class="modal">
-        <div id="modal_join-content">
-            <p class="close"> X </p>
-            <p class="join_name">아이디</p>
-            <div id="non-check_id">
-                <form method="GET" action="./checkId2.jsp">
-                    <input type="text" name="id" id="join_text_id" placeholder=" 최소 4자이상 최대 16자이하"/>
-                    <button id="join_text_id_check">Check</button>
-                </form>
-            </div>
-            <form method="POST" action="./join2.jsp">
-                <div id="check_id">
-                    <input type="text" name="id" class="join_text" placeholder=" 최소 4자이상 최대 16자이하" readonly/>
-                </div>
-                <p class="join_name">비밀번호</p>
-                <input type="password" name="pw" class="join_text" placeholder=" 숫자, 문자, 특수기호 반드시 포함"/>
-                <p class="join_name">비밀번호 확인</p>
-                <input type="text" name="id" class="join_text" placeholder=" 최소 4자이상 최대 16자이상"/>
-                <p class="join_name">닉네임</p>
-                <input type="text" name="name" class="join_text" placeholder=" 한글 5자, 영어 10자 (특수기호 제외)"/>
-                <p class="join_name">이메일</p>
-	            <div id="non-check_email">
-	                <form method="GET" action="./checkEmail.jsp">
-	                    <input type="email" name="email" id="join_text_email" placeholder=" ex) example@exam.com"/>
-	                    <button id="join_text_email_check">Check</button>
-	                </form>
-	            </div>
-                <div id="check_email">
-                    <input type="email" name="email" class="join_text" placeholder=" ex) example@exam.com" readonly/>
-                </div>
-                <button class="join_submit">J O I N</button>
-            </form>
-        </div>
+		<div id="modal_join-content">
+		    <p class="close"> X </p>
+		    
+			    <form method="GET" action="./checkId2.jsp">
+			    	<p class="join_name">아이디</p>
+			        <input type="text" name="id" id="join_text_id" placeholder=" 최소 4자이상 최대 16자이하"/>
+			        <button id="join_text_id_check">Check</button>
+			    </form>
+		        <p class="join_name">비밀번호</p>
+		        <input type="password" name="pw" class="join_text" placeholder=" 숫자, 문자, 특수기호 반드시 포함"/>
+		        <p class="join_name">비밀번호 확인</p>
+		        <input type="text" name="id" class="join_text" placeholder=" 최소 4자이상 최대 16자이상"/>
+		        <p class="join_name">닉네임</p>
+		        <input type="text" name="name" class="join_text" placeholder=" 한글 5자, 영어 10자 (특수기호 제외)"/>
+		        <p class="join_name">이메일</p>
+		        <form method="GET" action="./checkEmail.jsp">
+				    <input type="email" name="email" id="join_text_email" placeholder=" ex) example@exam.com"/>
+				    <button id="join_text_email_check">Check</button>
+				</form>
+		        <button class="join_submit">J O I N</button>
+		    
+		</div>
     </div>
     <% } else if(status == 1) { %>
-    
+    <div class="modal">
+		<div id="modal_join-content">
+		    <p class="close"> X </p>
+		    
+			    <form method="GET" action="./checkId2.jsp">
+			    	<p class="join_name">아이디</p>
+			        <input type="text" name="id" id="join_text_id" placeholder=" 최소 4자이상 최대 16자이하"/>
+			        <button id="join_text_id_check">Check</button>
+			    </form>
+		        <p class="join_name">비밀번호</p>
+		        <input type="password" name="pw" class="join_text" placeholder=" 숫자, 문자, 특수기호 반드시 포함"/>
+		        <p class="join_name">비밀번호 확인</p>
+		        <input type="text" name="id" class="join_text" placeholder=" 최소 4자이상 최대 16자이상"/>
+		        <p class="join_name">닉네임</p>
+		        <input type="text" name="name" class="join_text" placeholder=" 한글 5자, 영어 10자 (특수기호 제외)"/>
+		        <p class="join_name">이메일</p>
+		        <input type="email" name="email" class="join_text" placeholder=" ex) example@exam.com" readonly/>
+		        <button class="join_submit">J O I N</button>
+		    
+		</div>
+    </div>
     <% } else if(status == 2) { %>
-    
+    <div class="modal">
+		<div id="modal_join-content">
+		    <p class="close"> X </p>
+		    
+		    	<p class="join_name">아이디</p>
+		        <input type="text" name="id" class="join_text" placeholder=" 최소 4자이상 최대 16자이하" readonly/>
+		        <p class="join_name">비밀번호</p>
+		        <input type="password" name="pw" class="join_text" placeholder=" 숫자, 문자, 특수기호 반드시 포함"/>
+		        <p class="join_name">비밀번호 확인</p>
+		        <input type="text" name="id" class="join_text" placeholder=" 최소 4자이상 최대 16자이상"/>
+		        <p class="join_name">닉네임</p>
+		        <input type="text" name="name" class="join_text" placeholder=" 한글 5자, 영어 10자 (특수기호 제외)"/>
+		        <form method="GET" action="./checkEmail.jsp">
+		        	<p class="join_name">이메일</p>
+				    <input type="email" name="email" id="join_text_email" placeholder=" ex) example@exam.com"/>
+				    <button id="join_text_email_check">Check</button>
+				</form>
+		        <button class="join_submit">J O I N</button>
+		    
+		</div>
+    </div>
     <% } else if(status == 3) { %>
    	<div class="modal">
 		<div id="modal_join-content">
 		    <p class="close"> X </p>
-		    <p class="join_name">아이디</p>
 		    
 		    <form method="POST" action="./join2.jsp">
+		    	<p class="join_name">아이디</p>
 		        <input type="text" name="id" class="join_text" placeholder=" 최소 4자이상 최대 16자이하" readonly/>
 		        <p class="join_name">비밀번호</p>
 		        <input type="password" name="pw" class="join_text" placeholder=" 숫자, 문자, 특수기호 반드시 포함"/>
@@ -124,21 +154,3 @@
     <script src="static/js/index.js"></script>
 </body>
 </html>
-
-<!--
-
-<div id="non-check_id">
-    <form method="GET" action="./checkId2.jsp">
-        <input type="text" name="id" id="join_text_id" placeholder=" 최소 4자이상 최대 16자이하"/>
-        <button id="join_text_id_check">Check</button>
-    </form>
-</div>
-
-<div id="non-check_email">
-	<form method="GET" action="./checkEmail.jsp">
-	    <input type="email" name="email" id="join_text_email" placeholder=" ex) example@exam.com"/>
-	    <button id="join_text_email_check">Check</button>
-	</form>
-</div>
-
--->

@@ -10,10 +10,10 @@ public class UserDAO {
 	
 	public void insert(UserVO vo) {
 		String sql = "insert into user"
-				+ "(u_pw, u_name, u_email) "
-				+ "values(?,?,?)";
+				+ "(u_id, u_pw, u_name, u_email) "
+				+ "values(?,?,?,?)";
 		try {
-			jdbc.update(sql, vo.getU_pw(), vo.getU_name(), vo.getU_email());
+			jdbc.update(sql, vo.getU_id(), vo.getU_pw(), vo.getU_name(), vo.getU_email());
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

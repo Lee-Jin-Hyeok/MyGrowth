@@ -15,6 +15,7 @@ CREATE TABLE post(
     p_title VARCHAR(32) NOT NULL,
     p_content VARCHAR(512) NOT NULL,
     p_date DATETIME NOT NULL,
+    p_likecnt INT(11) NOT NULL,
     PRIMARY KEY(p_id),
     u_id VARCHAR(16) NOT NULL
 );

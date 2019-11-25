@@ -77,7 +77,6 @@
 				    <button id="join_text_email_check">Check</button>
 				</form>
 		        <button class="join_submit">J O I N</button>
-		    
 		</div>
     </div>
     <% } else if(status == 1) { %>

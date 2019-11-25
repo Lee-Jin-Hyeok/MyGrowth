@@ -23,4 +23,4 @@
 		System.out.println("비밀번호 불일치");
 	
 	response.sendRedirect( ctxPath + "/index.jsp" );
-	%><!DOCTYPE html>
+%><!DOCTYPE html>

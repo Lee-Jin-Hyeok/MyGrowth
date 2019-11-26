@@ -29,4 +29,16 @@ public class UserDAO {
 		}
 		return ls;
 	}
+	
+	public String findPwById(String id) {
+		UserVO vo = null;
+		String sql = "select u_pw from user where u_id = ?;";
+		try {
+			vo = jdbc.queryForObject(sql, new UserRowMapper(), id);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return vo.getU_pw();
+	}
 }

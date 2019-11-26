@@ -20,12 +20,6 @@
 	name = request.getParameter("name");
 	email = request.getParameter("email");
 
-	System.out.println("id : " + id);
-	System.out.println("pw : " + pw);
-	System.out.println("pw_re : " + pw_re);
-	System.out.println("name : " + name);
-	System.out.println("email : " + email);
-	
 	udao = new UserDAO();
 	uvo = new UserVO();
 	

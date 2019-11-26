@@ -1,11 +1,53 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%><%!
+    pageEncoding="EUC-KR"%>
+<%@ page import="javax.mail.Authenticator" %>
+<%@ page import="java.util.Properties" %>
+<%@ page import="javax.mail.internet.MimeMessage" %>
+<%@ page import="javax.mail.internet.InternetAddress" %>
+<%@ page import="javax.mail.Transport" %>
+<%@ page import="javax.mail.Session" %>
+<%@ page import="javax.mail.PasswordAuthentication" %>
+<%@ page import="javax.mail.MessagingException" %>
+<%@ page import="javax.mail.Message" %>
+<%@ page import="user.STMPAuthenticator" %>
+<%@ page import="java.util.Date" %>
+<%!
     String ctxPath = null;
+    String email = null;
 %><%
 	ctxPath = request.getContextPath();
 	request.setCharacterEncoding("UTF-8");
 	
-	System.out.println("ctxPath2 : " + ctxPath);
+	email = request.getParameter("email");
+	if(email == null)
+		System.out.println("앙기모리");
+	else
+		System.out.println("앙기모기모리");
+	
+	Properties p = new Properties();
+	p.put("mail.transport.protocol", "smtp");
+	p.put("mail.smtp.host", "smtp.naver.com");
+	p.put("mail.stmt.port", "465");
+	p.put("mail.smtp.starttls.enable","true");
+	p.put("mail.smtp.auth", "true");
+	
+	try {
+		Authenticator auth = new STMPAuthenticator();
+		
+		Session mailSession = Session.getDefaultInstance(p, auth);
+		
+		MimeMessage message = new MimeMessage(mailSession);
+		InternetAddress from = new InternetAddress("jinjin0816@naver.com");
+		message.setFrom(from);
+		message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("jinjin0816@naver.com"));
+		message.setSubject("test용 제목");
+		message.setContent("test용 내용", "text/plain");
+		message.setSentDate(new Date());
+		
+		Transport.send(message);
+	} catch(Exception e) {
+		e.printStackTrace();
+	}
 	
 	response.sendRedirect( ctxPath + "/index.jsp" );
 %><!DOCTYPE html>

@@ -20,7 +20,7 @@
 			status = 0;					// 아아디 확인 및 이메일 인증 안 함
 		}
 	}
-	status = 0;
+	status = 2;
 	
 %><!DOCTYPE html>
 <html>
@@ -68,7 +68,7 @@
 		        <p class="join_name">비밀번호</p>
 		        <input type="password" name="pw" class="join_text" placeholder=" 숫자, 문자, 특수기호 반드시 포함"/>
 		        <p class="join_name">비밀번호 확인</p>
-		        <input type="text" name="id" class="join_text" placeholder=" 최소 4자이상 최대 16자이상"/>
+		        <input type="text" name="pw_re" class="join_text" placeholder=" 최소 4자이상 최대 16자이상"/>
 		        <p class="join_name">닉네임</p>
 		        <input type="text" name="name" class="join_text" placeholder=" 한글 5자, 영어 10자 (특수기호 제외)"/>
 		        <p class="join_name">이메일</p>
@@ -92,7 +92,7 @@
 		        <p class="join_name">비밀번호</p>
 		        <input type="password" name="pw" class="join_text" placeholder=" 숫자, 문자, 특수기호 반드시 포함"/>
 		        <p class="join_name">비밀번호 확인</p>
-		        <input type="text" name="id" class="join_text" placeholder=" 최소 4자이상 최대 16자이상"/>
+		        <input type="text" name="pw_re" class="join_text" placeholder=" 최소 4자이상 최대 16자이상"/>
 		        <p class="join_name">닉네임</p>
 		        <input type="text" name="name" class="join_text" placeholder=" 한글 5자, 영어 10자 (특수기호 제외)"/>
 		        <p class="join_name">이메일</p>
@@ -111,7 +111,7 @@
 		        <p class="join_name">비밀번호</p>
 		        <input type="password" name="pw" class="join_text" placeholder=" 숫자, 문자, 특수기호 반드시 포함"/>
 		        <p class="join_name">비밀번호 확인</p>
-		        <input type="text" name="id" class="join_text" placeholder=" 최소 4자이상 최대 16자이상"/>
+		        <input type="text" name="pw_re" class="join_text" placeholder=" 최소 4자이상 최대 16자이상"/>
 		        <p class="join_name">닉네임</p>
 		        <input type="text" name="name" class="join_text" placeholder=" 한글 5자, 영어 10자 (특수기호 제외)"/>
 		        <form method="GET" action="./checkEmail.jsp">
@@ -120,7 +120,7 @@
 				    <button id="join_text_email_check">Check</button>
 				</form>
 		        <button class="join_submit">J O I N</button>
-		    
+		        
 		</div>
     </div>
     <% } else if(status == 3) { %>
@@ -130,15 +130,15 @@
 		    
 		    <form method="POST" action="./join2.jsp">
 		    	<p class="join_name">아이디</p>
-		        <input type="text" name="id" class="join_text" placeholder=" 최소 4자이상 최대 16자이하" readonly/>
+		        <input type="text" name="id" class="join_text" placeholder=" 최소 4자이상 최대 16자이하"/>
 		        <p class="join_name">비밀번호</p>
 		        <input type="password" name="pw" class="join_text" placeholder=" 숫자, 문자, 특수기호 반드시 포함"/>
 		        <p class="join_name">비밀번호 확인</p>
-		        <input type="text" name="id" class="join_text" placeholder=" 최소 4자이상 최대 16자이상"/>
+		        <input type="text" name="pw_re" class="join_text" placeholder=" 최소 4자이상 최대 16자이상"/>
 		        <p class="join_name">닉네임</p>
 		        <input type="text" name="name" class="join_text" placeholder=" 한글 5자, 영어 10자 (특수기호 제외)"/>
 		        <p class="join_name">이메일</p>
-		        <input type="email" name="email" class="join_text" placeholder=" ex) example@exam.com" readonly/>
+		        <input type="email" name="email" class="join_text" placeholder=" ex) example@exam.com"/>
 		        <button class="join_submit">J O I N</button>
 		    </form>
 		    

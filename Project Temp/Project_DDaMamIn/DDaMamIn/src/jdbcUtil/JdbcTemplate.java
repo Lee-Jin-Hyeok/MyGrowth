@@ -10,14 +10,14 @@ import java.util.List;
 public class JdbcTemplate {
     static {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
         	e.printStackTrace();
         }
     }
 
     private Connection makeConn() throws Exception {
-        Connection conn = DriverManager.getConnection("jdbc:mysql://35.237.65.93:3306/DDaMamIn","HR","HR");
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/DDaMamIn","root","1111");
         return conn;
     }
     

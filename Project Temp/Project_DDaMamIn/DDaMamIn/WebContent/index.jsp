@@ -1,25 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="EUC-KR"%>
 <%@ page session = "true" %><%!
-	String id_value;
-	String email_value;
-	int status;
+	String id_value = null;
+	String email_value = "";
+	int status = 0;
 %><%
 	id_value = (String)session.getAttribute("id_value");
 	email_value = (String)session.getAttribute("email_value");
 	
 	if(id_value != null) {
-		if(email_value != null) {
-			status = 3;					// 아이디 확인 및 이메일 인증 성공
-		} else {
-			status = 2;					// 아아디 확인은 했으나 이메일 인증은 안 함
+		if(!(id_value.equals(""))) {
+			if(email_value != null) {
+				if(!(email_value.equals(""))) {
+					status = 3;							// 아이디 확인 및 이메일 인증 성공
+				}
+			} else {
+				status = 2;								// 아아디 확인은 했으나 이메일 인증은 안 함
+			}
 		}
 	} else {
 		if(email_value != null) {
-			status = 1;					// 이메일 인증은 했으나 이이디 확인은 안 함
+			if(!(email_value.equals(""))) {
+				status = 1;								// 이메일 인증은 했으나 이이디 확인은 안 함
+			}
 		} else {
-			status = 0;					// 아아디 확인 및 이메일 인증 안 함
+			status = 0;									// 아아디 확인 및 이메일 인증 안 함
 		}
 	}
+	System.out.println(status);
 	status = 2;
 	
 %><!DOCTYPE html>

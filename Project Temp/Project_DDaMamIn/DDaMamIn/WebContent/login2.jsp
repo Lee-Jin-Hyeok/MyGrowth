@@ -12,15 +12,9 @@
 	
 	System.out.println("id : " + id);
 	System.out.println("pw : " + pw);
-	if(id.equals("1234"))
-		System.out.println("아이디 일치");
-	else
-		System.out.println("아이디 불일치");
-	
-	if(pw.equals("0000"))
-		System.out.println("비밀번호 일치");
-	else
-		System.out.println("비밀번호 불일치");
+
+	System.out.println(id=="");
+	System.out.println(pw.equals(""));
 	
 	response.sendRedirect( ctxPath + "/index.jsp" );
 %><!DOCTYPE html>

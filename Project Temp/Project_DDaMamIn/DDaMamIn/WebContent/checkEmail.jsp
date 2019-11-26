@@ -20,9 +20,9 @@
 	
 	email = request.getParameter("email");
 	if(email == null)
-		System.out.println("¾Ó±â¸ð¸®");
+		System.out.println("email : null");
 	else
-		System.out.println("¾Ó±â¸ð±â¸ð¸®");
+		System.out.println("email : " + email);
 	
 	Properties p = new Properties();
 	p.put("mail.transport.protocol", "smtp");

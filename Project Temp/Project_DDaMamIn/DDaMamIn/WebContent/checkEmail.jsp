@@ -19,7 +19,7 @@
 	request.setCharacterEncoding("UTF-8");
 	
 	email = request.getParameter("email");
-	if(email == null)
+	if(email == null || email.equals(""))
 		System.out.println("email : null");
 	else
 		System.out.println("email : " + email);

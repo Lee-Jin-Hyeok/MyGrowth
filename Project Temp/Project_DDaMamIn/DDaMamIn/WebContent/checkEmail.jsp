@@ -11,6 +11,7 @@
 <%@ page import="javax.mail.Message" %>
 <%@ page import="user.STMPAuthenticator" %>
 <%@ page import="java.util.Date" %>
+<%@ page import="user.AuthenticationNumber" %>
 <%!
     String ctxPath = null;
     String email = null;
@@ -39,7 +40,7 @@
 		MimeMessage message = new MimeMessage(mailSession);
 		InternetAddress from = new InternetAddress("jinjin0816@naver.com");
 		message.setFrom(from);
-		message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("jinjin0816@naver.com"));
+		message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("0816jinjin@gmail.com"));
 		message.setSubject("test용 제목");
 		message.setContent("test용 내용", "text/plain");
 		message.setSentDate(new Date());
@@ -48,6 +49,13 @@
 	} catch(Exception e) {
 		e.printStackTrace();
 	}
+
+	System.out.println(AuthenticationNumber.createNum());
+	System.out.println(AuthenticationNumber.createNum());
+	System.out.println(AuthenticationNumber.createNum());
+	System.out.println(AuthenticationNumber.createNum());
+	System.out.println(AuthenticationNumber.createNum());
+	System.out.println(AuthenticationNumber.createNum());
 	
 	response.sendRedirect( ctxPath + "/index.jsp" );
 %><!DOCTYPE html>

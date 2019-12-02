@@ -42,7 +42,7 @@
 		message.setFrom(from);
 		message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("0816jinjin@gmail.com"));
 		message.setSubject("DDaMamIn SNS에서 인증 요청이 왔습니다.");
-		message.setContent("인증번호 : " + AuthenticationNumber.createNum(), "text/plain; charset=UTF-8");
+		message.setContent("<style>h1 { color : red; }</style><h1>인증번호 : " + AuthenticationNumber.createNum() + "</h1>", "text/html; charset=UTF-8");
 		message.setSentDate(new Date());
 		
 		Transport.send(message);

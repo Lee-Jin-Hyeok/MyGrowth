@@ -34,6 +34,7 @@
 	p.put("mail.smtp.auth", "true");
 	
 	an = new AuthenticationNumber();
+
 	
 	try {
 		Authenticator auth = new STMPAuthenticator();

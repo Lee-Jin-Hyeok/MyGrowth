@@ -2,12 +2,12 @@ package user;
 
 public class AuthenticationNumber {
 	public static String createNum() {
-		char[] result = new char[6];
+		StringBuffer sb = new StringBuffer();
 		char[] num = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".toCharArray();
 		
 		for(int i = 0 ; i < 6 ; i++)
-			result[i] = num[(int)Math.random()*36];
+			sb.append(num[((int)(Math.random()*100))%36]);
 		
-		return result.toString();
+		return sb.toString();
 	}
 }

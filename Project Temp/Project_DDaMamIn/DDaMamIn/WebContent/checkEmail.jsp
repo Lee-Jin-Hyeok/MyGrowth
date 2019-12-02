@@ -41,8 +41,8 @@
 		InternetAddress from = new InternetAddress("jinjin0816@naver.com");
 		message.setFrom(from);
 		message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("0816jinjin@gmail.com"));
-		message.setSubject("test용 제목");
-		message.setContent("test용 내용", "text/plain");
+		message.setSubject("DDaMamIn SNS에서 인증 요청이 왔습니다.");
+		message.setContent("인증번호 : " + AuthenticationNumber.createNum(), "text/plain; charset=UTF-8");
 		message.setSentDate(new Date());
 		
 		Transport.send(message);
@@ -50,8 +50,6 @@
 		e.printStackTrace();
 	}
 
-	System.out.println(AuthenticationNumber.createNum());
-	System.out.println(AuthenticationNumber.createNum());
 	System.out.println(AuthenticationNumber.createNum());
 	System.out.println(AuthenticationNumber.createNum());
 	System.out.println(AuthenticationNumber.createNum());

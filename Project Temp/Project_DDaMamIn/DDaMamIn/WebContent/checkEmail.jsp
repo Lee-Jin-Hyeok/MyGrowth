@@ -15,6 +15,7 @@
 <%!
     String ctxPath = null;
     String email = null;
+    AuthenticationNumber an = null;
 %><%
 	ctxPath = request.getContextPath();
 	request.setCharacterEncoding("UTF-8");
@@ -32,6 +33,8 @@
 	p.put("mail.smtp.starttls.enable","true");
 	p.put("mail.smtp.auth", "true");
 	
+	an = new AuthenticationNumber();
+	
 	try {
 		Authenticator auth = new STMPAuthenticator();
 		
@@ -42,18 +45,13 @@
 		message.setFrom(from);
 		message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("0816jinjin@gmail.com"));
 		message.setSubject("DDaMamIn SNS에서 인증 요청이 왔습니다.");
-		message.setContent("<style>h1 { color : red; }</style><h1>인증번호 : " + AuthenticationNumber.createNum() + "</h1>", "text/html; charset=UTF-8");
+		message.setContent(AuthenticationNumber.getHTML(), "text/html; charset=UTF-8");
 		message.setSentDate(new Date());
 		
 		Transport.send(message);
 	} catch(Exception e) {
 		e.printStackTrace();
 	}
-
-	System.out.println(AuthenticationNumber.createNum());
-	System.out.println(AuthenticationNumber.createNum());
-	System.out.println(AuthenticationNumber.createNum());
-	System.out.println(AuthenticationNumber.createNum());
 	
 	response.sendRedirect( ctxPath + "/index.jsp" );
 %><!DOCTYPE html>

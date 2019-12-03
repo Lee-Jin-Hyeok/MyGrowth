@@ -26,7 +26,6 @@
 			status = 0;									// 아아디 확인 및 이메일 인증 안 함
 		}
 	}
-	System.out.println(status);
 	status = 2;
 	
 %><!DOCTYPE html>
@@ -79,7 +78,7 @@
 		        <p class="join_name">닉네임</p>
 		        <input type="text" name="name" class="join_text" placeholder=" 한글 5자, 영어 10자 (특수기호 제외)"/>
 		        <p class="join_name">이메일</p>
-		        <form method="GET" action="./checkEmail.jsp">
+		        <form method="GET" action="./checkEmail2.jsp">
 				    <input type="email" name="email" id="join_text_email" placeholder=" ex) example@exam.com"/>
 				    <button id="join_text_email_check">Check</button>
 				</form>
@@ -121,7 +120,7 @@
 		        <input type="text" name="pw_re" class="join_text" placeholder=" 최소 4자이상 최대 16자이상"/>
 		        <p class="join_name">닉네임</p>
 		        <input type="text" name="name" class="join_text" placeholder=" 한글 5자, 영어 10자 (특수기호 제외)"/>
-		        <form method="GET" action="./checkEmail.jsp">
+		        <form method="GET" action="./checkEmail2.jsp">
 		        	<p class="join_name">이메일</p>
 				    <input type="email" name="email" id="join_text_email" placeholder=" ex) example@exam.com"/>
 				    <button id="join_text_email_check">Check</button>

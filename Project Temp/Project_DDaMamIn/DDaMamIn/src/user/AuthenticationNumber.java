@@ -1,6 +1,8 @@
 package user;
 
 public class AuthenticationNumber {
+	String code = null;
+	
 	public String getHTML() {
 		String html = "<head><style>"
 					+ "#back {"
@@ -24,14 +26,14 @@ public class AuthenticationNumber {
 				+ "<body>"
 					+ "<div id='back'>"
 						+ "<p id='injeung'>인증번호</p>"
-						+ "<p id='content'>" + createNum() + "</p>"
+						+ "<p id='content'>" + getCode() + "</p>"
 					+ "</div>"
 				+ "</body>";
 		
 		return html;
 	}
 	
-	private String createNum() {
+	public String getNum() {
 		StringBuffer sb = new StringBuffer();
 		char[] num = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".toCharArray();
 		
@@ -39,5 +41,13 @@ public class AuthenticationNumber {
 			sb.append(num[((int)(Math.random()*100))%36]);
 		
 		return sb.toString();
+	}
+	
+	public void setCode(String code) {
+		this.code = code;
+	}
+	
+	public String getCode() {
+		return code;
 	}
 }

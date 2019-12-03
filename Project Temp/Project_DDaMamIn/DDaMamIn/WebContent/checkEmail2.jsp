@@ -16,6 +16,8 @@
     String ctxPath = null;
     String email = null;
     AuthenticationNumber an = null;
+    String amho = null;
+    boolean check = true;
 %><%
 	ctxPath = request.getContextPath();
 	request.setCharacterEncoding("UTF-8");
@@ -34,7 +36,8 @@
 	p.put("mail.smtp.auth", "true");
 	
 	an = new AuthenticationNumber();
-
+	amho = an.getNum();
+	an.setCode(amho);
 	
 	try {
 		Authenticator auth = new STMPAuthenticator();
@@ -44,15 +47,24 @@
 		MimeMessage message = new MimeMessage(mailSession);
 		InternetAddress from = new InternetAddress("jinjin0816@naver.com");
 		message.setFrom(from);
-		message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("0816jinjin@gmail.com"));
+		message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
 		message.setSubject("DDaMamIn SNS에서 인증 요청이 왔습니다.");
-		message.setContent(AuthenticationNumber.getHTML(), "text/html; charset=UTF-8");
+		message.setContent(an.getHTML(), "text/html; charset=UTF-8");
 		message.setSentDate(new Date());
 		
 		Transport.send(message);
 	} catch(Exception e) {
 		e.printStackTrace();
+		check = false;
+	} finally {
+		session.setAttribute("amho", amho);
+		session.setMaxInactiveInterval(60*20);
 	}
 	
-	response.sendRedirect( ctxPath + "/index.jsp" );
-%><!DOCTYPE html>
+	System.out.println(check);
+	
+	if(check)
+		response.sendRedirect( ctxPath + "/index.jsp" );
+	else
+		response.sendRedirect( ctxPath + "/checkEmailRes2.jsp");
+%>

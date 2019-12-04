@@ -53,18 +53,20 @@
 		message.setSentDate(new Date());
 		
 		Transport.send(message);
-	} catch(Exception e) {
-		e.printStackTrace();
-		check = false;
+	} catch(MessagingException me) {
+		me.printStackTrace();
+		//check = false;
 	} finally {
 		session.setAttribute("amho", amho);
+		System.out.println(session.getAttribute("amho"));
 		session.setMaxInactiveInterval(60*20);
 	}
 	
-	System.out.println(check);
-	
-	if(check)
+	if(check) {
+		session.setAttribute("email_value", email);
 		response.sendRedirect( ctxPath + "/index.jsp" );
-	else
+	}
+	else {
 		response.sendRedirect( ctxPath + "/checkEmailRes2.jsp");
+	}
 %>

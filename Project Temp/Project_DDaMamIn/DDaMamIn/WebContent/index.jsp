@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="EUC-KR"%>
 <%@ page session = "true" %><%!
-	String id_value = null;
+	String id_value = "";
 	String email_value = "";
 	int status = 0;
 %><%
@@ -24,9 +24,10 @@
 			}
 		} else {
 			status = 0;									// 아아디 확인 및 이메일 인증 안 함
+			session.setAttribute("email_value", " ex) example@exam.com");
 		}
 	}
-	status = 2;
+	System.out.println(status);
 	
 %><!DOCTYPE html>
 <html>
@@ -79,9 +80,11 @@
 		        <input type="text" name="name" class="join_text" placeholder=" 한글 5자, 영어 10자 (특수기호 제외)"/>
 		        <p class="join_name">이메일</p>
 		        <form method="GET" action="./checkEmail2.jsp">
-				    <input type="email" name="email" id="join_text_email" placeholder=" ex) example@exam.com"/>
+				    <input type="email" name="email" id="join_text_email" placeholder=<%= session.getAttribute("email_value") %>/>
 				    <button id="join_text_email_check">Check</button>
 				</form>
+		        <p class="join_name">이메일 인증 번호</p>
+		        <input type="text" name="email_amho" class="join_text"/>
 		        <button class="join_submit">J O I N</button>
 		</div>
     </div>
@@ -102,7 +105,9 @@
 		        <p class="join_name">닉네임</p>
 		        <input type="text" name="name" class="join_text" placeholder=" 한글 5자, 영어 10자 (특수기호 제외)"/>
 		        <p class="join_name">이메일</p>
-		        <input type="email" name="email" class="join_text" placeholder=" ex) example@exam.com" readonly/>
+		        <input type="email" name="email" class="join_text" placeholder=<%= session.getAttribute("email_value") %> readonly/>
+		        <p class="join_name">이메일 인증 번호</p>
+		        <input type="text" name="email_amho" class="join_text"/>
 		        <button class="join_submit">J O I N</button>
 		    
 		</div>
@@ -122,9 +127,11 @@
 		        <input type="text" name="name" class="join_text" placeholder=" 한글 5자, 영어 10자 (특수기호 제외)"/>
 		        <form method="GET" action="./checkEmail2.jsp">
 		        	<p class="join_name">이메일</p>
-				    <input type="email" name="email" id="join_text_email" placeholder=" ex) example@exam.com"/>
+				    <input type="email" name="email" id="join_text_email" placeholder=<%= session.getAttribute("email_value") %>/>
 				    <button id="join_text_email_check">Check</button>
 				</form>
+		        <p class="join_name">이메일 인증 번호</p>
+		        <input type="text" name="email_amho" class="join_text"/>
 		        <button class="join_submit">J O I N</button>
 		        
 		</div>
@@ -144,7 +151,9 @@
 		        <p class="join_name">닉네임</p>
 		        <input type="text" name="name" class="join_text" placeholder=" 한글 5자, 영어 10자 (특수기호 제외)"/>
 		        <p class="join_name">이메일</p>
-		        <input type="email" name="email" class="join_text" placeholder=" ex) example@exam.com"/>
+		        <input type="email" name="email" class="join_text" placeholder=<%= session.getAttribute("email_value") %>/>
+		        <p class="join_name">이메일 인증 번호</p>
+		        <input type="text" name="email_amho" class="join_text"/>
 		        <button class="join_submit">J O I N</button>
 		    </form>
 		    

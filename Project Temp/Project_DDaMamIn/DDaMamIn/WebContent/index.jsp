@@ -18,8 +18,8 @@
 			}
 		}
 	} else {
-		if(email_value != null) {
-			if(!(email_value.equals(""))) {
+		if(!(email_value.equals(""))) {
+			if(email_value != null) {
 				status = 1;								// 이메일 인증은 했으나 이이디 확인은 안 함
 			}
 		} else {

@@ -64,9 +64,11 @@
 	
 	if(check) {
 		session.setAttribute("email_value", email);
-		response.sendRedirect( ctxPath + "/index.jsp" );
+		//response.sendRedirect( ctxPath + "/index.jsp" );
+		pageContext.forward( ctxPath + "/index.jsp" );
 	}
 	else {
-		response.sendRedirect( ctxPath + "/checkEmailRes2.jsp");
+		//response.sendRedirect( ctxPath + "/checkEmailRes2.jsp");
+		pageContext.forward( ctxPath + "/checkEmailRes2.jsp" );
 	}
 %>

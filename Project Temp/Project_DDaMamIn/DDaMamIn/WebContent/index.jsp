@@ -6,28 +6,32 @@
 %><%
 	id_value = (String)session.getAttribute("id_value");
 	email_value = (String)session.getAttribute("email_value");
+	//session.invalidate();
 	
 	if(id_value != null) {
-		if(!(id_value.equals(""))) {
-			if(email_value != null) {
+		if(email_value != null) {
+			if(!(id_value.equals(""))) {
 				if(!(email_value.equals(""))) {
 					status = 3;							// 아이디 확인 및 이메일 인증 성공
 				}
 			} else {
 				status = 2;								// 아아디 확인은 했으나 이메일 인증은 안 함
+				session.removeAttribute("email_value");
 			}
 		}
 	} else {
-		if(!(email_value.equals(""))) {
-			if(email_value != null) {
+		if(email_value != null) {
+			if(!(email_value.equals(""))) {
 				status = 1;								// 이메일 인증은 했으나 이이디 확인은 안 함
 			}
 		} else {
 			status = 0;									// 아아디 확인 및 이메일 인증 안 함
-			session.setAttribute("email_value", " ex) example@exam.com");
+			session.removeAttribute("email_value");
 		}
 	}
-	System.out.println(status);
+	System.out.println("status : " + status);
+	System.out.println("id_value : " + id_value);
+	System.out.println("email_value : " + email_value);
 	
 %><!DOCTYPE html>
 <html>
@@ -41,7 +45,7 @@
         <p id="title">DDaMamIn</p>
     </div>
     <div id="main">
-        <input type="button" class="login_join" value="L O G I N">
+        <input type="button" class="login_join" value="L O G I N">	
         <input type="button" class="login_join" value="J O I N">
     </div>
     <div id="footer">
@@ -80,7 +84,7 @@
 		        <input type="text" name="name" class="join_text" placeholder=" 한글 5자, 영어 10자 (특수기호 제외)"/>
 		        <p class="join_name">이메일</p>
 		        <form method="GET" action="./checkEmail2.jsp">
-				    <input type="email" name="email" id="join_text_email" placeholder=<%= session.getAttribute("email_value") %>/>
+				    <input type="email" name="email" id="join_text_email" placeholder=" ex) example@exam.com"/>
 				    <button id="join_text_email_check">Check</button>
 				</form>
 		        <p class="join_name">이메일 인증 번호</p>
@@ -105,7 +109,7 @@
 		        <p class="join_name">닉네임</p>
 		        <input type="text" name="name" class="join_text" placeholder=" 한글 5자, 영어 10자 (특수기호 제외)"/>
 		        <p class="join_name">이메일</p>
-		        <input type="email" name="email" class="join_text" placeholder=<%= session.getAttribute("email_value") %> readonly/>
+		        <input type="email" name="email" class="join_text" placeholder=<%= email_value %> readonly/>
 		        <p class="join_name">이메일 인증 번호</p>
 		        <input type="text" name="email_amho" class="join_text"/>
 		        <button class="join_submit">J O I N</button>
@@ -127,7 +131,7 @@
 		        <input type="text" name="name" class="join_text" placeholder=" 한글 5자, 영어 10자 (특수기호 제외)"/>
 		        <form method="GET" action="./checkEmail2.jsp">
 		        	<p class="join_name">이메일</p>
-				    <input type="email" name="email" id="join_text_email" placeholder=<%= session.getAttribute("email_value") %>/>
+				    <input type="email" name="email" id="join_text_email" placeholder=" ex) example@exam.com"/>
 				    <button id="join_text_email_check">Check</button>
 				</form>
 		        <p class="join_name">이메일 인증 번호</p>
@@ -151,7 +155,7 @@
 		        <p class="join_name">닉네임</p>
 		        <input type="text" name="name" class="join_text" placeholder=" 한글 5자, 영어 10자 (특수기호 제외)"/>
 		        <p class="join_name">이메일</p>
-		        <input type="email" name="email" class="join_text" placeholder=<%= session.getAttribute("email_value") %>/>
+		        <input type="email" name="email" class="join_text" placeholder=<%= email_value %> readonly/>
 		        <p class="join_name">이메일 인증 번호</p>
 		        <input type="text" name="email_amho" class="join_text"/>
 		        <button class="join_submit">J O I N</button>

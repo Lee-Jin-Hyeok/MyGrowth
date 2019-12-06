@@ -10,7 +10,7 @@
 </head>
 <body>
 	<script>
-		location.href = "http://localhost:8081/DDaMamIn/";
+		location.href = "http://10.156.147.116:8081/DDaMamIn/index.jsp";
 		alert("이메일을 찾을 수 없습니다.");
 	</script>
 </body>

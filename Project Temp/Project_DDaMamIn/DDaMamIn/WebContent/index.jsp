@@ -3,30 +3,46 @@
 	String id_value = "";
 	String email_value = "";
 	int status = 0;
+	Cookie[] cookies = null;
 %><%
-	id_value = (String)session.getAttribute("id_value");
-	email_value = (String)session.getAttribute("email_value");
-	//session.invalidate();
+	cookies = request.getCookies();
+
+	if(cookies != null) {
+		for(int i = 0 ; i < cookies.length ; i++) {
+			if(cookies[i].getName().equals("email_value")) {
+				email_value = cookies[i].getValue();
+				break;
+			}
+			email_value = null;
+		}
+		
+		for(int i = 0 ; i < cookies.length ; i++) {
+			if(cookies[i].getName().equals("id_value")) {
+				id_value = cookies[i].getValue();
+				break;
+			}
+			id_value = null;
+		}
+	}
+	
 	
 	if(id_value != null) {
 		if(email_value != null) {
-			if(!(id_value.equals(""))) {
+			if(!(id_value.equals("")) || id_value != null) {
 				if(!(email_value.equals(""))) {
 					status = 3;							// 아이디 확인 및 이메일 인증 성공
 				}
 			} else {
 				status = 2;								// 아아디 확인은 했으나 이메일 인증은 안 함
-				session.removeAttribute("email_value");
 			}
 		}
 	} else {
 		if(email_value != null) {
-			if(!(email_value.equals(""))) {
+			if(!(email_value.equals("")) || id_value != null) {
 				status = 1;								// 이메일 인증은 했으나 이이디 확인은 안 함
 			}
 		} else {
 			status = 0;									// 아아디 확인 및 이메일 인증 안 함
-			session.removeAttribute("email_value");
 		}
 	}
 	System.out.println("status : " + status);
@@ -45,7 +61,7 @@
         <p id="title">DDaMamIn</p>
     </div>
     <div id="main">
-        <input type="button" class="login_join" value="L O G I N">	
+        <input type="button" class="login_join" value="L O G I N">
         <input type="button" class="login_join" value="J O I N">
     </div>
     <div id="footer">

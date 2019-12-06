@@ -31,7 +31,7 @@
 	Properties p = new Properties();
 	p.put("mail.transport.protocol", "smtp");
 	p.put("mail.smtp.host", "smtp.naver.com");
-	p.put("mail.stmt.port", "465");
+	p.put("mail.smtp.port", "465");
 	p.put("mail.smtp.starttls.enable","true");
 	p.put("mail.smtp.auth", "true");
 	
@@ -56,19 +56,24 @@
 	} catch(MessagingException me) {
 		me.printStackTrace();
 		//check = false;
-	} finally {
-		session.setAttribute("amho", amho);
-		System.out.println(session.getAttribute("amho"));
-		session.setMaxInactiveInterval(60*20);
 	}
 	
 	if(check) {
-		session.setAttribute("email_value", email);
-		//response.sendRedirect( ctxPath + "/index.jsp" );
-		pageContext.forward( ctxPath + "/index.jsp" );
+		//session.setAttribute("email_value", email);
+		Cookie values = new Cookie("email_value", email);
+		values.setMaxAge(60*5);
+		values.setPath("/");
+		response.addCookie(values);
+		
+		session.setAttribute("amho", amho);
+		System.out.println(session.getAttribute("amho"));
+		session.setMaxInactiveInterval(60*20);
+		
+		response.sendRedirect( ctxPath + "/index.jsp" );
+		//pageContext.forward( ctxPath + "/index.jsp" );
 	}
 	else {
-		//response.sendRedirect( ctxPath + "/checkEmailRes2.jsp");
-		pageContext.forward( ctxPath + "/checkEmailRes2.jsp" );
+		response.sendRedirect( ctxPath + "/checkEmailRes2.jsp");
+		//pageContext.forward( ctxPath + "/checkEmailRes2.jsp" );
 	}
 %>

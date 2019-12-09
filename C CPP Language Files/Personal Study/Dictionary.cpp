@@ -1,18 +1,22 @@
 #include <stdio.h>
 #include <string.h>
 #include <iostream>
+
 #define F_SIZE 100
 #define S_SIZE 100
 #pragma warning(disable:4996)
-void struct_insert(FILE*, struct KE *);
-void select_menu(int *);
-void search(struct KE *save);
-void list(struct KE *save);
-void add(FILE *);
-struct KE {
+
+typedef struct KE {
 	char kor[F_SIZE] = { 0, };
 	char eng[F_SIZE];
-};
+} Dictionary;
+
+void struct_insert(FILE*, Dictionary*);
+void select_menu(int*);
+void search(Dictionary*);
+void list(Dictionary*);
+void add(FILE*);
+
 int main()
 {
 	FILE *fp = NULL;
@@ -25,7 +29,7 @@ int main()
 	else
 	{
 		int menu;
-		struct KE save[S_SIZE];
+		Dictionary save[S_SIZE];
 		struct_insert(fp, save);
 		while(1){
 			select_menu(&menu);
@@ -52,7 +56,7 @@ int main()
 	}
 	fclose(fp);
 }
-void struct_insert(FILE*fp, struct KE *save)
+void struct_insert(FILE* fp, Dictionary* save)
 {
 	fclose(fp);
 	fopen_s(&fp, "dictionary.txt", "r+");
@@ -83,7 +87,7 @@ void select_menu(int *select)
 	printf("\n");
 	scanf_s("%d", select);
 }
-void search(struct KE *word)
+void search(Dictionary* word)
 {
 	int i = 0;
 	char str[F_SIZE];
@@ -105,7 +109,7 @@ void search(struct KE *word)
 	}
 	puts("없는 단어입니다. 추가해보시는건 어떠신가요?");
 }
-void list(struct KE *word)
+void list(Dictionary* word)
 {
 	int i = 0;
 	while ((word + i)->kor[0] != '\0')

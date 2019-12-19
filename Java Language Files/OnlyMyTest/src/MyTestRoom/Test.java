@@ -1,29 +1,48 @@
 package MyTestRoom;
 
-//public class Test {
-//	public static void main(String[] args) {
-//		Test t = new Test();
-//		System.out.println(t.isString("Hello"));
-//		System.out.println(t.isString(10));
-//	}
-//	public int isString(Object obj) {
-//		if(obj instanceof String)
-//			return ((String) obj).length();
-//		else
-//			return (Integer) null;
-//	}
-//}
+abstract class AAA {
+	private int var_private;
+	protected int var_protected;
+	public int var_public;
+	
+	public AAA(int var_private, int var_protected, int var_public) {
+		this.var_private = var_private;
+		this.var_protected = var_protected;
+		this.var_public = var_public;
+	}
+	
+	abstract public void test();
+}
 
+class BBB extends AAA {
+	public BBB(int var_private, int var_protected, int var_public) {
+		super(var_private, var_protected, var_public);
+	}
+	public void test() {
+		System.out.println("private : " + var_private);
+		System.out.println("protected : " + var_protected);
+		System.out.println("public : " + var_public);
+	}
+}
 
-class GenericTest<T> {
-	public T add(T a, T b) {
-		return (T) (a + " " + b);
+class CCC extends BBB {
+	public CCC(int var_private, int var_protected, int var_public) {
+		super(var_private, var_protected, var_public);
+	}
+	public void test() {
+		System.out.println("private : " + var_private);
+		System.out.println("protected : " + var_protected);
+		System.out.println("public : " + var_public);
 	}
 }
 
 public class Test {
 	public static void main(String[] args) {
-		GenericTest<String> t = new GenericTest<String>();
-		System.out.println(t.add("Hello", "World"));
+		AAA aaa = new AAA(1, 2, 3);
+		AAA bbb = new BBB(4, 5, 6);
+		AAA ccc = new CCC(7, 8, 9);
+		aaa.test();
+		bbb.test();
+		ccc.test();
 	}
 }

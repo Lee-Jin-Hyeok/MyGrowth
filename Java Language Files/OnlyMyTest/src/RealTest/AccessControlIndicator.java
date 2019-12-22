@@ -1,4 +1,4 @@
-package MyTestRoom;
+package RealTest;
 
 abstract class AAA {
 	private int var_private;
@@ -40,7 +40,7 @@ class CCC extends BBB {
 	}
 }
 
-public class Test {
+public class AccessControlIndicator {
 	public static void main(String[] args) {
 		//AAA aaa = new AAA(1, 2, 3);
 		AAA bbb = new BBB(4, 5, 6);

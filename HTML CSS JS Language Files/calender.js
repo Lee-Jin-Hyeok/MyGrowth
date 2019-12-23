@@ -52,7 +52,7 @@ var CreateAMonthlyCalendar = function(year, month) {
             check = 1;
         
         var arr = [0, 31, 28+check, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-        return arr;
+        return arr[month];
     }
 
     oneMonthOneDay = FirstDay(year, month, oneMonthOneDay);
@@ -60,7 +60,7 @@ var CreateAMonthlyCalendar = function(year, month) {
 
     for(var i = 0 ; i < 6 ; i++) {
         for(var j = 0 ; j < 7 ; j++) {
-            if((i == 0 && j < oneMonthOneDay) || count >= lastDay[month])
+            if((i == 0 && j < oneMonthOneDay) || count >= lastDay)
                 arr[i][j] = "";
             else {
                 arr[i][j] = ++count;
@@ -70,6 +70,6 @@ var CreateAMonthlyCalendar = function(year, month) {
     return arr;
 }
 
-var calender = CreateAMonthlyCalendar(2019,1);
+var calendar = CreateAMonthlyCalendar(2019,12);
 
-console.log(calender);
+console.log(calendar);

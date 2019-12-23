@@ -27,6 +27,7 @@ var January1stMeasurement = function(year) {
 var CreateAMonthlyCalendar = function(year, month) {
     var arr = [[],[],[],[],[],[]];
     var oneMonthOneDay = January1stMeasurement(year);
+    console.log(oneMonthOneDay);
     var count = 0;
     var lastDay = 0;
 
@@ -70,6 +71,6 @@ var CreateAMonthlyCalendar = function(year, month) {
     return arr;
 }
 
-var calendar = CreateAMonthlyCalendar(2019,12);
+var calendar = CreateAMonthlyCalendar(2019,1);
 
 console.log(calendar);

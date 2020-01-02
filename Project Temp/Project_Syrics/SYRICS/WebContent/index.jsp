@@ -1,6 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
+<%@ page import="java.util.*"%>
+<%@ page import="object.ObjectDAO"%>
+<%@ page import="object.ObjectVO"%><%!
+    List<ObjectVO> ols = null;
+	ObjectDAO odao = null;
+	String condition = null;
+	String search = null;
+%><%
+	request.setCharacterEncoding("UTF-8");
+
+	condition = request.getParameter("condition");
+	search = request.getParameter("search");
+	
+	odao = new ObjectDAO();
+	ols = new ArrayList<>();
+	
+	try {
+		if(condition == null) condition = "*";
+		if(search == null) search = "";
+		
+		System.out.println("condition : " + condition);
+		System.out.println("search : " + search);
+		
+		ols = odao.findAll(condition, search);
+	} catch(NullPointerException npe) {
+		System.out.println("DAO is null or LiST is null");
+	}
+%><!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -21,20 +48,20 @@
             </div>
             <div id="middleSpace">
                 <p id="title">Syrics</p>
-                <form name="searching">
+                <form action="index.jsp" method="post" name="searching">
 	                <div id="search_wrapper">
-	                    <input type="text" name="search" id="search_bar" placeholder=" 원하는 노래의 제목을 입력해주세요."/>
-	                    <button id="search_button"><img src="./static/img/SearchImage.jpg" width ="10px" height="10px"></button>
+	                    <input type="text" name="search" id="search_bar" value="<%=search%>" placeholder=" 원하는 노래의 제목을 입력해주세요."/>
+						<input type="submit" value="검색" id="search_button">
 	                </div>
 	                <div id="radios">
-	                    <input type="radio" name="condition" value="전체" class="condition" checked="checked"/>
+	                    <input type="radio" name="condition" class="condition" value="전체" checked="checked"/>
 	                    <span class="condition_name">전체</span>
 	                    <input type="radio" name="condition" class="condition" value="제목"/>
 	                    <span class="condition_name">제목</span>
 	                    <input type="radio" name="condition" class="condition" value="가수"/>
 	                    <span class="condition_name">가수</span>
 	                    <input type="radio" name="condition" class="condition" value="가사"/>
-	                    <span class="condition_name">가사</span>
+	                    <span class="condition_name">곡명</span>
 	                </div>
                 </form>
             </div>
@@ -51,87 +78,17 @@
             </div>
         </div>
         <div id="bot_wrapper">
-            <div id="objects">
-                <div class="object">
-                    <p class="article_title">손정우의 여친이 소식이 끊어진지 무려 한 달이 다 되어가고 있다는데요. 손...</p>
-                    <img src="https://img.youtube.com/vi/7TdkcrhhiKw/0.jpg" class="main_image"/>
-                    <p class="title-singer">손정우 - 여친이 없어</p>
-                </div>
-                <div class="object">
-                    <p class="article_title">손정우의 여친이 소식이 끊어진지 무려 한 달이 다 되어가고 있다는데요. 손...</p>
-                    <img src="https://img.youtube.com/vi/7TdkcrhhiKw/0.jpg" class="main_image"/>
-                    <p class="title-singer">손정우 - 정말로 없어</p>
-                </div>
-                <div class="object">
-                    <p class="article_title">손정우의 여친이 소식이 끊어진지 무려 한 달이 다 되어가고 있다는데요. 손...</p>
-                    <img src="https://img.youtube.com/vi/7TdkcrhhiKw/0.jpg" class="main_image"/>
-                    <p class="title-singer">손정우 - 지금도 없어</p>
-                </div>
-                <div class="object">
-                    <p class="article_title">손정우의 여친이 소식이 끊어진지 무려 한 달이 다 되어가고 있다는데요. 손...</p>
-                    <img src="https://img.youtube.com/vi/7TdkcrhhiKw/0.jpg" class="main_image"/>
-                    <p class="title-singer">손정우 - 진짜로 없어</p>
-                </div>
-                <div class="object">
-                    <p class="article_title">손정우의 여친이 소식이 끊어진지 무려 한 달이 다 되어가고 있다는데요. 손...</p>
-                    <img src="https://img.youtube.com/vi/7TdkcrhhiKw/0.jpg" class="main_image"/>
-                    <p class="title-singer">손정우 - 여친이 없어</p>
-                </div>
-                <div class="object">
-                    <p class="article_title">손정우의 여친이 소식이 끊어진지 무려 한 달이 다 되어가고 있다는데요. 손...</p>
-                    <img src="https://img.youtube.com/vi/7TdkcrhhiKw/0.jpg" class="main_image"/>
-                    <p class="title-singer">손정우 - 정말로 없어</p>
-                </div>
-                <div class="object">
-                    <p class="article_title">손정우의 여친이 소식이 끊어진지 무려 한 달이 다 되어가고 있다는데요. 손...</p>
-                    <img src="https://img.youtube.com/vi/7TdkcrhhiKw/0.jpg" class="main_image"/>
-                    <p class="title-singer">손정우 - 지금도 없어</p>
-                </div>
-                <div class="object">
-                    <p class="article_title">손정우의 여친이 소식이 끊어진지 무려 한 달이 다 되어가고 있다는데요. 손...</p>
-                    <img src="https://img.youtube.com/vi/7TdkcrhhiKw/0.jpg" class="main_image"/>
-                    <p class="title-singer">손정우 - 진짜로 없어</p>
-                </div>
-                <div class="object">
-                    <p class="article_title">손정우의 여친이 소식이 끊어진지 무려 한 달이 다 되어가고 있다는데요. 손...</p>
-                    <img src="https://img.youtube.com/vi/7TdkcrhhiKw/0.jpg" class="main_image"/>
-                    <p class="title-singer">손정우 - 여친이 없어</p>
-                </div>
-                <div class="object">
-                    <p class="article_title">손정우의 여친이 소식이 끊어진지 무려 한 달이 다 되어가고 있다는데요. 손...</p>
-                    <img src="https://img.youtube.com/vi/7TdkcrhhiKw/0.jpg" class="main_image"/>
-                    <p class="title-singer">손정우 - 정말로 없어</p>
-                </div>
-                <div class="object">
-                    <p class="article_title">손정우의 여친이 소식이 끊어진지 무려 한 달이 다 되어가고 있다는데요. 손...</p>
-                    <img src="https://img.youtube.com/vi/7TdkcrhhiKw/0.jpg" class="main_image"/>
-                    <p class="title-singer">손정우 - 지금도 없어</p>
-                </div>
-                <div class="object">
-                    <p class="article_title">손정우의 여친이 소식이 끊어진지 무려 한 달이 다 되어가고 있다는데요. 손...</p>
-                    <img src="https://img.youtube.com/vi/7TdkcrhhiKw/0.jpg" class="main_image"/>
-                    <p class="title-singer">손정우 - 진짜로 없어</p>
-                </div>
-                <div class="object">
-                    <p class="article_title">손정우의 여친이 소식이 끊어진지 무려 한 달이 다 되어가고 있다는데요. 손...</p>
-                    <img src="https://img.youtube.com/vi/7TdkcrhhiKw/0.jpg" class="main_image"/>
-                    <p class="title-singer">손정우 - 여친이 없어</p>
-                </div>
-                <div class="object">
-                    <p class="article_title">손정우의 여친이 소식이 끊어진지 무려 한 달이 다 되어가고 있다는데요. 손...</p>
-                    <img src="https://img.youtube.com/vi/7TdkcrhhiKw/0.jpg" class="main_image"/>
-                    <p class="title-singer">손정우 - 정말로 없어</p>
-                </div>
-                <div class="object">
-                    <p class="article_title">손정우의 여친이 소식이 끊어진지 무려 한 달이 다 되어가고 있다는데요. 손...</p>
-                    <img src="https://img.youtube.com/vi/7TdkcrhhiKw/0.jpg" class="main_image"/>
-                    <p class="title-singer">손정우 - 지금도 없어</p>
-                </div>
-                <div class="object">
-                    <p class="article_title">손정우의 여친이 소식이 끊어진지 무려 한 달이 다 되어가고 있다는데요. 손...</p>
-                    <img src="https://img.youtube.com/vi/7TdkcrhhiKw/0.jpg" class="main_image"/>
-                    <p class="title-singer">손정우 - 진짜로 없어</p>
-                </div>
+            <div id="objects"><%
+            	if(ols != null) {
+	            	for(ObjectVO vo : ols) {
+					%><div class="object">
+	                    <p class="article_title"><%=vo.getTitle()%></p>
+	                    <img src="https://img.youtube.com/vi/<%=vo.getImg()%>/0.jpg" class="main_image"/>
+	                    <p class="title-singer"><%=vo.getSinger()%> - <%=vo.getSong_title()%></p>
+	                </div><%
+	            	}
+            	}
+                %>
             </div>
         </div>
         <div id="hill"></div>

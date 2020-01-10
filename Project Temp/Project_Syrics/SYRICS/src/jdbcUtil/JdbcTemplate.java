@@ -17,7 +17,7 @@ public class JdbcTemplate {
     }
 
     private Connection makeConn() throws Exception {
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/syrics","root","1111");
+        Connection conn = DriverManager.getConnection("jdbc:mysql://10.156.147.116:3306/syrics","root","1111");
         return conn;
     }
     

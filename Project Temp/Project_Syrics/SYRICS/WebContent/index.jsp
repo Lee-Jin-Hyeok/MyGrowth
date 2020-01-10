@@ -5,25 +5,18 @@
 <%@ page import="object.ObjectVO"%><%!
     List<ObjectVO> ols = null;
 	ObjectDAO odao = null;
-	String condition = null;
 	String search = null;
 %><%
 	request.setCharacterEncoding("UTF-8");
-
-	condition = request.getParameter("condition");
 	search = request.getParameter("search");
 	
 	odao = new ObjectDAO();
 	ols = new ArrayList<>();
 	
 	try {
-		if(condition == null) condition = "*";
 		if(search == null) search = "";
 		
-		System.out.println("condition : " + condition);
-		System.out.println("search : " + search);
-		
-		ols = odao.findAll(condition, search);
+		ols = odao.findAll(search);
 	} catch(NullPointerException npe) {
 		System.out.println("DAO is null or LiST is null");
 	}
@@ -52,16 +45,6 @@
 	                <div id="search_wrapper">
 	                    <input type="text" name="search" id="search_bar" value="<%=search%>" placeholder=" 원하는 노래의 제목을 입력해주세요."/>
 						<input type="submit" value="검색" id="search_button">
-	                </div>
-	                <div id="radios">
-	                    <input type="radio" name="condition" class="condition" value="전체" checked="checked"/>
-	                    <span class="condition_name">전체</span>
-	                    <input type="radio" name="condition" class="condition" value="제목"/>
-	                    <span class="condition_name">제목</span>
-	                    <input type="radio" name="condition" class="condition" value="가수"/>
-	                    <span class="condition_name">가수</span>
-	                    <input type="radio" name="condition" class="condition" value="가사"/>
-	                    <span class="condition_name">곡명</span>
 	                </div>
                 </form>
             </div>
@@ -93,6 +76,15 @@
         </div>
         <div id="hill"></div>
     </div>
+	<script type="text/javascript" src="./static/js/index.js"></script>
+	<script type="text/javascript">
+		var object2 = document.getElementsByClassName("object");
+		
+		for(var i = 0 ; i < object2.length ; i++) {
+			object2[i].onclick = function() {
+				location.href = "./static/html/" + this.querySelector('img').src.split("/")[4] + ".html";
+			}
+		}
+	</script>
 </body>
-<script type="text/javascript" src="./static/js/index.js"></script>
 </html>

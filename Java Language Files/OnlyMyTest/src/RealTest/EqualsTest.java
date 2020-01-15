@@ -27,5 +27,7 @@ public class EqualsTest {
 			System.out.println(i);
 		
 		System.out.println(b == c);
+		
+		Week week = null;
 	}
 }

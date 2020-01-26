@@ -1,4 +1,4 @@
-package RealTest;
+  package RealTest;
 
 public class EqualsTest {
 	public static void main(String[] args) {

@@ -1,6 +1,7 @@
 package RealTest;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class ArraysMethodsTest {
 	public static void main(String[] args) {
@@ -31,5 +32,13 @@ public class ArraysMethodsTest {
 		System.out.println();
 		System.out.println(Arrays.toString(data));
 		System.out.println(Arrays.deepToString(data));
+		System.out.println();
+		
+		byte[] bytes = new byte[5];
+		Random r = new Random();
+		r.nextBytes(bytes);
+		
+		for(byte b : bytes)
+			System.out.print(b + " ");
 	}
 }

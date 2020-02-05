@@ -67,5 +67,31 @@ public class DurationTest {
 		
 		System.out.println(d14.toMinutes());
 		System.out.println(d14.toNanos());
+		
+		Duration d15 = Duration.ofHours(5);
+		LocalTime lt = LocalTime.of(10, 10, 10);
+		LocalTime lt2 = (LocalTime) d15.addTo(lt);
+		System.out.println(lt);
+		System.out.println(lt2);
+		
+		Duration duration = Duration.parse("PT10H10M10.000000001S");
+        System.out.println("getSeconds() : " + duration.getSeconds());
+        System.out.println("getNanos() : " + duration.getNano());
+        System.out.println("get(ChronoUnit.SECONDS) : "
+                           + duration.get(ChronoUnit.SECONDS));
+        System.out.println("get(ChronoUnit.NANOS) : "
+                           + duration.get(ChronoUnit.NANOS));
+        
+        System.out.println(Duration.ofHours(0));
+        System.out.println(Duration.ofMinutes(0));
+        
+        System.out.println(Duration.parse("PT10H10M10S").minusDays(1));
+        
+        Duration duration1 = Duration.parse("PT10H10M10.000000001S");
+        System.out.println(duration1.toDays());
+        System.out.println(duration1.toHours());
+        System.out.println(duration1.toMinutes());
+        System.out.println(duration1.toMillis());
+        System.out.println(duration1.toNanos());
 	}
 }

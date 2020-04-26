@@ -5,6 +5,26 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans
     	http://www.springframework.org/schema/beans/spring-beans.xsd">	
     	
-    <bean id="tWalk" class="testPjt01.TranspotationWalk"/>
+    <bean id="studentDAO" class="test.project.dao.StudentDAO"/>
+    
+    <bean id="registerService" class="test.project.service.StudentRegisterService">
+        <constructor-arg ref="studentDAO"></constructor-arg>
+    </bean>
+    
+    <bean id="modifyService" class="test.project.service.StudentModifyService">
+        <constructor-arg ref="studentDAO"></constructor-arg>
+    </bean>
+    
+    <bean id="deleteService" class="test.project.service.StudentDeleteService">
+        <constructor-arg ref="studentDAO"></constructor-arg>
+    </bean>
+    
+    <bean id="selectService" class="test.project.service.StudentSelectService">
+        <constructor-arg ref="studentDAO"></constructor-arg>
+    </bean>
+    
+    <bean id="allSelectService" class="test.project.service.StudentAllSelectService">
+        <constructor-arg ref="studentDAO"></constructor-arg>
+    </bean>
     
 </beans>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    	http://www.springframework.org/schema/beans/spring-beans.xsd">	
+    <!--	
+    <bean id="element1" class="test.di.constructor.Element1"/>
+    <bean id="element2" class="test.di.constructor.Element2"/>
+     -->
+     
+     <bean id="element1" class="java.lang.String">
+         <constructor-arg value="string"/>
+     </bean>
+     <bean id="element2" class="java.lang.Integer">
+         <constructor-arg value="10"/>
+     </bean>
+     
+    <bean id="constructorDI" class="test.di.constructor.ConstructorDI">
+        <constructor-arg ref="element1"></constructor-arg>
+        <constructor-arg ref="element2"></constructor-arg>
+    </bean>
+    
+</beans>

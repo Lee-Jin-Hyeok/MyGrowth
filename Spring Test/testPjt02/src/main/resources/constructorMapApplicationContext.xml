@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    	http://www.springframework.org/schema/beans/spring-beans.xsd">
+    
+    <bean id="constructorMap" class="test.di.curiosity.ConstructorMap">
+        <constructor-arg><!--
+            <map>
+		        <entry>
+		            <key>
+		                <value>AAA</value>
+		            </key>
+		            <value>
+		                aaa
+		            </value>
+		        </entry>
+		        <entry>
+		            <key>
+		                <value>BBB</value>
+		            </key>
+		            <value>
+		                bbb
+		            </value>
+		        </entry>
+		        <entry>
+		            <key>
+		                <value>CCC</value>
+		            </key>
+		            <value>
+		                ccc
+		            </value>
+		        </entry>
+		    </map>-->
+		    <list>
+		        <value>aaa</value>
+		        <value>bbb</value>
+		        <value>ccc</value>
+		    </list>
+        </constructor-arg>
+    </bean>
+    
+</beans>

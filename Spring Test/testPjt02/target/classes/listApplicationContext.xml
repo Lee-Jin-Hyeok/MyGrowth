@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    	http://www.springframework.org/schema/beans/spring-beans.xsd">
+    
+    <bean id="listDI" class="test.di.list.ListDI">
+        <property name="list">
+            <list>
+                <bean id="listElement" class="test.di.list.ListElement">
+			        <constructor-arg type="String" value="aa"/>
+			    </bean>
+			    <bean id="listElement" class="test.di.list.ListElement">
+			        <constructor-arg type="String" value="bb"/>
+			    </bean>
+			    <bean id="listElement" class="test.di.list.ListElement">
+			        <constructor-arg type="String" value="cc"/>
+			    </bean>
+			    <bean id="listElement" class="test.di.list.ListElement">
+			        <constructor-arg type="String" value="dd"/>
+			    </bean>
+			    <bean id="listElement" class="test.di.list.ListElement">
+			        <constructor-arg type="String" value="ee"/>
+			    </bean>
+            </list>
+        </property>
+    </bean>
+    
+</beans>

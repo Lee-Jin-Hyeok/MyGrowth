@@ -8,7 +8,7 @@
     <bean id="element1" class="test.di.constructor.Element1"/>
     <bean id="element2" class="test.di.constructor.Element2"/>
      -->
-     
+     <!--
      <bean id="element1" class="java.lang.String">
          <constructor-arg value="string"/>
      </bean>
@@ -19,6 +19,12 @@
     <bean id="constructorDI" class="test.di.constructor.ConstructorDI">
         <constructor-arg ref="element1"></constructor-arg>
         <constructor-arg ref="element2"></constructor-arg>
+    </bean>
+    -->
+    
+    <bean id="constructorDI" class="test.di.constructor.ConstructorDI">
+        <constructor-arg type="String" value="string"/>
+        <constructor-arg type="Integer" value="10"/>
     </bean>
     
 </beans>

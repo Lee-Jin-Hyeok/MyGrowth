@@ -19,5 +19,6 @@ public class MainClass {
 		
 		System.out.println(element1 == element2);
 		System.out.println(element1.equals(element2));
+		ctx.close();
 	}
 }

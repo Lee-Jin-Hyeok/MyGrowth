@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    	http://www.springframework.org/schema/beans/spring-beans.xsd">
+    	
+    <bean id="box" class="test.annotation.config.Box">
+        <constructor-arg value="boxbox"/>
+    </bean>
+    
+    <bean id="no-arg-box" class="test.annotation.config.Box"/>
+    
+    <bean id="wrapperBox" class="test.annotation.config.WrapperBox">
+        <constructor-arg ref="box"/>
+    </bean>
+    
+    <bean id="property-wrapperBox" class="test.annotation.config.WrapperBox">
+        <property name="box" ref="no-arg-box"/>
+    </bean>
+    
+    <bean id="developers" class="test.annotation.config.Developers">
+        <constructor-arg>
+	        <list>
+	            <value>Lee</value>
+	            <value>Kim</value>
+	            <value>Park</value>
+	        </list>
+        </constructor-arg>
+    </bean>
+    
+    <bean id="developerMoneys" class="test.annotation.config.DeveloperMoneys">
+        <constructor-arg>
+	        <map>
+	            <entry>
+	                <key>
+	                    <value>Lee</value>
+	                </key>
+	                <value>연봉1000원</value>
+	            </entry>
+	            <entry>
+	                <key>
+	                    <value>Kim</value>
+	                </key>
+	                <value>연봉100원</value>
+	            </entry>
+	            <entry>
+	                <key>
+	                    <value>Park</value>
+	                </key>
+	                <value>연봉10원</value>
+	            </entry>
+	        </map>
+        </constructor-arg>
+    </bean>
+    
+</beans>

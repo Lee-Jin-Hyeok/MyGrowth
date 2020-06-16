@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>정보 변경 페이지</title>
+</head>
+<body>
+
+<h1>로그인</h1>
+<form action="/session/user/changeOk" method="post">
+	Existing ID : <input type="text" name="existingUserId"/><br/>
+	New ID : <input type="text" name="userId"/><br/>
+	Existing PW : <input type="password" name="existingUserPw"/><br/>
+	New PW : <input type="password" name="userPw"/><br/>
+	Existing Mail : <input type="email" name="existingUserMail"/><br/>
+	New Mail : <input type="email" name="userMail"/><br/>
+	Existing Age : <input type="text" name="existingUserAge"/><br/>
+	New Age : <input type="text" name="userAge"/><br/>
+	<input type="submit" value="변경"/>
+</form>
+<a href="/session/resources/html/index.html">메인 페이지로</a>
+
+</body>
+</html>

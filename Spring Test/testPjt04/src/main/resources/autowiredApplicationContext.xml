@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    	http://www.springframework.org/schema/beans/spring-beans.xsd
+    	http://www.springframework.org/schema/context
+    	http://www.springframework.org/schema/context/spring-context.xsd">
+    	
+    <context:annotation-config />
+    	
+    <bean id="box1" class="test.di.autowired.Box" init-method="initMethod" destroy-method="destroyMethod">
+        <constructor-arg value="111"/>
+        <qualifier value="aaa"/>
+    </bean>
+    <bean id="box2" class="test.di.autowired.Box" init-method="initMethod" destroy-method="destroyMethod">
+        <constructor-arg value="222"/>
+        <qualifier value="bbb"/>
+    </bean>
+    <bean id="box3" class="test.di.autowired.Box2" init-method="initMethod" destroy-method="destroyMethod">
+        <constructor-arg value="333"/>
+        <qualifier value="aaa"/>
+    </bean>
+    <bean id="box4" class="test.di.autowired.Box2" init-method="initMethod" destroy-method="destroyMethod">
+        <constructor-arg value="444"/>
+        <qualifier value="bbb"/>
+    </bean>
+    <bean id="wrapperBox" class="test.di.autowired.WrapperBox" init-method="initMethod" destroy-method="destroyMethod"/>
+    
+</beans>

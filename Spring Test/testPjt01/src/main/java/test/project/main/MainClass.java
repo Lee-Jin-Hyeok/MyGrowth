@@ -6,7 +6,6 @@ import java.util.Set;
 
 import org.springframework.context.support.GenericXmlApplicationContext;
 
-import test.project.assembler.StudentAssembler;
 import test.project.member.Student;
 import test.project.service.StudentAllSelectService;
 import test.project.service.StudentRegisterService;
